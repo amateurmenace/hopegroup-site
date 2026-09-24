@@ -17,6 +17,8 @@ services:
   - Design
   - Development
   - Open source
+thumb: /assets/img/driftwood/thumb.jpg
+thumb_alt: The Driftwood board in a browser window
 image: /assets/img/driftwood/home.jpg
 image_alt: The Driftwood home dashboard, watching over the Project Lookout beta.
 outcome: A beta that gets run instead of ignored. Raw reports become steerable cards in one tap, nothing synthetic is ever shown as live, and the whole tool retargets to a new product by editing one file.

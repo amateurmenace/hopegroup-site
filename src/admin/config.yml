@@ -107,6 +107,7 @@ collections:
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Order", name: "order", widget: "number", default: 99, value_type: "int" }
       - { label: "Show on home page", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Tile thumbnail (optional, 16:10)", name: "thumb", widget: "image", required: false, hint: "Shown on project tiles. Falls back to the image below." }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Image alt text", name: "image_alt", widget: "string", required: false }
       - { label: "Services", name: "services", widget: "list", required: false }

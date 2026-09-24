@@ -20,6 +20,8 @@ services:
 video:
   id: CWeu-GJgBf0
   title: "Project Lookout demo"
+thumb: /assets/img/lookout/thumb.jpg
+thumb_alt: Project Lookout title card with the radar mark
 image: /assets/img/lookout/landing.jpg
 image_alt: The Project Lookout landing page. Find your funding. Find your footing. Find your future.
 outcome: The business development team a small organization never had. One ranked feed, a morning digest, and a pipeline from first sighting to won contract, for what used to cost about $12,000 a year per seat.
