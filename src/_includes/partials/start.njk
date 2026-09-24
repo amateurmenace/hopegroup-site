@@ -14,12 +14,16 @@
         <span class="link-arrow">{{ path.label }}</span>
       </a>
       {% endfor %}
-      <div class="start__card start__card--contact">
-        <span class="eyebrow eyebrow--night">{{ home.start.contact_eyebrow }}</span>
-        <a class="start__email" href="mailto:{{ site.email }}">{{ site.email }}</a>
-        <a class="btn btn-primary" href="{{ (site.booking_url or '/contact/') | link }}">{{ site.booking_label }} {% include "partials/arrow.njk" %}</a>
-        <span class="start__note">{{ home.start.contact_note }}</span>
-      </div>
+      {% set latest = collections.labnotes | first %}
+      {% if latest %}
+      <a class="start__card start__card--note" href="{{ latest.url | link }}">
+        <span class="start__note-head"><span class="eyebrow">Latest lab note</span><time class="start__note-date" datetime="{{ latest.date | isoDate }}">{{ latest.date | readableDate("LLL d, yyyy") }}</time></span>
+        <span class="start__note-title">{{ latest.data.title }}</span>
+        <span class="start__note-summary">{{ latest.data.summary | truncate(120) }}</span>
+        <span class="start__note-meta">{{ latest.data.author }} · {{ latest.templateContent | readingTime }} min read</span>
+        <span class="link-arrow">Read the note</span>
+      </a>
+      {% endif %}
     </div>
   </div>
 </section>

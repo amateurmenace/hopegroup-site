@@ -38,9 +38,7 @@
         "url": "/work/?kind=Tool",
         "label": "See the tools"
       }
-    ],
-    "contact_eyebrow": "Or just write",
-    "contact_note": "A member of the lab replies personally within one business day."
+    ]
   },
   "projects": {
     "eyebrow": "Projects",
