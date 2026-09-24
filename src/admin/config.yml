@@ -1,12 +1,13 @@
-# Decap CMS configuration for hopegroup.ai
-# Docs: https://decapcms.org/docs/configuration-options/
+# Decap CMS configuration for hopegroup.ai (GitHub Pages hosting)
+# Docs: https://decapcms.org/docs/github-backend/
 #
-# Hosting on Netlify (recommended): enable Identity + Git Gateway in the Netlify
-# dashboard and this backend works as-is. On another host, switch to the
-# `github` backend (see README).
+# Logging in uses GitHub OAuth. The `base_url` below points at Netlify's free OAuth
+# relay, which works for any site (see README → "Editing content" for the 5-minute setup).
 backend:
-  name: git-gateway
+  name: github
+  repo: amateurmenace/hopegroup-site
   branch: main
+  base_url: https://api.netlify.com
   commit_messages:
     create: "content: add {{collection}} “{{slug}}”"
     update: "content: update {{collection}} “{{slug}}”"
@@ -22,7 +23,7 @@ public_folder: "/assets/img/uploads"
 
 site_url: https://hopegroup.ai
 display_url: https://hopegroup.ai
-logo_url: /assets/brand/wordmark.svg
+logo_url: https://amateurmenace.github.io/hopegroup-site/assets/brand/wordmark.svg
 
 slug:
   encoding: "ascii"
@@ -198,6 +199,7 @@ collections:
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Founded", name: "founded", widget: "string" }
           - { label: "Booking link (Calendly etc.). Leave blank to use the contact form.", name: "booking_url", widget: "string", required: false }
+          - { label: "Contact form endpoint (e.g. a Formspree URL). Leave blank to open an email draft instead.", name: "form_action", widget: "string", required: false }
           - { label: "Booking button label", name: "booking_label", widget: "string" }
           - { label: "Funding note", name: "funding_note", widget: "text" }
           - { label: "Funding contact email", name: "funding_contact", widget: "string" }

@@ -13,8 +13,8 @@ description: "Start with an honest 30-minute conversation with The Hope Group. N
 </header>
 <section class="section section--tight">
   <div class="wrap contact">
-    <form class="form" name="contact" method="POST" action="{{ '/thanks/' | link }}" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact">
+    <form class="form" name="contact" method="POST" action="{{ site.form_action }}" data-mailto="{{ site.email }}" data-thanks="{{ '/thanks/' | link }}">
+      <input type="hidden" name="_subject" value="Website inquiry for The Hope Group">
       <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
       <div class="field"><label for="f-org">Organization</label><input id="f-org" name="organization" autocomplete="organization"></div>
@@ -31,7 +31,7 @@ description: "Start with an honest 30-minute conversation with The Hope Group. N
       </div>
       <div class="field"><label for="f-message">Tell us a little about your organization</label><textarea id="f-message" name="message" rows="5"></textarea></div>
       <button class="btn btn-primary" type="submit">Send {% include "partials/arrow.njk" %}</button>
-      <p class="form__note">{{ site.response_promise }}</p>
+      <p class="form__note">{{ site.response_promise }} Sending opens a draft in your email app addressed to {{ site.email }}.</p>
     </form>
     <aside class="contact__side">
       {% if site.booking_url %}

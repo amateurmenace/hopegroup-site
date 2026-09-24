@@ -286,6 +286,20 @@
     history.pushState(null, "", url.hash);
   });
 
+  /* ---------- contact form: post to the configured endpoint, or open an email draft ---------- */
+  const form = $("form.form[data-mailto]");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      if (form.getAttribute("action")) return;
+      e.preventDefault();
+      const f = new FormData(form);
+      const subject = `Website inquiry from ${f.get("name") || "a visitor"}${f.get("organization") ? " (" + f.get("organization") + ")" : ""}`;
+      const body = [`Name: ${f.get("name") || ""}`, `Organization: ${f.get("organization") || ""}`, `Email: ${f.get("email") || ""}`, `Interest: ${f.get("interest") || ""}`, "", f.get("message") || ""].join("\n");
+      location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setTimeout(() => { location.href = form.dataset.thanks; }, 800);
+    });
+  }
+
   /* ---------- copy buttons ---------- */
   $$("[data-copy]").forEach((btn) => {
     btn.addEventListener("click", async () => {

@@ -5,7 +5,7 @@ content management panel the whole team can use, no Squarespace required.
 
 - **Site generator:** [Eleventy 3](https://www.11ty.dev/) (Node). Templates are Nunjucks (`.njk`); content is Markdown + JSON.
 - **CMS:** [Decap CMS](https://decapcms.org/) at `/admin/`. Edits become git commits, drafts become pull requests.
-- **Hosting (recommended):** Netlify. Free tier is plenty. Forms, identity (CMS logins), and redirects all work out of the box.
+- **Hosting:** GitHub Pages via GitHub Actions (see below). Live at https://amateurmenace.github.io/hopegroup-site/ until hopegroup.ai is pointed at it.
 - **No trackers, no cookies, no third-party scripts on public pages.** Fonts come from Google Fonts; swap to self-hosted files if you want zero third parties.
 
 ## Run it locally
@@ -57,26 +57,38 @@ Body in Markdown.
 
 Set `draft: true` on anything to hide it from the site without deleting it.
 
-## Deploy on Netlify (about 15 minutes)
+## Hosting: GitHub Pages
 
-1. Push this folder to a GitHub repository (e.g. `hopegroup/hopegroup-site`).
-2. In Netlify: **Add new site → Import from Git** → pick the repo. Build command `npm run build`, publish directory `_site` (already in `netlify.toml`).
-3. **Site settings → Identity → Enable Identity.** Set registration to *Invite only*. Under **Services → Git Gateway**, click *Enable Git Gateway*.
-4. **Identity → Invite users** → invite each team member's email. They get a link, set a password, and can log in at `https://hopegroup.ai/admin/`.
-5. **Forms:** the contact form is already tagged `data-netlify`. Netlify → Forms → Notifications → add `hello@hopegroup.ai` as an email notification.
-6. **Domain:** Netlify → Domain management → add `hopegroup.ai`. Then, in the Squarespace domain panel (or wherever the DNS lives), point the apex `A` record to Netlify's load balancer IP and `www` `CNAME` to your Netlify subdomain, exactly as the Netlify dashboard shows. Netlify issues the HTTPS certificate automatically once DNS propagates.
-7. The Squarespace site can stay up until DNS flips; old URLs (`/about`, `/portfolio`, `/ai-agents`, …) are redirected in `netlify.toml`.
+The repo is `github.com/amateurmenace/hopegroup-site`. Every push to `main` runs `.github/workflows/pages.yml`, which builds the site and publishes it to GitHub Pages at **https://amateurmenace.github.io/hopegroup-site/**.
 
-### Other hosts
+### Pointing hopegroup.ai at it
 
-Cloudflare Pages, Vercel, and GitHub Pages all serve the `_site` folder fine. For the CMS on those hosts, change `backend` in `src/admin/config.yml` to the `github` backend and set up an OAuth provider (Decap docs: *Backends → GitHub*). Netlify Forms will not work elsewhere; point the form at Formspree or similar.
+1. Add a file named `CNAME` at the repo root containing exactly `hopegroup.ai` and push. The workflow then builds with the site at `/` instead of `/hopegroup-site/`.
+2. In the repo: **Settings → Pages → Custom domain** → `hopegroup.ai`, and tick *Enforce HTTPS* once the certificate is issued.
+3. At the DNS host (currently Squarespace): four `A` records for the apex pointing to GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and a `CNAME` for `www` → `amateurmenace.github.io`. The Squarespace site keeps serving until DNS flips.
+4. Old Squarespace URLs (`/about`, `/portfolio`, `/ai-agents`, `/products/*`, …) are covered by small redirect pages generated from `src/_data/redirects.json`.
+
+### Contact form
+
+GitHub Pages cannot receive form posts. By default the form opens an email draft to `hello@hopegroup.ai` with the fields filled in. To collect submissions in a dashboard instead, create a free [Formspree](https://formspree.io) form and paste its endpoint into **Site settings → Contact form endpoint** (`form_action` in `src/_data/site.json`).
+
+### CMS logins (one-time setup, about 5 minutes)
+
+Decap CMS at `/admin/` uses the GitHub backend, so editors log in with GitHub accounts that have write access to the repo. GitHub OAuth needs a small relay; the easiest free one is Netlify's:
+
+1. In GitHub: **Settings → Developer settings → OAuth Apps → New OAuth App.** Homepage `https://amateurmenace.github.io/hopegroup-site/`, callback URL `https://api.netlify.com/auth/done`.
+2. In Netlify (any site on the account works, even an empty one): **Site configuration → Access & security → OAuth → Install provider → GitHub**, paste the Client ID and secret.
+3. Invite each editor to the GitHub repo as a collaborator. They log in at `/admin/` with GitHub.
+
+`netlify.toml` is kept only in case you ever move hosting; it does nothing on GitHub Pages.
 
 ## Editing content (for the team)
 
 1. Go to `hopegroup.ai/admin/` and log in.
 2. Pick a collection on the left (Lab notes, News, Press, Work & impact, Team, or Site settings).
 3. Write, then **Save**. New entries start as *Draft*. Move them to *In review* and then *Ready*, and press **Publish**. The site rebuilds itself in about a minute.
-4. Images: use the *Cover image* / *Photo* fields, or the media library. Keep photos under ~1 MB and about 1000 px on the long side.
+4. Publishing triggers the Pages workflow; the live site updates in about two minutes.
+5. Images: use the *Cover image* / *Photo* fields, or the media library. Keep photos under ~1 MB and about 1000 px on the long side.
 
 ## Things to confirm before launch
 

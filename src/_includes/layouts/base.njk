@@ -27,10 +27,6 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}","email":"{{ site.email }}","description":"{{ site.description }}","foundingDate":"{{ site.founded }}","address":{"@type":"PostalAddress","streetAddress":"89 South St","addressLocality":"Boston","addressRegion":"MA","addressCountry":"US"},"logo":"{{ site.url }}/assets/brand/mark.svg"}
   </script>
-  <script>
-    // Netlify Identity invite/recovery links land on the site root; send them to the CMS.
-    if (/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)) { location.replace('/admin/' + location.hash); }
-  </script>
   {% endif %}
 </head>
 <body class="{{ bodyClass }}" id="page-top">

@@ -1,0 +1,38 @@
+[
+  {
+    "from": "about",
+    "to": "/philosophy/"
+  },
+  {
+    "from": "portfolio",
+    "to": "/work/"
+  },
+  {
+    "from": "ai-agents",
+    "to": "/work/project-lookout/"
+  },
+  {
+    "from": "ai-training",
+    "to": "/services/"
+  },
+  {
+    "from": "ai-training-1",
+    "to": "/services/"
+  },
+  {
+    "from": "how-we-build",
+    "to": "/philosophy/"
+  },
+  {
+    "from": "products",
+    "to": "/work/"
+  },
+  {
+    "from": "products/project-lookout",
+    "to": "/work/project-lookout/"
+  },
+  {
+    "from": "products/driftwood",
+    "to": "/work/driftwood/"
+  }
+]

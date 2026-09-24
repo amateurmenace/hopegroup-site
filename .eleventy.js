@@ -7,10 +7,17 @@ const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 // PREVIEW=1 builds a flat, relative-link copy of the site (used for the
 // claude.ai artifact preview). Normal builds use clean directory URLs.
 const PREVIEW = !!process.env.PREVIEW;
+// PATHPREFIX="/repo-name/" when hosted under a sub-path (GitHub Pages project site). "/" for a custom domain.
+const PREFIX = (process.env.PATHPREFIX || "/").replace(/\/?$/, "/");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("ext", PREVIEW ? ".html" : "/");
   eleventyConfig.addGlobalData("preview", PREVIEW);
+  eleventyConfig.addGlobalData("pathPrefix", PREFIX);
+  if (!PREVIEW && PREFIX !== "/") {
+    eleventyConfig.addTransform("pathprefix", (content, outputPath) =>
+      outputPath && outputPath.endsWith(".html") ? content.replace(/\b(href|src|action|content)="\/(?!\/)/g, `$1="${PREFIX}`) : content);
+  }
   eleventyConfig.addGlobalData("buildTime", () => new Date());
 
   // Static files
