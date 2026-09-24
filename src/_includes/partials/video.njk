@@ -1,0 +1,5 @@
+<a class="video" href="https://www.youtube.com/watch?v={{ v.id }}" target="_blank" rel="noopener" aria-label="Watch: {{ v.title }} (opens YouTube)">
+  <img src="{{ ('/assets/img/video/' + v.id + '.jpg') | link }}" alt="" loading="lazy">
+  <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+  <span class="video__title">{{ v.title }} <span class="video__note">Opens on YouTube. Nothing loads until you click.</span></span>
+</a>

@@ -1,0 +1,44 @@
+{
+  "name": "The Hope Standard",
+  "eyebrow": "How we build",
+  "headline": "The standard we hold ourselves to. The standard we believe everyone should meet.",
+  "intro": "We do not treat ethics as a feature. It is the foundation of every line of code we write. Every product we release is designed, tested, and audited against The Hope Standard, our framework for responsible AI, before it reaches a single user.",
+  "closing": "We publish how we build because we want the rest of the industry to build this way too.",
+  "pillars": [
+    {
+      "n": "01",
+      "title": "Privacy by design",
+      "statement": "We collect only what is needed, protect it rigorously, and never sell it.",
+      "check": "Before we build, we write a data inventory: every field, why it exists, who can see it, and when it is deleted. If a field has no reason, it is cut.",
+      "see": "A plain-language data page for every product, explaining what is collected and what is not."
+    },
+    {
+      "n": "02",
+      "title": "Algorithmic auditing",
+      "statement": "We test how our systems make decisions and document what we find.",
+      "check": "Decisions the system makes are logged. We sample them, review them by hand, and write down what we learned, including the surprises.",
+      "see": "An audit summary you can actually read, not a certificate."
+    },
+    {
+      "n": "03",
+      "title": "Bias testing",
+      "statement": "We examine our models and data for unfair outcomes before and after launch.",
+      "check": "Outcomes are compared across groups before release and on a schedule afterward. If a gap appears, the fix ships before the feature does.",
+      "see": "What we tested, what we found, and what we changed."
+    },
+    {
+      "n": "04",
+      "title": "Transparency",
+      "statement": "Users know when AI is involved and how it reaches its answers.",
+      "check": "Anything generated or ranked by AI is labeled, shows its sources, and says how confident it is. No quiet automation.",
+      "see": "An \"AI-assisted\" label and citations right in the product."
+    },
+    {
+      "n": "05",
+      "title": "Human judgment leads",
+      "statement": "AI assists. People decide.",
+      "check": "No final decision about a person's money, housing, health, or job is automated. A human can always override, and a human's name is on it.",
+      "see": "A person's name on every recommendation that matters."
+    }
+  ]
+}

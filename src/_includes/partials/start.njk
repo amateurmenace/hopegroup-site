@@ -1,0 +1,25 @@
+<section class="start section--tight" id="start">
+  <div class="wrap">
+    <div class="start__head">
+      <p class="eyebrow">{{ home.start.eyebrow }}</p>
+      <h2>{{ home.start.headline }}</h2>
+      <p class="lede">{{ home.start.intro }}</p>
+    </div>
+    <div class="start__grid">
+      {% for path in home.start.paths %}
+      <a class="start__card" href="{{ path.url | link }}">
+        <span class="start__icon">{% set icon = path.icon %}{% include "partials/start-icon.njk" %}</span>
+        <span class="eyebrow">{{ path.eyebrow }}</span>
+        <span class="start__t">{{ path.title }}</span>
+        <span class="link-arrow">{{ path.label }}</span>
+      </a>
+      {% endfor %}
+      <div class="start__card start__card--contact">
+        <span class="eyebrow eyebrow--night">{{ home.start.contact_eyebrow }}</span>
+        <a class="start__email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        <a class="btn btn-primary" href="{{ (site.booking_url or '/contact/') | link }}">{{ site.booking_label }} {% include "partials/arrow.njk" %}</a>
+        <span class="start__note">{{ home.start.contact_note }}</span>
+      </div>
+    </div>
+  </div>
+</section>

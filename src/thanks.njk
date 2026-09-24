@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+permalink: "/thanks{{ ext }}"
+title: Thank you
+noindex: true
+---
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Received</p>
+    <h1>Thank you. A person will reply.</h1>
+    <p class="lede">{{ site.response_promise }} In the meantime, the lab notes are a good place to see how we think.</p>
+    <div class="hero__actions"><a class="btn btn-primary" href="{{ '/lab-notes/' | link }}">Read the lab notes {% include "partials/arrow.njk" %}</a><a class="btn btn-ghost" href="{{ '/' | link }}">Back home</a></div>
+  </div>
+</header>

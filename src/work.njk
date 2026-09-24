@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+permalink: "/work{{ ext }}"
+title: Projects
+description: "Tools, programs, and partnerships from The Hope Group across Greater Boston, every one co-designed with the people it serves."
+---
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Projects</p>
+    <h1>Built with neighborhoods, businesses, and institutions.</h1>
+    <p class="lede">Real tools in daily use, programs delivered street by street, and partnerships with anchor institutions. Every one co-designed with the people it serves, never designed for them.</p>
+    {% set kinds = collections.work | allKinds %}
+    <div class="chips chips--filter" data-filter="kind">
+      <button class="chip chip--active" type="button" data-value="">All</button>
+      {% for k in kinds %}<button class="chip" type="button" data-value="{{ k }}">{{ k }}{% if k in ["Tool", "Program", "Partnership", "Course"] %}s{% endif %}</button>{% endfor %}
+    </div>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="tiles tiles--gallery" data-filter-list>
+      {% for w in collections.work %}{% set item = w %}{% set filterValues = w.data.kind %}{% include "partials/tile.njk" %}{% endfor %}
+    </div>
+    <p class="empty" data-filter-empty hidden>Nothing under that kind yet.</p>
+  </div>
+</section>
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="stats">
+      {% for s in recognition.stats %}
+      <div class="stat"><span class="stat__n"><span{% if not s.plain %} data-count="{{ s.value }}"{% endif %}>{{ s.value }}</span>{{ s.suffix }}</span><span class="stat__l">{{ s.label }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% set allQuotes = true %}{% set quotesGrid = true %}
+{% include "partials/quotes.njk" %}
+<section class="section section--paper2">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Recognition</p><h2>Certified. Recognized. Accountable.</h2></div>
+    <div class="badges">
+      {% for b in recognition.badges %}<div class="badge"><span class="badge__org">{{ b.org }}</span><span class="badge__title">{{ b.title }}</span><span class="badge__detail">{{ b.detail }}</span></div>{% endfor %}
+    </div>
+  </div>
+</section>
+{% include "partials/cta.njk" %}

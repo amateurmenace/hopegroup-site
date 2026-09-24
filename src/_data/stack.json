@@ -1,0 +1,73 @@
+{
+  "eyebrow": "Our tech stack",
+  "headline": "Open by default. Local where it fits. Boring where it counts.",
+  "intro": "A lab is only as trustworthy as the tools on its bench. Ours are chosen so that nothing we build locks an organization in, so that a person is always in the loop, and so that sensitive work can, increasingly, stay close to home.",
+  "layers": [
+    {
+      "title": "Local AI, where it fits",
+      "kicker": "Pioneering on-device and self-hosted models in real apps",
+      "summary": "We are pioneering the use of local, open-weight models inside working apps like Project Lookout and Driftwood: models that run on a workstation in our lab or on a machine an organization controls, so a sensitive step can happen without the data leaving. It is not yet our default for every task, and we say so. Where the data is sensitive and the task is the right size, we offer a local path, and we keep expanding it where it holds up.",
+      "points": [
+        "Open-weight model families served on our own Apple silicon and Linux workstations",
+        "Offered first for the sensitive, right-sized steps, with frontier models still doing most of the heavy lifting",
+        "Every local path is tested against the cloud path before we offer it"
+      ],
+      "tags": ["Open-weight models", "Self-hosted", "Pioneering, not the default yet"]
+    },
+    {
+      "title": "Frontier models, on our terms",
+      "kicker": "Most of the heavy lifting, today",
+      "summary": "Most of the heavy lifting in our apps today is done by the largest commercial models: long reasoning, polished writing, unusual formats. We use them through business agreements that prohibit training on your data and limit retention, and the interface always tells you which model answered.",
+      "points": [
+        "Contract terms that forbid training on client data",
+        "Data minimized before it is sent; sensitive fields stripped first",
+        "A visible label whenever a frontier model was used"
+      ],
+      "tags": ["Zero-training terms", "Labeled in the UI", "Minimized inputs"]
+    },
+    {
+      "title": "Agents that verify",
+      "kicker": "Many small workers, checked by a person",
+      "summary": "Project Lookout runs many small agents in parallel across more than a hundred public portals, extracts structured data with a confidence score, and checks every link before a person ever sees it. Public information can be gathered anywhere. Your profile is minimized before it travels.",
+      "points": [
+        "Concurrent, distributed agent execution across public sources",
+        "Structured extraction with confidence scoring and link verification",
+        "Ranking you can inspect: every match shows why it matched"
+      ],
+      "tags": ["Distributed agents", "Confidence scoring", "Link integrity", "Explainable ranking"]
+    },
+    {
+      "title": "Durable, exportable infrastructure",
+      "kicker": "Formats you can leave",
+      "summary": "Plain files, standard databases, and open formats. If you ever want to walk away from us, you can take everything with you in a form another tool can read. We think that is the only honest way to earn a renewal.",
+      "points": [
+        "Standard relational databases and plain-text records",
+        "One-click export of everything you put in",
+        "No proprietary formats between you and your own data"
+      ],
+      "tags": ["Open formats", "Full export", "Standard databases"]
+    },
+    {
+      "title": "Human in the loop",
+      "kicker": "Software that waits for a person",
+      "summary": "Every product has an approval step where a human decides. Drafts are drafts until someone signs them. Recommendations are recommendations until someone acts. The software is designed to make that step easy, not to skip it.",
+      "points": [
+        "Explicit approval steps on anything that affects a person",
+        "Named owners for every automated workflow",
+        "Overrides that are always available and always logged"
+      ],
+      "tags": ["Approval steps", "Named owners", "Overrides"]
+    },
+    {
+      "title": "Accessible and plain",
+      "kicker": "Built for the people who actually use it",
+      "summary": "Interfaces that meet accessibility standards, copy written at an eighth grade reading level, and training materials that assume nothing. If a tool cannot be explained simply, we do not ship it.",
+      "points": [
+        "Accessibility checks in every QA pass",
+        "Plain-language documentation for every product",
+        "Tested with the communities it is built with, not a focus group"
+      ],
+      "tags": ["WCAG", "Plain language", "Community testing"]
+    }
+  ]
+}

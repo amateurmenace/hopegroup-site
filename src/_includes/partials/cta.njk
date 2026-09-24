@@ -1,0 +1,9 @@
+<section class="cta-band">
+  <div class="wrap cta-band__inner">
+    <h2>{{ ctaHeadline or home.closing.headline }}</h2>
+    <div class="hero__actions">
+      <a class="btn btn-primary" href="{{ (site.booking_url or home.closing.primary_cta.url) | link }}">{{ home.closing.primary_cta.label }} {% include "partials/arrow.njk" %}</a>
+      <a class="btn btn-ghost" href="{{ home.closing.secondary_cta.url | link }}">{{ home.closing.secondary_cta.label }}</a>
+    </div>
+  </div>
+</section>

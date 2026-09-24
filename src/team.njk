@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+permalink: "/team{{ ext }}"
+title: Team
+description: "The people behind The Hope Group: an executive director, a technologist and designer, an operations and curriculum lead, a compliance and leadership trainer, and a design researcher."
+---
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">The team</p>
+    <h1>Five people. One lab. Every organization treated like the only one.</h1>
+    <p class="lede">Expertise in ethical AI, product design, curriculum, compliance, and research, held together by a rule we borrowed from our own contact page: the moment of doubt is always at the button, and that is exactly where trust has to show up.</p>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap people-full">
+    {% for p in collections.team %}
+    <article class="person-row" id="{{ p.fileSlug }}">
+      <div class="person-row__side">
+        <div class="person-row__photo">{% if p.data.photo %}<img src="{{ p.data.photo | link }}" alt="Portrait of {{ p.data.name }}" loading="lazy">{% else %}<span class="person__initials">{{ p.data.name | initials }}</span>{% endif %}</div>
+        <div class="person__contact">
+          {% if p.data.email %}<a href="mailto:{{ p.data.email }}">{{ p.data.email }}</a>{% endif %}
+          {% if p.data.linkedin %}<a href="{{ p.data.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+          {% if p.data.website %}<a href="{{ p.data.website }}" target="_blank" rel="noopener">{{ p.data.website_label or p.data.website }}</a>{% endif %}
+        </div>
+        {% if p.data.credentials %}
+        <div class="person__creds">
+          <p class="eyebrow">Credentials</p>
+          <ul>{% for c in p.data.credentials %}<li>{{ c }}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
+      </div>
+      <div class="person-row__main">
+        <p class="eyebrow eyebrow--beacon">{{ p.data.role }}</p>
+        <h2 class="person-row__name">{{ p.data.name }}</h2>
+        <p class="person__short">{{ p.data.short }}</p>
+        {% if p.data.focus %}<div class="chips">{% for f in p.data.focus %}<span class="chip">{{ f }}</span>{% endfor %}</div>{% endif %}
+        <div class="prose">{{ p.templateContent | safe }}</div>
+        {% if p.data.ask_me_about %}
+        <div class="ask ask--inline">
+          <p class="eyebrow">Ask {{ p.data.first_name or p.data.name }} about</p>
+          <ul class="ask__list">{% for a in p.data.ask_me_about %}<li>{{ a }}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+<section class="section section--paper2">
+  <div class="wrap two-col">
+    <div class="sec-head"><p class="eyebrow">How we work</p><h2>We don't send consultants. We send partners.</h2></div>
+    <div class="prose">
+      <p><strong>We co-design with communities. We never design for them.</strong> The people closest to the problem are in the room from the first sketch to the last test, they shape what gets built, and they are credited as collaborators.</p>
+      <p>We start with your reality, not our playbook. Before recommending a single tool, we learn your workflows, your people, your constraints, and your goals.</p>
+      <p>We are loyal to your mission, not to any vendor. No commissions, no preferred platforms. We tell you what works and what to walk away from.</p>
+      <p>Equity is the standard, not the exception. Every recommendation is filtered through one question: does this serve your entire community, or just part of it?</p>
+    </div>
+  </div>
+</section>
+{% set ctaHeadline = "Want to meet us before committing to anything?" %}
+{% include "partials/cta.njk" %}

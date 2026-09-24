@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+---
+<article class="person-page">
+  <header class="page-head page-head--slim">
+    <div class="wrap">
+      <a class="crumb" href="{{ sectionUrl | link }}">← Team</a>
+    </div>
+  </header>
+  <div class="wrap section section--tight person">
+    <aside class="person__side">
+      <div class="person__photo">
+        {% if photo %}<img src="{{ photo | link }}" alt="Portrait of {{ name }}">{% else %}<div class="person__initials">{{ name | initials }}</div>{% endif %}
+      </div>
+      <div class="person__contact">
+        {% if email %}<a href="mailto:{{ email }}">{{ email }}</a>{% endif %}
+        {% if linkedin %}<a href="{{ linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+        {% if website %}<a href="{{ website }}" target="_blank" rel="noopener">{{ website_label or website }}</a>{% endif %}
+      </div>
+      {% if credentials %}
+      <div class="person__creds">
+        <p class="eyebrow">Credentials</p>
+        <ul>{% for c in credentials %}<li>{{ c }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+    </aside>
+    <div class="person__main">
+      <p class="eyebrow">{{ role }}</p>
+      <h1>{{ name }}</h1>
+      <p class="lede person__short">{{ short }}</p>
+      {% if focus %}<div class="chips">{% for f in focus %}<span class="chip">{{ f }}</span>{% endfor %}</div>{% endif %}
+      <div class="prose">{{ content | safe }}</div>
+      {% if ask_me_about %}
+      <div class="ask">
+        <p class="eyebrow">Ask {{ first_name or name }} about</p>
+        <ul class="ask__list">{% for a in ask_me_about %}<li>{{ a }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <section class="section section--paper2">
+    <div class="wrap">
+      <div class="sec-head sec-head--row"><h2 class="h3">The rest of the lab</h2><a class="link-arrow" href="{{ sectionUrl | link }}">Everyone</a></div>
+      <div class="people people--compact">
+        {% for p in collections.team | whereNot("url", page.url) %}
+          {% set person = p %}{% include "partials/person-card.njk" %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,14 @@
+{
+  "eyebrow": "In their words",
+  "headline": "The people we have already built with.",
+  "items": [
+    { "quote": "Working with The Hope Group changed how I think about what's possible for my business. Rev. Hope took the time to understand exactly where I was — not where he assumed I'd be — and built a plan around my reality. I walked away with a roadmap I could actually use.", "name": "Nicole Wiggins", "role": "Owner, Jewn Enterprises", "org": "City of Boston Certified Small Business", "featured": true },
+    { "quote": "As a healthcare AI consultant, I came into the BECMA x The Hope Group AI Series already deep in this work and I still left every session with something I could apply the same day. Chris Hope teaches from the real experience of running a Black-owned business.", "name": "Jennifer Ngure", "role": "Founder", "org": "Imara Health AI Consulting LLC", "featured": true },
+    { "quote": "The Hope Group didn't show up and lecture us. They listened first — then built something around how we actually work. As a woman-owned business I needed a partner who understood both the technology and the real-world constraints I operate under. I found exactly that here.", "name": "Ellen Cynar", "role": "UNICORN", "org": "City of Boston Woman-Owned Business", "featured": true },
+    { "quote": "A heartfelt shout out to Rev. Chris, Addison, and Stephen! Thank you for packing BECMA's AI Series with so many amazing, actionable insights! Those 1.5-hour Zoom webinars were an absolute game-changer and such a great investment of my time.", "name": "Susan Paul", "role": "Founder & CEO, @AIMHIGHSDC", "org": "Dorchester MA", "featured": true },
+    { "quote": "The Hope Group brings technical excellence and deep community understanding together in a way that is genuinely rare. BECMA is proud to have them as a certified TA vendor and a trusted resource for the businesses we serve.", "name": "Mackenson Charles", "role": "Black Economic Council of Massachusetts", "org": "BECMA", "featured": true },
+    { "quote": "It was great that you had Addison serving as tech support and team member. She was helpful in a lot of moments that could have taken away from the presentation.", "name": "Titciana Barros", "role": "Representative, Snapped Boston", "org": "", "featured": false },
+    { "quote": "Great training. This was the best session. Packed with actionable info from start to finish.", "name": "James \"Jimmy\" Hills", "role": "Representative, Affectus Strategies, Inc.", "org": "", "featured": false },
+    { "quote": "One of the best classes I've taken at BU.", "name": "Sarah Chen", "role": "Graduate Student, Boston University", "org": "", "featured": false }
+  ]
+}

@@ -1,0 +1,40 @@
+<section class="section" id="beliefs">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">{{ beliefs.eyebrow }}</p>
+      <h2>{{ beliefs.headline }}</h2>
+    </div>
+    <ol class="beliefs">
+      {% for b in beliefs.items %}
+      <li class="belief" data-reveal>
+        <span class="belief__n">0{{ loop.index }}</span>
+        <div class="belief__body">
+          <h3 class="belief__t">{{ b.title }}</h3>
+          <p class="belief__p">{{ b.text }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+<section class="section section--paper2" id="tradition">
+  <div class="wrap tradition">
+    <div class="tradition__text">
+      <p class="eyebrow">{{ beliefs.tradition.eyebrow }}</p>
+      <h2>{{ beliefs.tradition.headline }}</h2>
+      <p class="lede">{{ beliefs.tradition.body }}</p>
+      <p class="tradition__constraint">{{ beliefs.tradition.constraint }}</p>
+      <p class="tradition__line">{{ beliefs.tradition.line }}</p>
+    </div>
+    <div class="tradition__art" aria-hidden="true">
+      <svg class="wheel" viewBox="0 0 420 420">
+        <g class="wheel__spin" fill="none" stroke="var(--gold)" stroke-width="1.2" opacity=".75">
+          <circle cx="210" cy="210" r="200"/><circle cx="210" cy="210" r="150"/><circle cx="210" cy="210" r="100"/><circle cx="210" cy="210" r="50"/>
+          {% for i in range(0, 16) %}<line x1="210" y1="10" x2="210" y2="410" transform="rotate({{ i * 11.25 }} 210 210)"/>{% endfor %}
+          <circle cx="330" cy="120" r="8" fill="var(--gold)" stroke="none"/>
+        </g>
+        <circle cx="210" cy="210" r="10" fill="var(--gold)"/>
+      </svg>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{
+  "eyebrow": "Where we stand",
+  "headline": "Five things we hold to.",
+  "items": [
+    { "title": "AI is very good computing.", "text": "It is not magic and it is not a person. Treating it as either is how organizations get hurt. Treating it as what it is, fast and tireless pattern-matching, is how they get their afternoons back." },
+    { "title": "In a community's own hands, it can serve justice.", "text": "Aimed by a community at its own welfare, a narrow AI tool can close gaps that decades of policy could not. Aimed at a community from the outside, the same technology usually extracts." },
+    { "title": "Small and specific beats big and general.", "text": "The best things we have built do one job for one organization and do it in the open: read these portals, file these purchase orders, answer these questions. Grand platforms make grand claims. Small tools keep promises." },
+    { "title": "The people who will live with a tool should have a hand in making it.", "text": "That is not a courtesy. It is how you find out what the job actually is. We co-design with communities, and we never design for them." },
+    { "title": "Technology should run at a scale a community can own.", "text": "On hardware it can afford, in formats it can leave, under rules it can read. If a tool only works while the vendor is in the room, it is not the community's tool." }
+  ],
+  "tradition": {
+    "eyebrow": "An old idea, updated",
+    "headline": "Tools a community can build, fix, and decide the purpose of.",
+    "body": "Nearly a century ago, Gandhi put up a prize for a better spinning wheel: one a village could make and repair on its own. The point was never the wheel. The point was who could make it, who could fix it, and who got to say what it was for.",
+    "constraint": "We think that is the right test for AI, too. Technology in service of a community, at a scale that community can own.",
+    "line": "Narrow tools, in a neighborhood's own hands, aimed at its own welfare. That is the tradition we are trying to extend."
+  }
+}

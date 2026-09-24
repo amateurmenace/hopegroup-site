@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+permalink: "/philosophy{{ ext }}"
+title: Philosophy
+description: "What The Hope Group believes about AI, the six values it builds by, The Hope Standard and how each part is checked, and the stack behind it, including where your data goes."
+---
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Philosophy</p>
+    <h1>Technology that loves its neighbor.</h1>
+    <p class="lede">A lab needs a reason to exist beyond what it can bill for. Ours is a vision borrowed from Dr. King, a plain statement of what we hold to, six values we can point to in our code, a standard we publish so anyone can hold us to it, and the bench we build on.</p>
+    <nav class="subnav subnav--page" aria-label="On this page">
+      <a href="#north-star">North star</a><a href="#beliefs">What we hold to</a><a href="#values">Values</a><a href="#standard">The Hope Standard</a><a href="#data">Where your data goes</a><a href="#stack">The stack</a>
+    </nav>
+  </div>
+</header>
+{% set compact = false %}
+{% include "partials/vision.njk" %}
+{% include "partials/beliefs.njk" %}
+{% include "partials/values.njk" %}
+{% include "partials/standard.njk" %}
+<section class="section section--paper2" id="data">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Local AI</p><h2>Some of the most sensitive work should not have to leave the building.</h2><p class="lede">Most of the AI industry's privacy problems come from one habit: sending everything to someone else's computer. We are pioneering the alternative inside apps like ours: local models for the steps that need them, without pretending it is our default for everything yet. Toggle the diagram to see the difference.</p></div>
+    {% include "partials/datapath.njk" %}
+  </div>
+</section>
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">{{ stack.eyebrow }}</p><h2>{{ stack.headline }}</h2><p class="lede">{{ stack.intro }}</p></div>
+    <div class="layers">
+      {% for l in stack.layers %}
+      <details class="layer"{% if loop.first %} open{% endif %}>
+        <summary>
+          <span class="layer__kicker eyebrow">{{ l.kicker }}</span>
+          <span class="layer__title">{{ l.title }}</span>
+          <span class="layer__plus" aria-hidden="true"></span>
+        </summary>
+        <div class="layer__body">
+          <p>{{ l.summary }}</p>
+          <ul>{% for pt in l.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+          <div class="chips">{% for t in l.tags %}<span class="chip">{{ t }}</span>{% endfor %}</div>
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section section--shoal">
+  <div class="wrap two-col">
+    <div class="sec-head"><p class="eyebrow">What this means for you</p><h2>Questions you get to ask us.</h2></div>
+    <div class="prose">
+      <p>Because we publish how we build, you can hold us to it. Ask where your data is stored and we will point to the machine. Ask what a model was tested on and we will show you the results. Ask who decides, and a person will answer.</p>
+      <p>We wrote the questions down so you can bring them to any vendor, including us: <a href="{{ '/lab-notes/five-questions-to-ask-any-ai-vendor/' | link }}">Five questions to ask any AI vendor</a>.</p>
+    </div>
+  </div>
+</section>
+{% set ctaHeadline = "Want to build this way too? Start with a conversation." %}
+{% include "partials/cta.njk" %}

@@ -1,0 +1,3 @@
+<nav class="subnav" aria-label="Updates">
+  {% for u in navigation.updates %}<a href="{{ u.url | link }}"{% if page.url | isCurrent(u.url) %} aria-current="page"{% endif %}>{{ u.label }}</a>{% endfor %}
+</nav>

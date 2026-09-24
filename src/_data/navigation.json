@@ -1,0 +1,103 @@
+{
+  "primary": [
+    {
+      "label": "Philosophy",
+      "url": "/philosophy/"
+    },
+    {
+      "label": "Projects",
+      "url": "/work/"
+    },
+    {
+      "label": "Team",
+      "url": "/team/"
+    },
+    {
+      "label": "Lab notes",
+      "url": "/lab-notes/"
+    },
+    {
+      "label": "Work with us",
+      "url": "/services/"
+    }
+  ],
+  "cta": {
+    "label": "Book a call",
+    "url": "/contact/"
+  },
+  "updates": [
+    {
+      "label": "Lab notes",
+      "url": "/lab-notes/"
+    },
+    {
+      "label": "News",
+      "url": "/news/"
+    },
+    {
+      "label": "Press",
+      "url": "/press/"
+    }
+  ],
+  "footer": [
+    {
+      "title": "The lab",
+      "links": [
+        {
+          "label": "Philosophy & values",
+          "url": "/philosophy/"
+        },
+        {
+          "label": "Team",
+          "url": "/team/"
+        },
+        {
+          "label": "Contact",
+          "url": "/contact/"
+        }
+      ]
+    },
+    {
+      "title": "What we make",
+      "links": [
+        {
+          "label": "Projects",
+          "url": "/work/"
+        },
+        {
+          "label": "Project Lookout",
+          "url": "/work/project-lookout/"
+        },
+        {
+          "label": "Driftwood",
+          "url": "/work/driftwood/"
+        },
+        {
+          "label": "Training & technical assistance",
+          "url": "/services/"
+        }
+      ]
+    },
+    {
+      "title": "Updates",
+      "links": [
+        {
+          "label": "Lab notes",
+          "url": "/lab-notes/"
+        },
+        {
+          "label": "News",
+          "url": "/news/"
+        },
+        {
+          "label": "Press & media kit",
+          "url": "/press/"
+        },
+        {
+          "label": "RSS feed",
+          "url": "/feed.xml"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eyebrow": "Where we start",
+  "headline": "AI is very good computing. That is all, and that is plenty.",
+  "intro": "In an organization's own hands, aimed at its own goals, it can take real weight off the people doing the work. Sold the usual way, it is a subscription. Here is what we hear most often from the organizations we work with, and what we do about it, together.",
+  "items": [
+    { "q": "We know we need AI, but we don't know where to start.", "a": "We start where you are. A readiness assessment and a prioritized 90-day roadmap, co-designed with your team, in plain language." },
+    { "q": "Our staff are drowning in repetitive work.", "a": "We map the workflows eating your week with the people who do them, then replace the repetitive ones with quiet, reliable automation a person still signs off on." },
+    { "q": "We tried AI training but nothing changed.", "a": "Generic training does not stick. Ours is built around your team's actual workflows and goals, and we come back to check." },
+    { "q": "We need an AI policy before our board will approve anything.", "a": "We deliver plain-language, board-ready AI governance you can actually implement, built on The Hope Standard." }
+  ]
+}

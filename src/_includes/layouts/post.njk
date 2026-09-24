@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+---
+<article class="post">
+  <header class="page-head page-head--post">
+    <div class="wrap">
+      {% include "partials/subnav.njk" %}
+      <p class="eyebrow">{{ sectionLabel }}</p>
+      <h1>{{ title }}</h1>
+      {% if summary %}<p class="lede">{{ summary }}</p>{% endif %}
+      <p class="post__meta">
+        <time datetime="{{ date | isoDate }}">{{ date_display or (date | readableDate) }}</time>
+        {% if author %}<span>·</span><span>{{ author }}</span>{% endif %}
+        {% if kind == 'labnote' %}<span>·</span><span>{{ content | readingTime }} min read</span>{% endif %}
+      </p>
+      {% if topics %}<div class="chips">{% for t in topics %}<span class="chip">{{ t }}</span>{% endfor %}</div>{% endif %}
+    </div>
+  </header>
+  <div class="wrap section section--tight">
+    {% if image %}<figure class="post__cover"><img src="{{ image | link }}" alt="{{ image_alt or '' }}" loading="lazy"></figure>{% endif %}
+    <div class="prose">{{ content | safe }}</div>
+    {% if link %}<p class="post__link"><a class="btn btn-ghost" href="{{ link }}" target="_blank" rel="noopener">{{ link_label or 'Read more' }} {% include "partials/arrow.njk" %}</a></p>{% endif %}
+    {% if kind == 'labnote' %}
+    <aside class="post__author">
+      {% set person = collections.team | find("name", author) %}
+      {% if person %}
+        <a class="post__author-link" href="{{ person.url | link }}">
+          <img src="{{ person.data.photo | link }}" alt="" loading="lazy">
+          <span><b>{{ person.data.name }}</b><br>{{ person.data.role }}</span>
+        </a>
+      {% else %}
+        <span class="post__author-link"><span class="post__author-mark">{% include "partials/mark.njk" %}</span><span><b>{{ author or site.name }}</b><br>{{ site.tagline }}</span></span>
+      {% endif %}
+    </aside>
+    {% endif %}
+  </div>
+  <footer class="section section--paper2">
+    <div class="wrap">
+      {% set others = (collections.labnotes if kind == 'labnote' else collections.news) | whereNot("url", page.url) | limit(3) %}
+      {% if others.length %}
+      <div class="sec-head sec-head--row">
+        <h2 class="h3">More {{ sectionLabel | lower }}</h2>
+        <a class="link-arrow" href="{{ sectionUrl | link }}">All {{ sectionLabel | lower }}</a>
+      </div>
+      <div class="post-list post-list--grid">
+        {% for p in others %}
+        <a class="post-row" href="{{ p.url | link }}">
+          <span class="post-row__meta">{{ p.data.date_display or (p.date | readableDate) }}</span>
+          <span class="post-row__title">{{ p.data.title }}</span>
+          <span class="post-row__summary">{{ p.data.summary }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </footer>
+</article>

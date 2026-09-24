@@ -1,0 +1,83 @@
+---
+layout: layouts/base.njk
+permalink: "/press{{ ext }}"
+title: Press & media kit
+description: "Coverage, talks, and videos featuring The Hope Group, plus boilerplate, facts, and downloadable assets for journalists."
+---
+<header class="page-head page-head--post">
+  <div class="wrap">
+    {% include "partials/subnav.njk" %}
+    <p class="eyebrow">Press</p>
+    <h1>Press & media kit</h1>
+    <p class="lede">Coverage of the lab and its people, recent talks, and everything a journalist needs to write about us accurately. For interviews, write to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap press">
+    {% set coverage = collections.press | where("kind", "coverage") %}
+    {% set talks = collections.press | where("kind", "talk") %}
+    {% set videos = collections.press | where("kind", "video") %}
+    {% if coverage.length %}
+    <h2 class="h3">Coverage</h2>
+    <div class="press-list">
+      {% for item in coverage %}
+      <a class="press-item" href="{{ item.data.url }}" target="_blank" rel="noopener">
+        <span class="press-item__outlet eyebrow">{{ item.data.outlet }} · {{ item.data.date_display or (item.date | readableDate) }}</span>
+        <span class="press-item__title">{{ item.data.title }}</span>
+        {% if item.data.summary %}<span class="press-item__summary">{{ item.data.summary }}</span>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if talks.length %}
+    <h2 class="h3">Talks & appearances</h2>
+    <div class="press-list">
+      {% for item in talks %}
+      {% if item.data.url %}<a class="press-item" href="{{ item.data.url }}" target="_blank" rel="noopener">{% else %}<div class="press-item">{% endif %}
+        <span class="press-item__outlet eyebrow">{{ item.data.outlet }} · {{ item.data.date_display or (item.date | readableDate) }}</span>
+        <span class="press-item__title">{{ item.data.title }}</span>
+        {% if item.data.summary %}<span class="press-item__summary">{{ item.data.summary }}</span>{% endif %}
+      {% if item.data.url %}</a>{% else %}</div>{% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if videos.length %}
+    <h2 class="h3">Videos</h2>
+    <div class="videos">
+      {% for item in videos %}{% set v = { id: item.data.video_id, title: item.data.title } %}{% include "partials/video.njk" %}{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+<section class="section section--paper2" id="kit">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Media kit</p><h2>The short version, the facts, and the files.</h2></div>
+    <div class="kit">
+      <div class="kit__col">
+        <h3 class="h4">Boilerplate</h3>
+        <p class="kit__copy" data-copy-text>{{ site.description }}</p>
+        <button class="btn btn-ghost btn-sm" type="button" data-copy>Copy boilerplate</button>
+        <h3 class="h4 mt">Longer</h3>
+        <p>The Hope Group is an ethical AI lab in Boston, founded in 2021 by Rev. Christopher Hope. The lab designs and builds software that protects privacy, audits for bias, and keeps people in control, including Project Lookout, a patent pending platform that finds and ranks funding and contract opportunities for small businesses and city partners, and Driftwood, a privacy-first CRM. It also provides AI training and technical assistance to small businesses, nonprofits, and public agencies. The Hope Group is the only City of Boston certified minority-owned AI business in Massachusetts, the preferred AI trainer for the Black Economic Council of Massachusetts, and an approved Commonwealth Corporation training provider. Its work has been recognized by U.S. Senator Ed Markey, the City of Cambridge, and the United Nations STI Forum.</p>
+      </div>
+      <div class="kit__col">
+        <h3 class="h4">Facts</h3>
+        <dl class="facts">
+          <dt>Name</dt><dd>The Hope Group (not “Hope Group AI”, not “a consultancy”). An ethical AI lab.</dd>
+          <dt>Founded</dt><dd>2021, Boston, Massachusetts</dd>
+          <dt>Executive Director</dt><dd>Rev. Christopher Hope</dd>
+          <dt>Office</dt><dd>{{ site.address }}</dd>
+          <dt>Tools</dt><dd>Project Lookout (patent pending), Driftwood</dd>
+          <dt>Reach</dt><dd>50+ organizations served across Greater Boston</dd>
+          <dt>Contact</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+        </dl>
+        <h3 class="h4 mt">Files</h3>
+        <ul class="plain-list">
+          <li><a href="{{ '/assets/brand/mark.svg' | link }}" download>Logo mark (SVG)</a></li>
+          <li><a href="{{ '/assets/brand/wordmark.svg' | link }}" download>Wordmark (SVG)</a></li>
+          {% for p in collections.team %}<li><a href="{{ p.data.photo | link }}" download>Headshot: {{ p.data.name }} (JPG)</a></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

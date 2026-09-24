@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+permalink: "/news{{ ext }}"
+title: News
+description: "Announcements from The Hope Group: launches, partnerships, courses, and events."
+---
+<header class="page-head page-head--post">
+  <div class="wrap">
+    {% include "partials/subnav.njk" %}
+    <p class="eyebrow">Announcements</p>
+    <h1>News</h1>
+    <p class="lede">Launches, partnerships, courses, and where to find us next.</p>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="post-list">
+      {% for n in collections.news %}
+      <a class="post-row post-row--news" href="{{ n.url | link }}">
+        <span class="post-row__meta">{{ n.data.date_display or (n.date | readableDate) }}</span>
+        <span><span class="post-row__title">{{ n.data.title }}</span><span class="post-row__summary">{{ n.data.summary }}</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

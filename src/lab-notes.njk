@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+permalink: "/lab-notes{{ ext }}"
+title: Lab notes
+description: "Essays and explainers from an ethical AI lab in Boston: local AI, privacy, The Hope Standard, and the Digital Beloved Community."
+---
+<header class="page-head page-head--post">
+  <div class="wrap">
+    {% include "partials/subnav.njk" %}
+    <p class="eyebrow">From the lab</p>
+    <h1>Lab notes</h1>
+    <p class="lede">What we are learning as we build. Written in plain language, because if we cannot explain it simply we should not be shipping it.</p>
+    {% set topics = collections.labnotes | allTopics %}
+    <div class="chips chips--filter" data-filter>
+      <button class="chip chip--active" type="button" data-topic="">All</button>
+      {% for t in topics %}<button class="chip" type="button" data-topic="{{ t }}">{{ t }}</button>{% endfor %}
+    </div>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="post-list post-list--grid" data-filter-list>
+      {% for p in collections.labnotes %}
+      <a class="post-row" href="{{ p.url | link }}" data-topics="{{ p.data.topics | join('|') }}">
+        <span class="post-row__meta">{{ p.date | readableDate }} · {{ p.data.author }} · {{ p.templateContent | readingTime }} min read</span>
+        <span class="post-row__title">{{ p.data.title }}</span>
+        <span class="post-row__summary">{{ p.data.summary }}</span>
+        <span class="chips">{% for t in p.data.topics %}<span class="chip chip--sm">{{ t }}</span>{% endfor %}</span>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="empty" data-filter-empty hidden>Nothing under that topic yet.</p>
+    <p class="feed-note">Subscribe with any feed reader: <a href="{{ '/feed.xml' | link }}">feed.xml</a>. Rev. Hope's column on faith and technology, <em>Dear Tech Rev</em>, lives at <a href="https://www.hopecoded.com" target="_blank" rel="noopener">hopecoded.com</a>.</p>
+  </div>
+</section>

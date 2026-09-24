@@ -1,0 +1,20 @@
+{
+  "name": "hopegroup-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "hopegroup.ai — The Hope Group, an ethical AI lab in Boston. Static site (Eleventy) with a git-based CMS (Decap).",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site _site_preview",
+    "preview": "PREVIEW=1 eleventy && node scripts/flatten-preview.js"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-rss": "^3.0.0",
+    "luxon": "^3.7.2",
+    "markdown-it": "^15.0.2",
+    "markdown-it-anchor": "^10.0.0"
+  }
+}

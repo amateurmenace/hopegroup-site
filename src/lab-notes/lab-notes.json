@@ -1,0 +1,1 @@
+{ "tags": ["labnote"], "layout": "layouts/post.njk", "permalink": "/lab-notes/{{ page.fileSlug }}{{ ext }}", "kind": "labnote", "sectionLabel": "Lab notes", "sectionUrl": "/lab-notes/" }

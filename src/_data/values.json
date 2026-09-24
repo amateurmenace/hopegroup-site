@@ -1,0 +1,67 @@
+{
+  "headline": "The values we build by.",
+  "intro": "Our values are not posters on a wall. They are decisions we make in every line of code, every contract, and every classroom.",
+  "aside": "These are, technically, posters. Flip one over to see the decision behind it.",
+  "items": [
+    {
+      "name": "Dignity",
+      "statement": "Every person affected by our technology deserves respect, privacy, and a voice. We never treat people as data points.",
+      "poster": "No one is a data point.",
+      "practice": {
+        "code": "Personal data is minimized at the schema level. If a field is not needed to serve someone, it does not exist.",
+        "contracts": "Clients own their data outright. We claim no right to train on it, resell it, or keep it after the work ends.",
+        "classroom": "Every training starts with the people in the room, not the tools on the slide. Nobody is behind."
+      }
+    },
+    {
+      "name": "Justice",
+      "statement": "We design against bias from the start and audit for it long after launch. Fairness is not a feature we add. It is a standard we meet.",
+      "poster": "Fairness is a standard, not a feature.",
+      "practice": {
+        "code": "Ranking and recommendation logic is tested against outcomes for different groups before release, and re-tested on a schedule.",
+        "contracts": "Audit findings go to the client in writing, including the ones that make us look bad.",
+        "classroom": "We teach people to spot a biased output themselves, so the check never depends on us."
+      }
+    },
+    {
+      "name": "Transparency",
+      "statement": "We explain how our systems work in plain language. If people cannot understand it, they cannot trust it, and they should not have to.",
+      "poster": "If you can't understand it, you shouldn't have to trust it.",
+      "practice": {
+        "code": "When AI produced a result, the interface says so and shows the sources it used.",
+        "contracts": "Our data practices are written at an eighth grade reading level and attached to every agreement.",
+        "classroom": "If we cannot explain a tool simply, we do not recommend it."
+      }
+    },
+    {
+      "name": "Accountability",
+      "statement": "We measure our success by real outcomes for real people, and we own what we build, including its mistakes.",
+      "poster": "We own what we build. Mistakes included.",
+      "practice": {
+        "code": "Every release has a named owner and a changelog anyone can read.",
+        "contracts": "We define what \"working\" means with you before we start, and we report against it.",
+        "classroom": "Participants rate every session, and the numbers go to the whole team, not a drawer."
+      }
+    },
+    {
+      "name": "Community",
+      "statement": "The people closest to the problem are closest to the solution. We build with communities, not for them or around them.",
+      "poster": "Built with, never for.",
+      "practice": {
+        "code": "Project Lookout was designed with BECMA members, tested inside their businesses, and reshaped by what they told us.",
+        "contracts": "Community partners are named collaborators, not \"users,\" and they are credited.",
+        "classroom": "Cohorts are built from the same community, so the learning keeps going after we leave."
+      }
+    },
+    {
+      "name": "Shared Prosperity",
+      "statement": "Every engagement should leave your team, your organization, and your neighborhood stronger than we found it.",
+      "poster": "Leave the neighborhood stronger.",
+      "practice": {
+        "code": "We favor tools an organization can run and afford on its own, including open source and local models, over subscriptions that lock it in.",
+        "contracts": "No minimum contract size. Pricing is scaled to the organization, not the other way around.",
+        "classroom": "Train-the-trainer programs, so the capacity stays inside the organization."
+      }
+    }
+  ]
+}

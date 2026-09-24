@@ -1,0 +1,26 @@
+<section class="section" id="proof">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">{{ recognition.eyebrow }}</p>
+      <h2>{{ recognition.headline }}</h2>
+      <p class="lede">{{ recognition.intro }}</p>
+    </div>
+    <div class="stats">
+      {% for s in recognition.stats %}
+      <div class="stat">
+        <span class="stat__n"><span{% if not s.plain %} data-count="{{ s.value }}"{% endif %}>{{ s.value }}</span>{{ s.suffix }}</span>
+        <span class="stat__l">{{ s.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="badges">
+      {% for b in recognition.badges %}
+      <div class="badge">
+        <span class="badge__org">{{ b.org }}</span>
+        <span class="badge__title">{{ b.title }}</span>
+        <span class="badge__detail">{{ b.detail }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

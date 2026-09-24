@@ -1,0 +1,15 @@
+<section class="section section--paper2" id="projects">
+  <div class="wrap">
+    <div class="sec-head sec-head--row">
+      <div>
+        <p class="eyebrow">{{ home.projects.eyebrow }}</p>
+        <h2>{{ home.projects.headline }}</h2>
+        <p class="lede">{{ home.projects.intro }}</p>
+      </div>
+      <a class="link-arrow" href="{{ '/work/' | link }}">All projects</a>
+    </div>
+    <div class="tiles tiles--gallery">
+      {% for w in collections.work %}{% set item = w %}{% include "partials/tile.njk" %}{% endfor %}
+    </div>
+  </div>
+</section>

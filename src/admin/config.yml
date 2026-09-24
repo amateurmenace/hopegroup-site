@@ -1,0 +1,436 @@
+# Decap CMS configuration for hopegroup.ai
+# Docs: https://decapcms.org/docs/configuration-options/
+#
+# Hosting on Netlify (recommended): enable Identity + Git Gateway in the Netlify
+# dashboard and this backend works as-is. On another host, switch to the
+# `github` backend (see README).
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "content: add {{collection}} “{{slug}}”"
+    update: "content: update {{collection}} “{{slug}}”"
+    delete: "content: delete {{collection}} “{{slug}}”"
+    uploadMedia: "media: add {{path}}"
+    deleteMedia: "media: delete {{path}}"
+
+# Drafts → In review → Ready, then publish. Turns each change into a pull request.
+publish_mode: editorial_workflow
+
+media_folder: "src/assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+site_url: https://hopegroup.ai
+display_url: https://hopegroup.ai
+logo_url: /assets/brand/wordmark.svg
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  # ---------- Writing ----------
+  - name: labnotes
+    label: "Lab notes"
+    label_singular: "Lab note"
+    description: "Essays and explainers from the lab. Shown at /lab-notes/ and on the home page."
+    folder: "src/lab-notes"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "lab-notes/{{slug}}/"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Author", name: "author", widget: "string", default: "The Hope Group", hint: "A team member's name, or “The Hope Group”." }
+      - { label: "Summary", name: "summary", widget: "text", hint: "One or two sentences. Shown in lists and used for search engines." }
+      - { label: "Topics", name: "topics", widget: "list", required: false, hint: "Short tags, e.g. Local AI, Privacy, The Hope Standard." }
+      - { label: "Show on home page", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Cover image", name: "image", widget: "image", required: false }
+      - { label: "Draft (hidden from the site)", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: news
+    label: "News"
+    label_singular: "News item"
+    description: "Announcements: launches, partnerships, courses, events."
+    folder: "src/news"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "news/{{slug}}/"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Date as shown (optional)", name: "date_display", widget: "string", required: false, hint: "e.g. “June 9–10, 2026” or “May 2026”. Leave blank to show the date above." }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Link (optional)", name: "link", widget: "string", required: false }
+      - { label: "Link label", name: "link_label", widget: "string", required: false, default: "Read more" }
+      - { label: "Show on home page", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Draft (hidden from the site)", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: press
+    label: "Press & media"
+    label_singular: "Press item"
+    description: "Coverage, talks, and videos. Items link out; they do not get their own page."
+    folder: "src/press"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Outlet / venue", name: "outlet", widget: "string" }
+      - { label: "Kind", name: "kind", widget: "select", options: [{label: "Coverage", value: "coverage"}, {label: "Talk or appearance", value: "talk"}, {label: "Video", value: "video"}], default: "coverage" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Date as shown (optional)", name: "date_display", widget: "string", required: false }
+      - { label: "URL", name: "url", widget: "string", required: false }
+      - { label: "YouTube video ID", name: "video_id", widget: "string", required: false, hint: "Only for videos. The part after v= in the YouTube link. Save its thumbnail to assets/img/video/<id>.jpg." }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Draft (hidden from the site)", name: "draft", widget: "boolean", default: false, required: false }
+
+  # ---------- Work ----------
+  - name: work
+    label: "Work & impact"
+    label_singular: "Case study"
+    description: "Portfolio entries. Featured ones appear on the home page."
+    folder: "src/work"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "work/{{slug}}/"
+    fields:
+      - { label: "Client / partner", name: "client", widget: "string" }
+      - { label: "Short client name (optional)", name: "short_client", widget: "string", required: false }
+      - { label: "Sector", name: "sector", widget: "string", hint: "e.g. Public sector, Higher education, Small business" }
+      - { label: "Kind", name: "kind", widget: "select", options: ["Tool", "Program", "Partnership", "Course", "Teaching", "Policy"], required: false, hint: "Shown as the tile's label." }
+      - { label: "Status line (optional)", name: "status", widget: "string", required: false, hint: "e.g. “In daily use”, “In development”, “Next cohort January 2027”" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Order", name: "order", widget: "number", default: 99, value_type: "int" }
+      - { label: "Show on home page", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image alt text", name: "image_alt", widget: "string", required: false }
+      - { label: "Services", name: "services", widget: "list", required: false }
+      - { label: "Outcome", name: "outcome", widget: "text", required: false }
+      - label: "Quote"
+        name: "quote"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Text", name: "text", widget: "text", required: false }
+          - { label: "Name", name: "name", widget: "string", required: false }
+          - { label: "Role", name: "role", widget: "string", required: false }
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "YouTube video ID", name: "id", widget: "string", required: false }
+          - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "External link", name: "link", widget: "string", required: false }
+      - { label: "External link label", name: "link_label", widget: "string", required: false }
+      - { label: "Glyph (tools only)", name: "glyph", widget: "select", options: ["lookout", "driftwood", "generic"], required: false }
+      - { label: "App URL (tools only)", name: "app_url", widget: "string", required: false, hint: "e.g. https://projectlookout.app" }
+      - { label: "App label", name: "app_label", widget: "string", required: false, hint: "e.g. projectlookout.app" }
+      - { label: "Built for (tools only)", name: "audience", widget: "string", required: false }
+      - label: "Capabilities (tools only)"
+        name: "capabilities"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+      - label: "How The Hope Standard applies (tools only)"
+        name: "standard_applied"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Pillar", name: "pillar", widget: "string" }
+          - { label: "How", name: "how", widget: "text" }
+      - label: "Licensing options (tools only)"
+        name: "licensing"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+      - { label: "Call to action label (tools only)", name: "cta_label", widget: "string", required: false }
+      - { label: "Draft (hidden from the site)", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: team
+    label: "Team"
+    label_singular: "Team member"
+    folder: "src/team"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "team/{{slug}}/"
+    fields:
+      - { label: "Full name", name: "name", widget: "string" }
+      - { label: "First name", name: "first_name", widget: "string", required: false }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", default: 99, value_type: "int" }
+      - { label: "Photo", name: "photo", widget: "image", required: false, hint: "Portrait orientation works best. About 1000px tall." }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Website label", name: "website_label", widget: "string", required: false }
+      - { label: "One-line description", name: "short", widget: "string" }
+      - { label: "Focus areas", name: "focus", widget: "list", required: false }
+      - { label: "Ask me about", name: "ask_me_about", widget: "list", required: false }
+      - { label: "Credentials", name: "credentials", widget: "list", required: false }
+      - { label: "Draft (hidden from the site)", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "Bio", name: "body", widget: "markdown" }
+
+  # ---------- Site settings (single files) ----------
+  - name: settings
+    label: "Site settings"
+    editor: { preview: false }
+    files:
+      - name: site
+        label: "General"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Site name", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Site URL", name: "url", widget: "string" }
+          - { label: "Search description (about 155 characters)", name: "description", widget: "text" }
+          - { label: "Hero eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Contact email", name: "email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Founded", name: "founded", widget: "string" }
+          - { label: "Booking link (Calendly etc.). Leave blank to use the contact form.", name: "booking_url", widget: "string", required: false }
+          - { label: "Booking button label", name: "booking_label", widget: "string" }
+          - { label: "Funding note", name: "funding_note", widget: "text" }
+          - { label: "Funding contact email", name: "funding_contact", widget: "string" }
+          - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+          - { label: "Response promise (contact page)", name: "response_promise", widget: "string" }
+      - name: home
+        label: "Home page"
+        file: "src/_data/home.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Figure caption", name: "figure_caption", widget: "string" }
+              - label: "Primary button"
+                name: "primary_cta"
+                widget: "object"
+                fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string" }]
+              - label: "Secondary button"
+                name: "secondary_cta"
+                widget: "object"
+                fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string" }]
+          - label: "Work with us band"
+            name: "start"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Paths"
+                name: "paths"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "select", options: ["training", "assistance", "tools"], default: "training" }
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Link label", name: "label", widget: "string" }
+              - { label: "Contact card eyebrow", name: "contact_eyebrow", widget: "string" }
+              - { label: "Contact card note", name: "contact_note", widget: "string" }
+          - label: "Projects section"
+            name: "projects"
+            widget: "object"
+            fields: [{ label: "Eyebrow", name: "eyebrow", widget: "string" }, { label: "Headline", name: "headline", widget: "string" }, { label: "Intro", name: "intro", widget: "text" }]
+          - label: "Lab notes section"
+            name: "notes"
+            widget: "object"
+            fields: [{ label: "Eyebrow", name: "eyebrow", widget: "string" }, { label: "Headline", name: "headline", widget: "string" }, { label: "Intro", name: "intro", widget: "text" }]
+          - label: "Services page header"
+            name: "services"
+            widget: "object"
+            fields: [{ label: "Eyebrow", name: "eyebrow", widget: "string" }, { label: "Headline", name: "headline", widget: "string" }, { label: "Body", name: "body", widget: "text" }, { label: "Button label", name: "cta_label", widget: "string" }]
+          - label: "Closing call to action"
+            name: "closing"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - label: "Primary button"
+                name: "primary_cta"
+                widget: "object"
+                fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string" }]
+              - label: "Secondary button"
+                name: "secondary_cta"
+                widget: "object"
+                fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string" }]
+      - name: beliefs
+        label: "What we believe"
+        file: "src/_data/beliefs.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - label: "Beliefs"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "An old idea, updated"
+            name: "tradition"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "Design constraint", name: "constraint", widget: "text" }
+              - { label: "Closing line", name: "line", widget: "text" }
+      - name: vision
+        label: "Vision (north star)"
+        file: "src/_data/vision.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "p", widget: "text" } }
+          - { label: "Pull quote", name: "pullquote", widget: "text" }
+          - { label: "Pull quote attribution", name: "pullquote_by", widget: "string" }
+          - { label: "Closing line", name: "closing", widget: "text" }
+      - name: values
+        label: "Values"
+        file: "src/_data/values.json"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Playful aside", name: "aside", widget: "string" }
+          - label: "Values"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Statement", name: "statement", widget: "text" }
+              - { label: "Poster line (short)", name: "poster", widget: "string" }
+              - label: "In practice"
+                name: "practice"
+                widget: "object"
+                fields:
+                  - { label: "In code", name: "code", widget: "text" }
+                  - { label: "In contracts", name: "contracts", widget: "text" }
+                  - { label: "In the classroom", name: "classroom", widget: "text" }
+      - name: standard
+        label: "The Hope Standard"
+        file: "src/_data/standard.json"
+        fields:
+          - { label: "Name", name: "name", widget: "string", hint: "Change to “Our ethical AI standards” if the name is not public yet." }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Closing line", name: "closing", widget: "text" }
+          - label: "Pillars"
+            name: "pillars"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "n", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Statement", name: "statement", widget: "text" }
+              - { label: "How we check it", name: "check", widget: "text" }
+              - { label: "What you will see", name: "see", widget: "text" }
+      - name: stack
+        label: "Tech stack"
+        file: "src/_data/stack.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Layers"
+            name: "layers"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Points", name: "points", widget: "list" }
+              - { label: "Tags", name: "tags", widget: "list" }
+      - name: recognition
+        label: "Proof & recognition"
+        file: "src/_data/recognition.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Value (number)", name: "value", widget: "number", value_type: "int" }
+              - { label: "Suffix", name: "suffix", widget: "string", required: false }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Show as plain number (no count-up)", name: "plain", widget: "boolean", required: false, default: false }
+          - label: "Badges"
+            name: "badges"
+            widget: "list"
+            fields:
+              - { label: "Organization", name: "org", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Detail", name: "detail", widget: "text" }
+      - name: testimonials
+        label: "Testimonials"
+        file: "src/_data/testimonials.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - label: "Quotes"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Organization / note", name: "org", widget: "string", required: false }
+              - { label: "Show on home page", name: "featured", widget: "boolean", default: true }
+      - name: faq
+        label: "What we hear (services page)"
+        file: "src/_data/faq.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "What we hear", name: "q", widget: "text" }
+              - { label: "What we do", name: "a", widget: "text" }
+      - name: navigation
+        label: "Navigation"
+        file: "src/_data/navigation.json"
+        fields:
+          - label: "Primary menu"
+            name: "primary"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Header button"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Updates sub-navigation"
+            name: "updates"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Footer columns"
+            name: "footer"
+            widget: "list"
+            fields:
+              - { label: "Column title", name: "title", widget: "string" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }

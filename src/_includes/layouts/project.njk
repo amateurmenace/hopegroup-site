@@ -1,0 +1,92 @@
+---
+layout: layouts/base.njk
+---
+<article class="project">
+  <header class="page-head">
+    <div class="wrap project-head{% if glyph %} project-head--glyph{% endif %}">
+      {% if glyph %}<div class="project-head__glyph">{% include "partials/glyph.njk" %}</div>{% endif %}
+      <div class="project-head__text">
+        <a class="crumb" href="{{ sectionUrl | link }}">← Projects</a>
+        <p class="eyebrow{% if status %} eyebrow--beacon{% endif %}">{{ kind or sector }}{% if not glyph %} · {{ client }}{% endif %}{% if status %} · {{ status }}{% endif %}</p>
+        <h1>{{ name or title }}</h1>
+        <p class="lede">{% if name %}{{ title }}{% else %}{{ summary }}{% endif %}</p>
+        {% if services %}<div class="chips">{% for s in services %}<span class="chip">{{ s }}</span>{% endfor %}</div>{% endif %}
+        {% if cta_label or app_url %}
+        <div class="hero__actions">
+          {% if app_url %}<a class="btn btn-primary" href="{{ app_url }}" target="_blank" rel="noopener">Open {{ app_label or (app_url | replace("https://", "") | replace("http://", "")) }} {% include "partials/arrow.njk" %}</a>{% endif %}
+          {% if cta_label %}<a class="btn {% if app_url %}btn-ghost{% else %}btn-primary{% endif %}" href="{{ '/contact/' | link }}">{{ cta_label }}{% if not app_url %} {% include "partials/arrow.njk" %}{% endif %}</a>{% endif %}
+          {% if video and video.id %}<a class="btn btn-ghost" href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank" rel="noopener">Watch it work</a>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  <div class="wrap section section--tight project__grid">
+    <div class="project__main">
+      {% if image %}<figure class="project__cover"><img src="{{ image | link }}" alt="{{ image_alt or '' }}" loading="lazy"></figure>{% endif %}
+      <div class="prose">{% if name %}<p class="project__summary">{{ summary }}</p>{% endif %}{{ content | safe }}</div>
+      {% if video and video.id and not capabilities %}{% set v = video %}{% include "partials/video.njk" %}{% endif %}
+      {% if link %}<p class="post__link"><a class="btn btn-ghost" href="{{ link }}" target="_blank" rel="noopener">{{ link_label or 'Learn more' }} {% include "partials/arrow.njk" %}</a></p>{% endif %}
+    </div>
+    <aside class="project__side">
+      {% if audience %}<div class="callout"><p class="eyebrow">Built for</p><p>{{ audience }}</p></div>{% endif %}
+      {% if outcome %}<div class="callout"><p class="eyebrow">Outcome</p><p>{{ outcome }}</p></div>{% endif %}
+      {% if quote and quote.text %}
+      <blockquote class="quote quote--side">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <p class="quote__text">{{ quote.text }}</p>
+        <p class="quote__by"><b>{{ quote.name }}</b>{{ quote.role }}</p>
+      </blockquote>
+      {% endif %}
+    </aside>
+  </div>
+  {% if capabilities %}
+  <section class="section section--paper2">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">What it does</p><h2>Built to find, verify, and wait for you.</h2></div>
+      <div class="cap-grid">
+        {% for c in capabilities %}<div class="cap"><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% if standard_applied %}
+  <section class="section">
+    <div class="wrap applied">
+      <div class="sec-head"><p class="eyebrow">{{ standard.name }}, applied</p><h2>How our values show up inside {{ short_client or client }}.</h2><p class="lede">Values are easy to print. Here is where they live in the product.</p></div>
+      <div class="applied__list">
+        {% for s in standard_applied %}
+        <div class="applied__row" data-reveal>
+          <span class="applied__pillar">{{ s.pillar }}</span>
+          <p>{{ s.how }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <p><a class="link-arrow" href="{{ '/philosophy/' | link }}#standard">Read the whole standard</a></p>
+    </div>
+  </section>
+  {% endif %}
+  {% if video and video.id and capabilities %}
+  <section class="section section--tight"><div class="wrap">{% set v = video %}{% include "partials/video.njk" %}</div></section>
+  {% endif %}
+  {% if licensing %}
+  <section class="section section--shoal">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Licensing</p><h2>Three ways to bring {{ short_client or client }} to your community.</h2></div>
+      <div class="cap-grid cap-grid--3">
+        {% for l in licensing %}<div class="cap cap--plain"><h3>{{ l.title }}</h3><p>{{ l.text }}</p></div>{% endfor %}
+      </div>
+      <p class="mt"><a class="btn btn-primary" href="{{ '/contact/' | link }}">{{ cta_label or 'Talk to us' }} {% include "partials/arrow.njk" %}</a></p>
+    </div>
+  </section>
+  {% endif %}
+  <section class="section section--paper2">
+    <div class="wrap">
+      <div class="sec-head sec-head--row"><h2 class="h3">More projects</h2><a class="link-arrow" href="{{ sectionUrl | link }}">All projects</a></div>
+      <div class="tiles">
+        {% for w in collections.work | whereNot("url", page.url) | limit(3) %}{% set item = w %}{% include "partials/tile.njk" %}{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% include "partials/cta.njk" %}
+</article>

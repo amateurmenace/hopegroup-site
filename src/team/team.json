@@ -1,0 +1,1 @@
+{ "tags": ["team"], "layout": "layouts/person.njk", "permalink": "/team/{{ page.fileSlug }}{{ ext }}", "kind": "team", "sectionLabel": "Team", "sectionUrl": "/team/" }

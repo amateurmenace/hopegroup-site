@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "headline": "We build AI the way it should be built.",
+    "lede": "The Hope Group is an ethical AI lab. We design and build software that protects privacy, audits for bias, and keeps people in control. Then we help organizations adopt AI with the same care. Our work is proof that responsible technology is not a slower path. It is the better one.",
+    "figure_caption": "Boston's neighborhoods. Move across them: when one lights up, its neighbors do too.",
+    "primary_cta": {
+      "label": "See our projects",
+      "url": "/work/"
+    },
+    "secondary_cta": {
+      "label": "Book a free AI strategy call",
+      "url": "/contact/"
+    }
+  },
+  "start": {
+    "eyebrow": "Work with us",
+    "headline": "Ready to adopt AI? We will walk with you.",
+    "intro": "We assess your needs, recommend the right tools, train your team in plain language, and stay accountable for results. Tell us what you are up against and we will say, honestly, whether we can help.",
+    "paths": [
+      {
+        "icon": "training",
+        "eyebrow": "Train your team",
+        "title": "Hands-on AI training built around your real work",
+        "url": "/services/#training",
+        "label": "How training works"
+      },
+      {
+        "icon": "assistance",
+        "eyebrow": "Get technical assistance",
+        "title": "An honest assessment, a roadmap, and help through adoption",
+        "url": "/services/#assistance",
+        "label": "How assistance works"
+      },
+      {
+        "icon": "tools",
+        "eyebrow": "Use our tools",
+        "title": "License Project Lookout or join Driftwood's early access",
+        "url": "/work/?kind=Tool",
+        "label": "See the tools"
+      }
+    ],
+    "contact_eyebrow": "Or just write",
+    "contact_note": "A member of the lab replies personally within one business day."
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "headline": "Built with neighborhoods, businesses, and institutions.",
+    "intro": "Tools in daily use, programs delivered street by street, and partnerships with anchor institutions. Every one co-designed with the people it serves."
+  },
+  "notes": {
+    "eyebrow": "Lab notes",
+    "headline": "What we are learning as we build.",
+    "intro": "Essays and explainers in plain language. If we cannot explain it simply, we should not be shipping it."
+  },
+  "services": {
+    "eyebrow": "Technical assistance and training",
+    "headline": "Ready to adopt AI? We will walk with you.",
+    "body": "Beyond our own tools, we provide technical assistance and hands-on training for small businesses, nonprofits, and public agencies. We assess your needs, recommend the right tools, train your team in plain language, and stay accountable for results.",
+    "cta_label": "See how we work with organizations"
+  },
+  "closing": {
+    "headline": "Technology should serve people. Let us show you how.",
+    "primary_cta": {
+      "label": "Book a free AI strategy call",
+      "url": "/contact/"
+    },
+    "secondary_cta": {
+      "label": "See our projects",
+      "url": "/work/"
+    }
+  }
+}

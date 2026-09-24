@@ -1,0 +1,69 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Long cache for fingerprint-free static assets is intentionally short-ish; bump when you add fingerprinting.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Old Squarespace URLs -> new pages
+[[redirects]]
+  from = "/services"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/ai-training"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/ai-training-1"
+  to = "/services/"
+  status = 301
+[[redirects]]
+  from = "/ai-agents"
+  to = "/work/project-lookout/"
+  status = 301
+[[redirects]]
+  from = "/how-we-build"
+  to = "/philosophy/"
+  status = 301
+[[redirects]]
+  from = "/how-we-build/"
+  to = "/philosophy/"
+  status = 301
+[[redirects]]
+  from = "/products"
+  to = "/work/"
+  status = 301
+[[redirects]]
+  from = "/products/*"
+  to = "/work/:splat"
+  status = 301
+[[redirects]]
+  from = "/about"
+  to = "/philosophy/"
+  status = 301
+[[redirects]]
+  from = "/portfolio"
+  to = "/work/"
+  status = 301
+[[redirects]]
+  from = "/team"
+  to = "/team/"
+  status = 301
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301

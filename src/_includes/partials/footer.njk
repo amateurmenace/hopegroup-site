@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand--night" href="{{ '/' | link }}">{% include "partials/mark.njk" %}<span class="brand__name">{{ site.name }}</span></a>
+        <p class="footer-brand__line">An ethical AI lab in Boston. We build software that protects privacy, audits for bias, and keeps people in control, and we help organizations adopt AI with the same care.</p>
+        <p class="footer-brand__contact">
+          <a href="mailto:{{ site.email }}">{{ site.email }}</a><br>
+          {{ site.address }}
+        </p>
+      </div>
+      {% for col in navigation.footer %}
+      <div class="footer-col">
+        <h4 class="eyebrow eyebrow--night">{{ col.title }}</h4>
+        <ul>{% for l in col.links %}<li><a href="{{ l.url | link }}">{{ l.label }}</a></li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="footer-certs">
+      <span>City of Boston certified minority-owned AI business</span>
+      <span>BECMA preferred AI trainer</span>
+      <span>Commonwealth Corporation approved provider</span>
+      <span>Patent pending technology</span>
+    </div>
+    <div class="footer-bottom">
+      <span>© {% thisYear %} {{ site.name }}. All rights reserved. Boston, Massachusetts. Serving organizations nationwide.</span>
+      <span>Built in the lab. No trackers, no cookies.</span>
+    </div>
+  </div>
+</footer>

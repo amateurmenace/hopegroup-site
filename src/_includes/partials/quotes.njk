@@ -1,0 +1,27 @@
+<section class="section{% if quotesGrid %} section--paper2{% endif %}" id="quotes">
+  <div class="wrap">
+    <div class="sec-head sec-head--row">
+      <div>
+        <p class="eyebrow">{{ testimonials.eyebrow }}</p>
+        <h2>{{ testimonials.headline }}</h2>
+      </div>
+      {% if not quotesGrid %}
+      <div class="quotes__nav">
+        <button class="icon-btn" type="button" data-quotes-prev aria-label="Previous quote">‹</button>
+        <button class="icon-btn" type="button" data-quotes-next aria-label="Next quote">›</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="wrap quotes{% if quotesGrid %} quotes--grid{% endif %}">
+    <div class="{% if quotesGrid %}quotes__grid{% else %}quotes__track{% endif %}"{% if not quotesGrid %} data-quotes-track{% endif %}>
+      {% for q in testimonials.items %}{% if q.featured or allQuotes %}
+      <blockquote class="quote">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <p class="quote__text">{{ q.quote }}</p>
+        <p class="quote__by"><b>{{ q.name }}</b>{{ q.role }}{% if q.org %}<span class="quote__org">{{ q.org }}</span>{% endif %}</p>
+      </blockquote>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>

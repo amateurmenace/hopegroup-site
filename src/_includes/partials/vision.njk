@@ -1,0 +1,16 @@
+<section class="section vision-section" id="north-star">
+  <div class="wrap vision">
+    <div class="vision__head">
+      <p class="eyebrow eyebrow--star">{{ vision.eyebrow }}</p>
+      <h2>{{ vision.headline }}</h2>
+      <blockquote class="pull">
+        <p>{{ vision.pullquote }}</p>
+        <cite>{{ vision.pullquote_by }}</cite>
+      </blockquote>
+    </div>
+    <div class="vision__body prose prose--lg">
+      {% for p in vision.paragraphs %}{% if not compact or loop.index <= 3 %}<p>{{ p }}</p>{% endif %}{% endfor %}
+      {% if compact %}<p><a class="link-arrow" href="{{ '/philosophy/' | link }}">Read our philosophy and values</a></p>{% else %}<p class="vision__closing">{{ vision.closing }}</p>{% endif %}
+    </div>
+  </div>
+</section>

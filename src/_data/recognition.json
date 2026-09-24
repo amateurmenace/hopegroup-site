@@ -1,0 +1,70 @@
+{
+  "eyebrow": "Proof",
+  "headline": "Trusted across Greater Boston.",
+  "intro": "More than 50 clients. The preferred AI trainer for the Black Economic Council of Massachusetts. The only City of Boston certified minority-owned AI business in Massachusetts. Led by Rev. Christopher Hope, Aspen Institute Fellow and Boston University lecturer.",
+  "stats": [
+    {
+      "value": 50,
+      "suffix": "+",
+      "label": "Organizations served across Greater Boston, and growing"
+    },
+    {
+      "value": 100,
+      "suffix": "%",
+      "label": "Engagement and recommendation rate across BECMA AI Series cohorts"
+    },
+    {
+      "value": 100,
+      "suffix": "+",
+      "label": "Public portals and sources Project Lookout watches for opportunities"
+    },
+    {
+      "value": 2021,
+      "suffix": "",
+      "label": "Founded in Boston, on Dr. King's idea of the Beloved Community",
+      "plain": true
+    }
+  ],
+  "badges": [
+    {
+      "org": "City of Boston",
+      "title": "Certified minority-owned AI business",
+      "detail": "The only City of Boston certified minority-owned AI business in Massachusetts. Certified technical assistance vendor for the city's small business community."
+    },
+    {
+      "org": "BECMA",
+      "title": "Preferred AI trainer and certified TA vendor",
+      "detail": "The Black Economic Council of Massachusetts' preferred AI training partner. Project Lookout was designed and built with BECMA."
+    },
+    {
+      "org": "Commonwealth Corporation",
+      "title": "Approved training provider",
+      "detail": "Eligible Massachusetts organizations may use state workforce funds to offset the cost of our training."
+    },
+    {
+      "org": "United States Senate",
+      "title": "Congressional Commendation",
+      "detail": "Recognized by U.S. Senator Ed Markey for outstanding contributions to technology and community advancement."
+    },
+    {
+      "org": "United Nations",
+      "title": "STI Forum presenter",
+      "detail": "Co-hosted and presented at a UN Science, Technology and Innovation Forum side event on equitable technology in education."
+    },
+    {
+      "org": "City of Cambridge",
+      "title": "City Proclamation",
+      "detail": "Celebrating leadership in creative equity and innovation."
+    },
+    {
+      "org": "Aspen Institute",
+      "title": "Fellowship",
+      "detail": "Rev. Hope is an Aspen Institute Fellow."
+    },
+    {
+      "org": "Boston University",
+      "title": "Lecturer in ethical AI",
+      "detail": "Rev. Hope teaches ethical AI to graduate and professional students at BU."
+    }
+  ]
+}

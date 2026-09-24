@@ -1,0 +1,6 @@
+<a class="person-card" href="{{ person.url | link }}">
+  <span class="person-card__photo">{% if person.data.photo %}<img src="{{ person.data.photo | link }}" alt="" loading="lazy">{% else %}<span class="person__initials">{{ person.data.name | initials }}</span>{% endif %}</span>
+  <span class="person-card__role eyebrow eyebrow--beacon">{{ person.data.role }}</span>
+  <span class="person-card__name">{{ person.data.name }}</span>
+  <span class="person-card__short">{{ person.data.short }}</span>
+</a>

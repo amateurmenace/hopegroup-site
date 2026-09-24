@@ -1,0 +1,1 @@
+{ "tags": ["work"], "layout": "layouts/project.njk", "permalink": "/work/{{ page.fileSlug }}{{ ext }}", "kind": "work", "sectionLabel": "Work & impact", "sectionUrl": "/work/" }

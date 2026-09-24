@@ -1,0 +1,35 @@
+<section class="section section--paper2" id="values">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Our values</p>
+      <h2>{{ values.headline }}</h2>
+      <p class="lede">{{ values.intro }}</p>
+      <p class="aside">{{ values.aside }}</p>
+    </div>
+    <div class="posters">
+      {% for v in values.items %}
+      <div class="poster-slot">
+        <button class="poster" type="button" aria-pressed="false" aria-label="{{ v.name }}. {{ v.statement }} Press to see how we practice it.">
+          <span class="poster__face poster__front">
+            <span class="poster__top"><span class="poster__word">{{ v.name }}</span><span class="poster__index" aria-hidden="true">value · {{ loop.index }} of {{ values.items.length }}</span></span>
+            <span class="poster__line">{{ v.poster }}</span>
+            <span class="poster__bottom">
+              <span class="poster__statement">{{ v.statement }}</span>
+              <span class="poster__hint" aria-hidden="true">Flip</span>
+            </span>
+          </span>
+          <span class="poster__face poster__back" aria-hidden="true">
+            <span class="poster__word poster__word--sm">{{ v.name }}, in practice</span>
+            <span class="poster__dl">
+              <span class="poster__dt">In code</span><span class="poster__dd">{{ v.practice.code }}</span>
+              <span class="poster__dt">In contracts</span><span class="poster__dd">{{ v.practice.contracts }}</span>
+              <span class="poster__dt">In the classroom</span><span class="poster__dd">{{ v.practice.classroom }}</span>
+            </span>
+          </span>
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% if not compact %}<p class="values__closing prose prose--lg">{{ vision.closing }}</p>{% endif %}
+  </div>
+</section>

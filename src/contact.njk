@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+permalink: "/contact{{ ext }}"
+title: Contact
+description: "Start with an honest 30-minute conversation with The Hope Group. No slides, no pitch."
+---
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h1>Let's have an honest conversation.</h1>
+    <p class="lede">Thirty minutes. No slides. No sales pitch. Just a member of the lab listening to where your organization is and what is possible next.</p>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap contact">
+    <form class="form" name="contact" method="POST" action="{{ '/thanks/' | link }}" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
+      <div class="field"><label for="f-org">Organization</label><input id="f-org" name="organization" autocomplete="organization"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="f-interest">What are you hoping to do?</label>
+        <select id="f-interest" name="interest">
+          <option>Train my team</option>
+          <option>Get technical assistance</option>
+          <option>License Project Lookout</option>
+          <option>Try Driftwood</option>
+          <option>Press or speaking request</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-message">Tell us a little about your organization</label><textarea id="f-message" name="message" rows="5"></textarea></div>
+      <button class="btn btn-primary" type="submit">Send {% include "partials/arrow.njk" %}</button>
+      <p class="form__note">{{ site.response_promise }}</p>
+    </form>
+    <aside class="contact__side">
+      {% if site.booking_url %}
+      <div class="callout"><p class="eyebrow">Or book directly</p><p>Prefer to grab a time yourself? Pick a 30-minute slot.</p><a class="btn btn-ghost" href="{{ site.booking_url }}">Open calendar</a></div>
+      {% endif %}
+      <div class="callout">
+        <p class="eyebrow">Direct</p>
+        <p><b>Email</b><br><a href="mailto:{{ site.email }}" data-copy-text>{{ site.email }}</a> <button class="chip chip--btn" type="button" data-copy>Copy</button></p>
+        <p><b>Office</b><br>{{ site.address }}</p>
+        <p><b>Phone</b><br>By appointment</p>
+      </div>
+      <blockquote class="pull pull--sm">
+        <p>The moment of doubt is always at the button. That is exactly where trust has to show up.</p>
+        <cite>A rule we keep, on this page and in our products</cite>
+      </blockquote>
+    </aside>
+  </div>
+</section>

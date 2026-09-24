@@ -1,0 +1,12 @@
+<a class="tile" href="{{ item.url | link }}"{% if filterValues %} data-values="{{ filterValues }}"{% endif %}>
+  <span class="tile__media{% if not item.data.image %} tile__media--pattern{% endif %}">
+    {% if item.data.image %}<img src="{{ item.data.image | link }}" alt="{{ item.data.image_alt or '' }}" loading="lazy">{% elif item.data.glyph %}<span class="tile__glyph">{% set glyph = item.data.glyph %}{% include "partials/glyph.njk" %}</span>{% else %}<span class="tile__client">{{ item.data.short_client or item.data.client }}</span>{% endif %}
+  </span>
+  <span class="tile__body">
+    <span class="eyebrow">{{ item.data.kind or item.data.sector }}{% if item.data.kind %} · {{ item.data.short_client or item.data.client }}{% endif %}</span>
+    <span class="tile__title">{{ item.data.title }}</span>
+    <span class="tile__summary">{{ item.data.summary | truncate(150) }}</span>
+    {% if item.data.status %}<span class="tile__status">{{ item.data.status }}</span>{% endif %}
+    <span class="link-arrow">Read more</span>
+  </span>
+</a>

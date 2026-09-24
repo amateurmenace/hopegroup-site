@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+bodyClass: home
+description: "The Hope Group is a Boston ethical AI lab building privacy first software like Project Lookout and Driftwood, plus AI training and technical assistance."
+---
+<section class="hero3" id="top">
+  <canvas class="hero3__canvas" id="neighborhood" aria-hidden="true"></canvas>
+  <div class="wrap hero3__inner">
+    <div class="hero3__text">
+      <p class="eyebrow">{{ site.eyebrow }}</p>
+      <h1>{{ home.hero.headline }}</h1>
+      <p class="hero3__lede">{{ home.hero.lede }}</p>
+      <div class="hero__actions">
+        <a class="btn btn-primary" href="{{ home.hero.primary_cta.url | link }}">{{ home.hero.primary_cta.label }} {% include "partials/arrow.njk" %}</a>
+        <a class="btn btn-ghost" href="{{ (site.booking_url or home.hero.secondary_cta.url) | link }}">{{ home.hero.secondary_cta.label }}</a>
+      </div>
+    </div>
+    <p class="hero3__caption">{{ home.hero.figure_caption }}</p>
+  </div>
+</section>
+{% include "partials/start.njk" %}
+{% set compact = true %}
+{% include "partials/vision.njk" %}
+{% include "partials/projects-gallery.njk" %}
+{% include "partials/values.njk" %}
+{% include "partials/standard.njk" %}
+{% set quotesGrid = true %}
+{% include "partials/quotes.njk" %}
+{% include "partials/notes-gallery.njk" %}
+{% include "partials/proof.njk" %}
+{% include "partials/cta.njk" %}

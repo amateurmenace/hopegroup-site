@@ -1,0 +1,33 @@
+<section class="section" id="standard">
+  <div class="wrap standard">
+    <div class="sec-head">
+      <p class="eyebrow">{{ standard.eyebrow }}</p>
+      <h2>{{ standard.headline }}</h2>
+      <p class="lede">{{ standard.intro }}</p>
+    </div>
+    <ol class="pillars">
+      {% for pl in standard.pillars %}
+      <li class="pillar" data-reveal>
+        <span class="pillar__n">{{ pl.n }}</span>
+        <div class="pillar__body">
+          <h3 class="pillar__title">{{ pl.title }}</h3>
+          <p class="pillar__statement">{{ pl.statement }}</p>
+          {% if not compact %}
+          <details class="pillar__details">
+            <summary>How we check it</summary>
+            <div class="pillar__more">
+              <p><b>The check.</b> {{ pl.check }}</p>
+              <p><b>What you will see.</b> {{ pl.see }}</p>
+            </div>
+          </details>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    <div class="standard__foot">
+      <p class="standard__closing">{{ standard.closing }}</p>
+      {% if compact %}<a class="link-arrow" href="{{ '/philosophy/' | link }}#standard">See how we check each one, and the stack behind it</a>{% endif %}
+    </div>
+  </div>
+</section>
