@@ -14,6 +14,8 @@ link_label: Course details and registration
 outcome: Administrators who can automate documentation and compliance work without breaking the rules that govern it.
 kind: Course
 status: Next cohort January 14 to February 18, 2027
+thumb: /assets/img/thumbs/medical-education.jpg
+thumb_alt: AI for GME leaders card with six session dates
 ---
 Graduate medical education runs on documentation: accreditation requirements, policies, handbooks, evaluations, and recruitment. AI can take real weight off the people who manage it, but only inside the rules that make medical education trustworthy.
 

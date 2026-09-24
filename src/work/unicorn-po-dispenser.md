@@ -17,6 +17,8 @@ quote:
   text: The Hope Group didn't show up and lecture us. They listened first, then built something around how we actually work. As a woman-owned business I needed a partner who understood both the technology and the real-world constraints I operate under. I found exactly that here.
   name: Ellen Cynar
   role: UNICORN
+thumb: /assets/img/thumbs/unicorn-po-dispenser.jpg
+thumb_alt: Unicorn PO Dispenser card showing documents becoming a clean record
 ---
 UNICORN is a Massachusetts women-owned distributor led by Ellen Cynar. Growth brought a problem that got worse the faster the business moved: purchase orders arriving from every customer in a different shape, as PDFs, as forwarded emails, as portal exports, each one demanding manual re-entry into the CRM, the accounting system, and a shared billing inbox. Every order was a chance for a typo, and every afternoon disappeared into retyping.
 

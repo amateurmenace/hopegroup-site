@@ -13,6 +13,8 @@ services:
   - Training and credentialing
   - Placement with small businesses
 outcome: A paid, credentialed pathway into AI-adjacent careers for opportunity youth, and a standing corps of neighbors small businesses can call on.
+thumb: /assets/img/thumbs/civic-ai-corps.jpg
+thumb_alt: Civic AI Corps card with a row of apprentices
 ---
 The Civic AI Access Lab proves the model one cohort at a time. The Civic AI Corps is what it becomes at scale: a standing corps of apprentices, recruited from Boston's historically underserved neighborhoods, trained by the lab in practical AI and in The Hope Standard, credentialed, and then placed with small businesses for a term of service.
 

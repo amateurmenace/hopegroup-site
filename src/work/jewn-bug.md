@@ -20,6 +20,8 @@ quote:
   text: Working with The Hope Group changed how I think about what's possible for my business. Rev. Hope took the time to understand exactly where I was, not where he assumed I'd be, and built a plan around my reality. I walked away with a roadmap I could actually use.
   name: Nicole Wiggins
   role: Owner, Jewn Enterprises
+thumb: /assets/img/thumbs/jewn-bug.jpg
+thumb_alt: JEWN BUG card with a mockup of the morning bid feed
 ---
 Jewn Enterprises is a Black-owned painting company in West Roxbury, run by Nicole Wiggins, working residential, commercial, and municipal jobs across the Boston area. Public work is where a crew like hers grows, and the opportunities exist. Finding them is the problem: they are scattered across city, state, and federal portals, each with its own format, and reading them all is unpaid, full-time labor that a working owner cannot do.
 

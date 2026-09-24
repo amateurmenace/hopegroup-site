@@ -16,6 +16,8 @@ quote:
   name: Mackenson Charles
   role: Black Economic Council of Massachusetts
 kind: Partnership
+thumb: /assets/img/thumbs/becma.jpg
+thumb_alt: BECMA and The Hope Group partnership card with 100 percent engagement and recommendation
 ---
 The Black Economic Council of Massachusetts is the lab's deepest partnership. It began with training: a series of live, hands-on sessions for BECMA member businesses on using AI for lead generation, marketing, grants, procurement, and operations. Participants rated it a 100 percent recommendation rate, and several of their words are on this site.
 

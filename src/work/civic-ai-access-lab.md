@@ -18,6 +18,8 @@ quote:
   text: They are not traveling to these communities as outside experts. They are members of these communities, sitting beside their neighbors, building things together. It is not a feature of this program. It is the program.
   name: From the program design
   role: The Loop Lab and The Hope Group
+thumb: /assets/img/thumbs/civic-ai-access-lab.jpg
+thumb_alt: Civic AI Access Lab card with a map of Boston neighborhoods
 ---
 Most digital equity programs run a workshop and leave. The Civic AI Access Lab is built on what we learned delivering AI training for the City of Boston's Office of Economic Opportunity and Inclusion: business owners benefit most when they work on their own problems, with someone beside them, and leave with something working.
 
