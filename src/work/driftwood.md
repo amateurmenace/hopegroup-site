@@ -38,6 +38,7 @@ screens:
   - { image: /assets/img/driftwood/stream.jpg, caption: "The Stream. Raw reports drift in uncategorized. Each gets a \"steer it to\" panel, Bug, Chore, Feature, or Bouncy House, and one tap hauls it onto the board." }
   - { image: /assets/img/driftwood/guide.jpg, caption: "The Field Guide. A whole interactive testing playbook baked in: the drift cycle, a first-patrol checklist, a severity quiz you can actually flunk, and the golden rules." }
   - { image: /assets/img/driftwood/list.jpg, caption: "The same board as a list. Three views, Board, List, and Table, for however your team likes to look at the work." }
+how_it_works_title: "The path a report walks."
 how_it_works:
   - { title: "Sight it", text: "A tester taps \"Send feedback\" inside the app. Page, URL, screenshot, and console errors attach automatically." }
   - { title: "Reel it in", text: "One POST to the ingest endpoint turns the raw report into a Stream card. Retries are de-duplicated so nothing files twice." }
