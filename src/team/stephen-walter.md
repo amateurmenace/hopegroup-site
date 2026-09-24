@@ -8,7 +8,7 @@ email: stephen@hopegroup.ai
 linkedin: https://www.linkedin.com/in/weirdmachine/
 website: https://weirdmachine.org
 website_label: weirdmachine.org
-short: Relentlessly inventive. If your organization needs it custom-built, he has probably already designed a version of it.
+short: Coyote.
 focus:
   - Product architecture
   - Local and open-source AI
