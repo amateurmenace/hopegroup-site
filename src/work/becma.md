@@ -19,4 +19,4 @@ kind: Partnership
 ---
 The Black Economic Council of Massachusetts is the lab's deepest partnership. It began with training: a series of live, hands-on sessions for BECMA member businesses on using AI for lead generation, marketing, grants, procurement, and operations. Participants rated it a 100 percent recommendation rate, and several of their words are on this site.
 
-It became a product. Project Lookout was designed with BECMA members, tested inside their businesses, and reshaped by what they told us. It now watches more than a hundred public portals for the grants, contracts, and RFPs those businesses were never able to chase.
+It became a product. Project Lookout was designed with BECMA members, tested inside their businesses, and reshaped by what they told us. It now sweeps 85+ sources every night for the grants, contracts, and RFPs those businesses were never able to chase.

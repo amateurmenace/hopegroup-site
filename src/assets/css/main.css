@@ -557,6 +557,22 @@ a.start__card--note:hover { background-color: #fff; }
 @media (max-width: 800px) { .person-row { grid-template-columns: minmax(0, 1fr); } .person-row__side { position: static; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); } }
 @media (max-width: 520px) { .person-row__side { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- project extras ---------- */
+.stats--flush { margin-bottom: 0; }
+.callout--facts .facts { grid-template-columns: 6.5rem minmax(0, 1fr); gap: .35rem .8rem; }
+.facts--tight dd { margin: 0; }
+.screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1.4rem; }
+.screen { margin: 0; display: grid; gap: .7rem; }
+.screen img { width: 100%; border: 1px solid var(--rule); background: var(--card); }
+.screen figcaption { font-size: .9rem; line-height: 1.5; color: var(--ink-2); }
+@media (max-width: 700px) { .screens { grid-template-columns: minmax(0, 1fr); } }
+.pipeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1.4rem; counter-reset: p; }
+.pipeline__step { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .8rem; padding-top: 1rem; border-top: 2px solid var(--ink); }
+.pipeline__n { font: 500 .85rem/1.6 var(--font-mono); color: var(--beacon); }
+.pipeline__t { font-size: 1.2rem; margin-bottom: .3rem; }
+.pipeline__step p { font-size: .92rem; line-height: 1.5; color: var(--ink-2); }
+.project__summary { font: 400 1.3rem/1.45 var(--font-display); }
+
 /* ---------- press ---------- */
 .press { display: grid; gap: 1.5rem; }
 .press > .h3 { margin-top: 1.5rem; }

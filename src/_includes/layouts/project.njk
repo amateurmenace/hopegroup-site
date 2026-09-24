@@ -30,6 +30,8 @@ layout: layouts/base.njk
     </div>
     <aside class="project__side">
       {% if audience %}<div class="callout"><p class="eyebrow">Built for</p><p>{{ audience }}</p></div>{% endif %}
+      {% if facts %}<div class="callout callout--facts"><p class="eyebrow">At a glance</p><dl class="facts facts--tight">{% for f in facts %}<dt>{{ f.label }}</dt><dd>{{ f.value }}</dd>{% endfor %}</dl></div>{% endif %}
+      {% if links %}<div class="callout"><p class="eyebrow">Elsewhere</p><ul class="plain-list">{% for l in links %}<li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a></li>{% endfor %}</ul></div>{% endif %}
       {% if outcome %}<div class="callout"><p class="eyebrow">Outcome</p><p>{{ outcome }}</p></div>{% endif %}
       {% if quote and quote.text %}
       <blockquote class="quote quote--side">
@@ -40,12 +42,64 @@ layout: layouts/base.njk
       {% endif %}
     </aside>
   </div>
+  {% if stats %}
+  <section class="section section--tight"><div class="wrap"><div class="stats stats--flush">
+    {% for s in stats %}<div class="stat"><span class="stat__n"><span data-count="{{ s.value }}">{{ s.value }}</span>{{ s.suffix }}</span><span class="stat__l">{{ s.label }}</span></div>{% endfor %}
+  </div></div></section>
+  {% endif %}
+  {% if screens %}
+  <section class="section section--paper2" id="screens">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Inside {{ name or short_client or client }}</p><h2>What it looks like to use.</h2>{% if video and video.id %}<p class="lede">Frames from the walkthrough and screens from the running app. <a href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank" rel="noopener">Watch the full demo on YouTube</a>.</p>{% endif %}</div>
+      <div class="screens">
+        {% for sc in screens %}
+        <figure class="screen"><img src="{{ sc.image | link }}" alt="{{ sc.alt or sc.caption }}" loading="lazy"><figcaption>{{ sc.caption }}</figcaption></figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% if how_it_works %}
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">How it works</p><h2>{{ how_it_works_title or "The work behind every card." }}</h2></div>
+      <ol class="pipeline">
+        {% for st in how_it_works %}<li class="pipeline__step"><span class="pipeline__n">{{ loop.index }}</span><div><h3 class="pipeline__t">{{ st.title }}</h3><p>{{ st.text }}</p></div></li>{% endfor %}
+      </ol>
+    </div>
+  </section>
+  {% endif %}
   {% if capabilities %}
   <section class="section section--paper2">
     <div class="wrap">
-      <div class="sec-head"><p class="eyebrow">What it does</p><h2>Built to find, verify, and wait for you.</h2></div>
+      <div class="sec-head"><p class="eyebrow">What it does</p><h2>{{ capabilities_title or "Everything it does, and nothing extra." }}</h2></div>
       <div class="cap-grid">
         {% for c in capabilities %}<div class="cap"><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% if principles %}
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Design principles</p><h2>The rules it was built by.</h2></div>
+      <div class="cap-grid cap-grid--3">
+        {% for pr in principles %}<div class="cap cap--plain"><h3>{{ pr.title }}</h3><p>{{ pr.text }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% if challenges %}
+  <section class="section section--paper2">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">The hard problems</p><h2>What it took, and how we solved it.</h2><p class="lede">The interesting engineering is invisible when it works. Open one.</p></div>
+      <div class="layers">
+        {% for ch in challenges %}
+        <details class="layer"{% if loop.first %} open{% endif %}>
+          <summary><span class="layer__kicker eyebrow">{{ ch.kicker }}</span><span class="layer__title">{{ ch.title }}</span><span class="layer__plus" aria-hidden="true"></span></summary>
+          <div class="layer__body"><p>{{ ch.text }}</p></div>
+        </details>
+        {% endfor %}
       </div>
     </div>
   </section>

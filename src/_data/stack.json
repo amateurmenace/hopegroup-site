@@ -28,7 +28,7 @@
     {
       "title": "Agents that verify",
       "kicker": "Many small workers, checked by a person",
-      "summary": "Project Lookout runs many small agents in parallel across more than a hundred public portals, extracts structured data with a confidence score, and checks every link before a person ever sees it. Public information can be gathered anywhere. Your profile is minimized before it travels.",
+      "summary": "Project Lookout sweeps 85+ public portals and the open web every night, reads each posting into structured facts, and checks every link before a person ever sees it. Public information can be gathered anywhere. Your profile is minimized before it travels.",
       "points": [
         "Concurrent, distributed agent execution across public sources",
         "Structured extraction with confidence scoring and link verification",

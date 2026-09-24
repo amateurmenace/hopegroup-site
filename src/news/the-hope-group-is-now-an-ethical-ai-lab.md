@@ -6,7 +6,7 @@ featured: true
 ---
 Today we relaunched hopegroup.ai and, with it, the way we describe ourselves. The Hope Group is an ethical AI lab. We design and build software that protects privacy, audits for bias, and keeps people in control. Then we help organizations adopt AI with the same care.
 
-Two products lead the lab's work: Project Lookout, a patent pending platform that finds and ranks grants, contracts, and RFPs for small businesses and city partners, and Driftwood, a privacy-first CRM now in early access. Both are built and audited against The Hope Standard, our framework for responsible AI, which is published in full on this site.
+Two products lead the lab's work: Project Lookout, a patent pending platform that finds and ranks grants, contracts, and RFPs for small businesses and city partners, and Driftwood, an open source design research platform that runs the Lookout beta. Both are built and audited against The Hope Standard, our framework for responsible AI, which is published in full on this site.
 
 Training and technical assistance continue for small businesses, nonprofits, and public agencies. Eligible Massachusetts organizations may still use Commonwealth Corporation workforce funds to offset the cost.
 

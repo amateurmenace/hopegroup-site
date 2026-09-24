@@ -95,8 +95,8 @@ Decap CMS at `/admin/` uses the GitHub backend, so editors log in with GitHub ac
 The site was assembled from the current hopegroup.ai, Rev. Hope's homepage copy email (Sep 23, 2026),
 hopecoded.com, and weirdmachine.org. Please check these before the DNS flip:
 
-- **Driftwood.** The copy follows the email ("our business CRM"). weirdmachine.org describes Driftwood as an open-source design-research platform. Make the product page match the product, and confirm the "no hidden training on your information" claim.
-- **Project Lookout** is presented as the platform previously marketed as "The HOPE Bot". Confirm the merge and the "100+ portals" figure.
+- **Driftwood** is now described the way Stephen's case study describes it: an open source design research / beta-testing platform live at cmd-z.com. Chris's email called it "our business CRM"; align the two.
+- **Project Lookout** is presented as the platform previously marketed as "The HOPE Bot". Figures (85+ sources, 6 jobs, 1,400+ tests, ~$12k/seat for incumbents) come from the weirdmachine.org case study.
 - **Tech stack** (`src/_data/stack.json`): local AI is described as something the lab is pioneering inside its apps, not its default. The zero-training terms and export claims are still written as commitments; make sure each is true today or soften it.
 - **Values "in practice" lines** (`src/_data/values.json`) and **Hope Standard checks** (`src/_data/standard.json`): these are operational claims (named owners, changelogs, session surveys, re-test schedules). Keep the ones you do; edit the rest.
 - **The Hope Standard name.** If it is not ready to be public, rename it in `src/_data/standard.json` ("Our ethical AI standards") — the templates pick up the name everywhere.
