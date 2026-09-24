@@ -536,6 +536,7 @@ a.start__card--note:hover { background-color: #fff; }
 .person__creds ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .3rem; font-size: .9rem; color: var(--ink-2); }
 .person__creds li { padding-left: 1em; position: relative; }
 .person__creds li::before { content: "✦"; position: absolute; left: 0; color: var(--beacon); font-size: .7em; top: .35em; }
+.person__creds a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--rule-strong); }
 .person__main { display: grid; gap: 1.2rem; }
 .person__short { font: italic 400 1.35rem/1.4 var(--font-display); color: var(--ink-2); }
 .ask { border: 1px solid var(--rule); background: var(--card); padding: 1.3rem 1.4rem; display: grid; gap: .8rem; }

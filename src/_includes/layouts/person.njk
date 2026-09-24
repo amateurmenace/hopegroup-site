@@ -20,7 +20,7 @@ layout: layouts/base.njk
       {% if credentials %}
       <div class="person__creds">
         <p class="eyebrow">Credentials</p>
-        <ul>{% for c in credentials %}<li>{{ c }}</li>{% endfor %}</ul>
+        <ul>{% for c in credentials %}<li>{{ c | mdInline | safe }}</li>{% endfor %}</ul>
       </div>
       {% endif %}
     </aside>
