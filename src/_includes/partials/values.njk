@@ -1,35 +1,27 @@
-<section class="section section--paper2" id="values">
+<section class="section{% if not compact %} section--paper2{% endif %}" id="values">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Our values</p>
       <h2>{{ values.headline }}</h2>
       <p class="lede">{{ values.intro }}</p>
-      <p class="aside">{{ values.aside }}</p>
+      {% if not compact %}<p class="aside">{{ values.aside }}</p>{% endif %}
     </div>
-    <div class="posters">
-      {% for v in values.items %}
-      <div class="poster-slot">
-        <button class="poster" type="button" aria-pressed="false" aria-label="{{ v.name }}. {{ v.statement }} Press to see how we practice it.">
-          <span class="poster__face poster__front">
-            <span class="poster__top"><span class="poster__word">{{ v.name }}</span><span class="poster__index" aria-hidden="true">value · {{ loop.index }} of {{ values.items.length }}</span></span>
-            <span class="poster__line">{{ v.poster }}</span>
-            <span class="poster__bottom">
-              <span class="poster__statement">{{ v.statement }}</span>
-              <span class="poster__hint" aria-hidden="true">Flip</span>
-            </span>
-          </span>
-          <span class="poster__face poster__back" aria-hidden="true">
-            <span class="poster__word poster__word--sm">{{ v.name }}, in practice</span>
-            <span class="poster__dl">
-              <span class="poster__dt">In code</span><span class="poster__dd">{{ v.practice.code }}</span>
-              <span class="poster__dt">In contracts</span><span class="poster__dd">{{ v.practice.contracts }}</span>
-              <span class="poster__dt">In the classroom</span><span class="poster__dd">{{ v.practice.classroom }}</span>
-            </span>
-          </span>
-        </button>
-      </div>
-      {% endfor %}
+    {% if compact %}
+    <div class="values-block" data-values-block>
+      <ul class="values-preview">
+        {% for v in values.items %}
+        <li><button class="mini-poster" type="button" data-open-value="{{ loop.index0 }}"><span class="mini-poster__word">{{ v.name }}</span><span class="mini-poster__line">{{ v.poster }}</span></button></li>
+        {% endfor %}
+      </ul>
+      <details class="values-drawer" data-values-drawer>
+        <summary class="values-drawer__toggle"><span class="when-closed">See each value in practice</span><span class="when-open">Fold the values away</span><svg class="values-drawer__chev" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="aside">{{ values.aside }}</p>
+        {% include "partials/posters.njk" %}
+      </details>
     </div>
-    {% if not compact %}<p class="values__closing prose prose--lg">{{ vision.closing }}</p>{% endif %}
+    {% else %}
+    {% include "partials/posters.njk" %}
+    <p class="values__closing prose prose--lg">{{ vision.closing }}</p>
+    {% endif %}
   </div>
 </section>

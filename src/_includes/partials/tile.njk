@@ -5,8 +5,8 @@
   <span class="tile__body">
     <span class="eyebrow">{{ item.data.kind or item.data.sector }}{% if item.data.kind %} · {{ item.data.short_client or item.data.client }}{% endif %}</span>
     <span class="tile__title">{{ item.data.title }}</span>
-    <span class="tile__summary">{{ item.data.summary | truncate(150) }}</span>
+    {% if not tileCompact %}<span class="tile__summary">{{ item.data.summary | truncate(150) }}</span>{% endif %}
     {% if item.data.status %}<span class="tile__status">{{ item.data.status }}</span>{% endif %}
-    <span class="link-arrow">Read more</span>
+    {% if not tileCompact %}<span class="link-arrow">Read more</span>{% endif %}
   </span>
 </a>

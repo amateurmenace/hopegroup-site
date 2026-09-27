@@ -1,27 +1,29 @@
-<section class="section{% if quotesGrid %} section--paper2{% endif %}" id="quotes">
+<section class="section{% if quotesGrid or quotesTint %} section--paper2{% endif %}" id="quotes">
   <div class="wrap">
-    <div class="sec-head sec-head--row">
-      <div>
-        <p class="eyebrow">{{ testimonials.eyebrow }}</p>
-        <h2>{{ testimonials.headline }}</h2>
-      </div>
-      {% if not quotesGrid %}
-      <div class="quotes__nav">
-        <button class="icon-btn" type="button" data-quotes-prev aria-label="Previous quote">‹</button>
-        <button class="icon-btn" type="button" data-quotes-next aria-label="Next quote">›</button>
-      </div>
-      {% endif %}
+    <div class="sec-head">
+      <p class="eyebrow">{{ testimonials.eyebrow }}</p>
+      <h2>{{ testimonials.headline }}</h2>
     </div>
-  </div>
-  <div class="wrap quotes{% if quotesGrid %} quotes--grid{% endif %}">
-    <div class="{% if quotesGrid %}quotes__grid{% else %}quotes__track{% endif %}"{% if not quotesGrid %} data-quotes-track{% endif %}>
-      {% for q in testimonials.items %}{% if q.featured or allQuotes %}
-      <blockquote class="quote">
-        <span class="quote__mark" aria-hidden="true">“</span>
-        <p class="quote__text">{{ q.quote }}</p>
-        <p class="quote__by"><b>{{ q.name }}</b>{{ q.role }}{% if q.org %}<span class="quote__org">{{ q.org }}</span>{% endif %}</p>
-      </blockquote>
-      {% endif %}{% endfor %}
+    {% if quotesGrid %}
+    <div class="quotes__grid">
+      {% for q in testimonials.items %}{% if q.featured or allQuotes %}{% include "partials/quote.njk" %}{% endif %}{% endfor %}
     </div>
+    {% else %}
+    <div class="slider slider--quotes" data-slider data-autoplay="7000" aria-roledescription="carousel" aria-label="What partners say about The Hope Group">
+      <ul class="slider__track" data-slider-track>
+        {% for q in testimonials.items %}{% if q.featured or allQuotes %}<li class="slider__slide">{% include "partials/quote.njk" %}</li>{% endif %}{% endfor %}
+      </ul>
+      <div class="slider__controls">
+        <button class="icon-btn" type="button" data-slider-prev aria-label="Previous quote">{% set dir = 'left' %}{% include "partials/chevron.njk" %}</button>
+        <button class="icon-btn slider__toggle" type="button" data-slider-toggle aria-label="Pause the quotes">
+          <svg class="icon-pause" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 4.5v11M13 4.5v11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="icon-play" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 4.5v11l8.5-5.5z" fill="currentColor"/></svg>
+        </button>
+        <button class="icon-btn" type="button" data-slider-next aria-label="Next quote">{% set dir = 'right' %}{% include "partials/chevron.njk" %}</button>
+        <span class="slider__progress" aria-hidden="true"><i data-slider-progress></i></span>
+        <span class="slider__count" data-slider-count></span>
+      </div>
+    </div>
+    {% endif %}
   </div>
 </section>

@@ -1,26 +1,19 @@
-<section class="section" id="proof">
+<section class="proof" id="proof">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">{{ recognition.eyebrow }}</p>
+    <div class="proof__head">
+      <p class="eyebrow eyebrow--night">{{ recognition.eyebrow }}</p>
       <h2>{{ recognition.headline }}</h2>
-      <p class="lede">{{ recognition.intro }}</p>
     </div>
-    <div class="stats">
+    <div class="proof__stats">
       {% for s in recognition.stats %}
-      <div class="stat">
-        <span class="stat__n"><span{% if not s.plain %} data-count="{{ s.value }}"{% endif %}>{{ s.value }}</span>{{ s.suffix }}</span>
-        <span class="stat__l">{{ s.label }}</span>
+      <div class="proof__stat">
+        <span class="proof__n"><span{% if not s.plain %} data-count="{{ s.value }}"{% endif %}>{{ s.value }}</span>{% if s.suffix %}<em>{{ s.suffix }}</em>{% endif %}</span>
+        <span class="proof__l">{{ s.label }}</span>
       </div>
       {% endfor %}
     </div>
-    <div class="badges">
-      {% for b in recognition.badges %}
-      <div class="badge">
-        <span class="badge__org">{{ b.org }}</span>
-        <span class="badge__title">{{ b.title }}</span>
-        <span class="badge__detail">{{ b.detail }}</span>
-      </div>
-      {% endfor %}
-    </div>
+    <ul class="proof__creds">
+      {% for b in recognition.badges %}<li><span class="proof__org">{{ b.org }}</span><span class="proof__cred">{{ b.title }}</span></li>{% endfor %}
+    </ul>
   </div>
 </section>

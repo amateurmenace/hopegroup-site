@@ -4,12 +4,18 @@
       <div>
         <p class="eyebrow">{{ home.projects.eyebrow }}</p>
         <h2>{{ home.projects.headline }}</h2>
-        <p class="lede">{{ home.projects.intro }}</p>
       </div>
-      <a class="link-arrow" href="{{ '/work/' | link }}">All projects</a>
+      <a class="btn btn-ghost" href="{{ '/work/' | link }}">See all projects {% include "partials/arrow.njk" %}</a>
     </div>
-    <div class="tiles tiles--gallery">
-      {% for w in collections.work %}{% set item = w %}{% include "partials/tile.njk" %}{% endfor %}
+    <div class="slider" data-slider aria-roledescription="carousel" aria-label="Projects">
+      <ul class="slider__track" data-slider-track>
+        {% for w in collections.work %}<li class="slider__slide">{% set item = w %}{% set tileCompact = true %}{% include "partials/tile.njk" %}</li>{% endfor %}
+      </ul>
+      <div class="slider__controls">
+        <button class="icon-btn" type="button" data-slider-prev aria-label="Previous projects">{% set dir = 'left' %}{% include "partials/chevron.njk" %}</button>
+        <button class="icon-btn" type="button" data-slider-next aria-label="More projects">{% set dir = 'right' %}{% include "partials/chevron.njk" %}</button>
+        <span class="slider__count" data-slider-count aria-live="polite">1–3 of {{ collections.work.length }}</span>
+      </div>
     </div>
   </div>
 </section>

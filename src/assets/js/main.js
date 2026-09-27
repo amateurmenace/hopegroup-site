@@ -225,13 +225,97 @@
     if (reduceMotion && svg && svg.pauseAnimations) svg.pauseAnimations();
   }
 
-  /* ---------- quotes carousel ---------- */
-  $$("[data-quotes-track]").forEach((track) => {
-    const section = track.closest("section");
-    const step = () => { const card = track.querySelector(".quote"); return card ? card.getBoundingClientRect().width + 20 : 400; };
-    const prev = $("[data-quotes-prev]", section), next = $("[data-quotes-next]", section);
-    prev && prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" }));
-    next && next.addEventListener("click", () => track.scrollBy({ left: step(), behavior: reduceMotion ? "auto" : "smooth" }));
+  /* ---------- sliders: projects (manual) and quotes (auto-advancing) ---------- */
+  $$("[data-slider]").forEach((slider) => {
+    const track = $("[data-slider-track]", slider);
+    const slides = track ? $$(".slider__slide", track) : [];
+    if (!slides.length) return;
+    const prev = $("[data-slider-prev]", slider), next = $("[data-slider-next]", slider);
+    const count = $("[data-slider-count]", slider), toggle = $("[data-slider-toggle]", slider), bar = $("[data-slider-progress]", slider);
+    const n = slides.length;
+    const interval = parseInt(slider.dataset.autoplay, 10) || 0;
+    const loops = interval > 0;
+
+    const metrics = () => {
+      const cs = getComputedStyle(track);
+      const gap = parseFloat(cs.columnGap) || 0;
+      const inner = track.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      const step = slides[0].getBoundingClientRect().width + gap;
+      const visible = Math.max(1, Math.min(n, Math.round((inner + gap) / step)));
+      return { step, visible, max: Math.max(0, n - visible) };
+    };
+    const current = () => { const m = metrics(); return Math.min(m.max, Math.max(0, Math.round(track.scrollLeft / m.step))); };
+    const go = (i) => {
+      const m = metrics();
+      const target = loops ? (i > m.max ? 0 : i < 0 ? m.max : i) : Math.min(m.max, Math.max(0, i));
+      track.scrollTo({ left: target * m.step, behavior: reduceMotion ? "auto" : "smooth" });
+    };
+    const update = () => {
+      const m = metrics(), i = current();
+      if (count) count.textContent = m.visible > 1 ? `${i + 1}–${Math.min(i + m.visible, n)} of ${n}` : `${i + 1} of ${n}`;
+      if (!loops) {
+        if (prev) prev.disabled = i <= 0;
+        if (next) next.disabled = i >= m.max;
+      }
+      slider.classList.toggle("is-static", m.max === 0);
+    };
+    let ticking = false;
+    track.addEventListener("scroll", () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+
+    // auto-advance (quotes): pauses for hover, keyboard focus, hidden tabs, off-screen, and reduced motion
+    let playing = loops && !reduceMotion, hovered = false, focused = false, onScreen = true, elapsed = 0, last = 0;
+    const setPlaying = (on) => {
+      playing = on;
+      slider.classList.toggle("is-paused", !on);
+      if (toggle) toggle.setAttribute("aria-label", on ? "Pause the quotes" : "Play the quotes");
+    };
+    const restart = () => { elapsed = 0; if (bar) bar.style.transform = "scaleX(0)"; };
+    if (prev) prev.addEventListener("click", () => { restart(); go(current() - 1); });
+    if (next) next.addEventListener("click", () => { restart(); go(current() + 1); });
+    if (!loops) return;
+    setPlaying(playing);
+    if (toggle) toggle.addEventListener("click", () => { setPlaying(!playing); });
+    slider.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") hovered = true; });
+    slider.addEventListener("pointerleave", () => { hovered = false; });
+    slider.addEventListener("focusin", () => { focused = true; });
+    slider.addEventListener("focusout", (e) => { if (!slider.contains(e.relatedTarget)) focused = false; });
+    if ("IntersectionObserver" in window) new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; }, { threshold: 0.25 }).observe(slider);
+    const frame = (t) => {
+      const dt = last ? Math.min(1000, t - last) : 0; last = t;
+      if (playing && !hovered && !focused && onScreen && !document.hidden) {
+        elapsed += dt;
+        if (elapsed >= interval) { elapsed = 0; go(current() + 1); }
+      }
+      if (bar) bar.style.transform = `scaleX(${Math.min(1, elapsed / interval)})`;
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  });
+
+  /* ---------- values drawer (home): a preview row that opens into the posters ---------- */
+  $$("[data-values-block]").forEach((block) => {
+    const drawer = $("[data-values-drawer]", block);
+    if (!drawer) return;
+    const sync = () => block.classList.toggle("is-open", drawer.open);
+    drawer.addEventListener("toggle", sync);
+    sync();
+    $$("[data-open-value]", block).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        drawer.open = true;
+        sync();
+        const slot = $$(".poster-slot", drawer)[Number(btn.dataset.openValue)];
+        if (!slot) return;
+        requestAnimationFrame(() => {
+          slot.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+          const poster = slot.querySelector(".poster");
+          if (poster) poster.focus({ preventScroll: true });
+          slot.classList.add("is-called");
+          setTimeout(() => slot.classList.remove("is-called"), 1600);
+        });
+      });
+    });
   });
 
   /* ---------- list filters (lab-note topics, project kinds) ---------- */

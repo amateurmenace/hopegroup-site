@@ -1,30 +1,28 @@
-<section class="section" id="notes">
-  <div class="wrap">
-    <div class="sec-head sec-head--row">
-      <div>
-        <p class="eyebrow">{{ home.notes.eyebrow }}</p>
-        <h2>{{ home.notes.headline }}</h2>
-        <p class="lede">{{ home.notes.intro }}</p>
-      </div>
-      <a class="link-arrow" href="{{ '/lab-notes/' | link }}">All lab notes</a>
+<section class="section notebook-section" id="notes">
+  <div class="wrap notebook-wrap">
+    <div class="notebook-head">
+      <p class="eyebrow">{{ home.notes.eyebrow }}</p>
+      <h2>{{ home.notes.headline }}</h2>
+      <p class="notebook-head__sub">{{ home.notes.intro }}</p>
+      <p class="notebook-head__links">
+        <a class="link-arrow" href="{{ '/lab-notes/' | link }}">All lab notes</a>
+        <a class="link-arrow link-arrow--quiet" href="{{ '/news/' | link }}">News</a>
+        <a class="link-arrow link-arrow--quiet" href="{{ '/press/' | link }}">Press</a>
+      </p>
     </div>
-    <div class="notes">
-      {% for p in collections.labnotes | limit(3) %}
-      <a class="note-card" href="{{ p.url | link }}">
-        <span class="chips">{% for t in p.data.topics %}<span class="chip chip--sm">{{ t }}</span>{% endfor %}</span>
-        <span class="note-card__body">
-          <span class="note-card__title">{{ p.data.title }}</span>
-          <span class="note-card__summary">{{ p.data.summary }}</span>
-        </span>
-        <span class="note-card__meta">{{ p.data.author }} · {{ p.date | readableDate("LLL d, yyyy") }} · {{ p.templateContent | readingTime }} min read</span>
-      </a>
-      {% endfor %}
-    </div>
-    <div class="news-strip">
-      {% for n in collections.news | limit(3) %}
-      <a href="{{ n.url | link }}"><span class="post-row__meta">News · {{ n.data.date_display or (n.date | readableDate("LLL d, yyyy")) }}</span><span class="news-strip__t">{{ n.data.title }}</span></a>
-      {% endfor %}
-      <a href="{{ '/press/' | link }}"><span class="post-row__meta">Press</span><span class="news-strip__t">Coverage, talks, and the media kit</span></a>
+    <div class="notebook">
+      <span class="notebook__holes" aria-hidden="true"><i></i><i></i><i></i></span>
+      <ol class="notebook__entries">
+        {% for p in collections.labnotes | limit(3) %}
+        <li>
+          <a class="nb-entry" href="{{ p.url | link }}">
+            <time class="nb-entry__date" datetime="{{ p.date | isoDate }}">{{ p.date | readableDate("LLL d") }}</time>
+            <span class="nb-entry__title">{{ p.data.title }}</span>
+            <span class="nb-entry__meta">{{ p.data.author }} · {{ p.templateContent | readingTime }} min read</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
     </div>
   </div>
 </section>
