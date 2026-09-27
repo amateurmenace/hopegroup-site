@@ -2,7 +2,7 @@
 {% if fp %}
 <section class="shelf" id="featured" aria-labelledby="featured-title">
   <div class="wrap">
-    <div class="tray">
+    <div class="tray{% if fp.data.video and fp.data.video.id %} tray--video{% endif %}">
       <a class="tray__visual" href="{{ fp.url | link }}" tabindex="-1" aria-hidden="true">
         {% if fp.data.glyph == 'lookout' %}{% include "partials/mini-radar.njk" %}{% elif fp.data.glyph %}{% set glyph = fp.data.glyph %}{% include "partials/glyph.njk" %}{% elif fp.data.thumb or fp.data.image %}<img src="{{ (fp.data.thumb or fp.data.image) | link }}" alt="">{% endif %}
       </a>
@@ -10,12 +10,18 @@
         <p class="eyebrow tray__eyebrow">{{ home.featured.eyebrow }}{% if fp.data.status %}<span class="tray__status">{{ fp.data.status }}</span>{% endif %}</p>
         <h2 class="tray__name" id="featured-title"><a href="{{ fp.url | link }}">{{ fp.data.name or fp.data.short_client or fp.data.client }}</a></h2>
         <p class="tray__line">{{ home.featured.line }}</p>
+        <div class="tray__actions">
+          {% set goto = fp.data.app_url or fp.url %}
+          <a class="btn btn-primary btn-sm" href="{{ goto | link }}"{% if goto | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ home.featured.secondary_label }} {% if goto | isExternal %}<svg class="tray__go-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><path d="M7 13 13 7M8 7h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden"> (opens {{ goto | replace("https://", "") | replace("http://", "") }} in a new tab)</span>{% else %}{% include "partials/arrow.njk" %}{% endif %}</a>
+          <a class="link-arrow" href="{{ fp.url | link }}">{{ home.featured.primary_label }}</a>
+        </div>
       </div>
-      <div class="tray__actions">
-        <a class="btn btn-primary btn-sm" href="{{ fp.url | link }}">{{ home.featured.primary_label }} {% include "partials/arrow.njk" %}</a>
-        {% set goto = fp.data.app_url or fp.url %}
-        <a class="btn btn-ghost btn-sm tray__go" href="{{ goto | link }}"{% if goto | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ home.featured.secondary_label }} {% if goto | isExternal %}<svg class="tray__go-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><path d="M7 13 13 7M8 7h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden"> (opens {{ goto | replace("https://", "") | replace("http://", "") }} in a new tab)</span>{% else %}{% include "partials/arrow.njk" %}{% endif %}</a>
-      </div>
+      {% if fp.data.video and fp.data.video.id %}
+      <a class="tray__media" href="https://youtu.be/{{ fp.data.video.id }}" target="_blank" rel="noopener">
+        <span class="tray__thumb"><img src="{{ ('/assets/img/video/' + fp.data.video.id + '.jpg') | link }}" alt="" loading="lazy"><span class="tray__play" aria-hidden="true"><svg viewBox="0 0 20 20" width="16" height="16"><path d="M7 4.5v11l8.5-5.5z" fill="currentColor"/></svg></span></span>
+        <span class="tray__media-cap">{{ home.featured.video_label or "Watch the demo" }}{% if fp.data.video.duration %} · {{ fp.data.video.duration }}{% endif %}<span class="visually-hidden"> (opens YouTube in a new tab)</span></span>
+      </a>
+      {% endif %}
     </div>
   </div>
 </section>

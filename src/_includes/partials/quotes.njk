@@ -9,17 +9,19 @@
       {% for q in testimonials.items %}{% if q.featured or allQuotes %}{% include "partials/quote.njk" %}{% endif %}{% endfor %}
     </div>
     {% else %}
-    <div class="slider slider--quotes slider--single" data-slider data-autoplay="8000" aria-roledescription="carousel" aria-label="What partners say about The Hope Group">
-      <ul class="slider__track" data-slider-track>
-        {% for q in testimonials.items %}{% if q.featured or allQuotes %}<li class="slider__slide">{% include "partials/quote.njk" %}</li>{% endif %}{% endfor %}
-      </ul>
+    <div class="slider slider--quotes slider--single" data-slider data-autoplay="7000" aria-roledescription="carousel" aria-label="What partners say about The Hope Group">
+      <div class="slider__stage">
+        <button class="slider__arrow slider__arrow--prev" type="button" data-slider-prev aria-label="Previous quote">{% set dir = 'left' %}{% include "partials/chevron.njk" %}</button>
+        <ul class="slider__track" data-slider-track>
+          {% for q in testimonials.items %}{% if q.featured or allQuotes %}<li class="slider__slide">{% include "partials/quote.njk" %}</li>{% endif %}{% endfor %}
+        </ul>
+        <button class="slider__arrow slider__arrow--next" type="button" data-slider-next aria-label="Next quote">{% set dir = 'right' %}{% include "partials/chevron.njk" %}</button>
+      </div>
       <div class="slider__controls">
-        <button class="icon-btn" type="button" data-slider-prev aria-label="Previous quote">{% set dir = 'left' %}{% include "partials/chevron.njk" %}</button>
         <button class="icon-btn slider__toggle" type="button" data-slider-toggle aria-label="Pause the quotes">
           <svg class="icon-pause" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 4.5v11M13 4.5v11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           <svg class="icon-play" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 4.5v11l8.5-5.5z" fill="currentColor"/></svg>
         </button>
-        <button class="icon-btn" type="button" data-slider-next aria-label="Next quote">{% set dir = 'right' %}{% include "partials/chevron.njk" %}</button>
         <span class="slider__progress" aria-hidden="true"><i data-slider-progress></i></span>
         <span class="slider__count" data-slider-count></span>
       </div>

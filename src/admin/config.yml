@@ -127,8 +127,9 @@ collections:
         widget: "object"
         required: false
         fields:
-          - { label: "YouTube video ID", name: "id", widget: "string", required: false }
+          - { label: "YouTube video ID", name: "id", widget: "string", required: false, hint: "Save a thumbnail as assets/img/video/<id>.jpg" }
           - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Length, e.g. 4 min", name: "duration", widget: "string", required: false }
       - { label: "External link", name: "link", widget: "string", required: false }
       - { label: "External link label", name: "link_label", widget: "string", required: false }
       - { label: "Glyph (tools only)", name: "glyph", widget: "select", options: ["lookout", "driftwood", "generic"], required: false }
@@ -270,6 +271,7 @@ collections:
             fields:
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Subtitle under the map", name: "map_subtitle", widget: "string", required: false }
               - label: "Primary button"
                 name: "primary_cta"
                 widget: "object"
@@ -285,8 +287,9 @@ collections:
               - { label: "Project", name: "project", widget: "relation", collection: "work", value_field: "{{slug}}", search_fields: ["client", "title", "short_client"], display_fields: ["short_client", "client"], hint: "Project Lookout gets the little radar; other projects show their glyph or thumbnail. The status line comes from the project itself." }
               - { label: "Label", name: "eyebrow", widget: "string" }
               - { label: "One line about it", name: "line", widget: "string" }
-              - { label: "Case study button label", name: "primary_label", widget: "string" }
-              - { label: "Second button label", name: "secondary_label", widget: "string", hint: "Opens the project's app when it has one (e.g. projectlookout.app), otherwise its project page." }
+              - { label: "Case study link label", name: "primary_label", widget: "string", hint: "Underlined link to the project page." }
+              - { label: "Main button label", name: "secondary_label", widget: "string", hint: "Filled button. Opens the project's app when it has one (e.g. projectlookout.app), otherwise its project page." }
+              - { label: "Video label", name: "video_label", widget: "string", required: false, hint: "Caption under the demo video thumbnail (uses the project's video)." }
           - { label: "Values: one-line intro on the home page", name: "values_line", widget: "string", required: false }
           - label: "Work with us band"
             name: "start"

@@ -6,6 +6,7 @@ description: "The Hope Group is a Boston ethical AI lab building privacy first s
 ---
 <section class="hero3" id="top">
   <canvas class="hero3__canvas" id="neighborhood" aria-hidden="true"></canvas>
+  {% if home.hero.map_subtitle %}<p class="hero3__subtitle">{{ home.hero.map_subtitle }}</p>{% endif %}
   <div class="wrap hero3__inner">
     <div class="hero3__text">
       <p class="eyebrow">{{ site.eyebrow }}</p>

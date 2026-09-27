@@ -1,24 +1,24 @@
 ---
 layout: layouts/base.njk
 permalink: "/philosophy{{ ext }}"
-title: Philosophy
+title: The Hope Standard
 description: "What The Hope Group believes about AI, the six values it builds by, The Hope Standard and how each part is checked, and the stack behind it, including where your data goes."
 ---
 <header class="page-head">
   <div class="wrap">
-    <p class="eyebrow">Philosophy</p>
+    <p class="eyebrow">The Hope Standard</p>
     <h1>Technology that loves its neighbor.</h1>
     <p class="lede">A lab needs a reason to exist beyond what it can bill for. Ours is a vision borrowed from Dr. King, a plain statement of what we hold to, six values we can point to in our code, a standard we publish so anyone can hold us to it, and the bench we build on.</p>
     <nav class="subnav subnav--page" aria-label="On this page">
-      <a href="#north-star">North star</a><a href="#beliefs">What we hold to</a><a href="#values">Values</a><a href="#standard">The Hope Standard</a><a href="#data">Where your data goes</a><a href="#stack">The stack</a>
+      <a href="#north-star">North star</a><a href="#beliefs">What we hold to</a><a href="#standard">The Hope Standard</a><a href="#values">Values</a><a href="#data">Where your data goes</a><a href="#stack">The stack</a>
     </nav>
   </div>
 </header>
 {% set compact = false %}
 {% include "partials/vision.njk" %}
 {% include "partials/beliefs.njk" %}
-{% include "partials/values.njk" %}
 {% include "partials/standard.njk" %}
+{% include "partials/values.njk" %}
 <section class="section section--paper2" id="data">
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Local AI</p><h2>Some of the most sensitive work should not have to leave the building.</h2><p class="lede">Most of the AI industry's privacy problems come from one habit: sending everything to someone else's computer. We are pioneering the alternative inside apps like ours: local models for the steps that need them, without pretending it is our default for everything yet. Toggle the diagram to see the difference.</p></div>

@@ -48,7 +48,7 @@
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const wide = W > 900;
-      const region = wide ? { x: W * 0.40, y: H * 0.07, w: W * 0.57, h: H * 0.86 } : { x: W * 0.05, y: H * 0.06, w: W * 0.90, h: H * 0.88 };
+      const region = wide ? { x: W * 0.40, y: H * 0.05, w: W * 0.57, h: H * 0.8 } : { x: W * 0.05, y: H * 0.06, w: W * 0.90, h: H * 0.88 };
       const scale = Math.min(region.w / 100, region.h / 100);
       const ox = region.x + (region.w - 100 * scale) / 2, oy = region.y + (region.h - 100 * scale) / 2;
       seed = 617; dots = []; pairs = []; hoods = [];
@@ -62,6 +62,14 @@
         }
         hoods.push({ name: name.toUpperCase(), cx, cy, r, wgt, side, start, end: dots.length, lit: 0, wide });
       });
+      // the subtitle sits just under the drawn neighborhoods
+      const heroEl = canvas.closest(".hero3");
+      if (heroEl) {
+        const mapBottom = Math.max(...hoods.map((h) => h.cy + h.r + (h.side === "s" ? 18 : 0)));
+        heroEl.style.setProperty("--map-cx", `${ox + 50 * scale}px`);
+        heroEl.style.setProperty("--map-bottom", `${Math.round(mapBottom + 14)}px`);
+        heroEl.classList.add("has-map");
+      }
       for (const h of hoods) {
         const link = h.r * 0.8;
         for (let i = h.start; i < h.end; i++) for (let j = i + 1; j < h.end; j++) {

@@ -18,8 +18,9 @@ services:
   - Development
   - Deployment and licensing
 video:
-  id: CWeu-GJgBf0
-  title: "Project Lookout demo"
+  id: wcDMptHEjuU
+  title: "Project Lookout introduction"
+  duration: "4 min"
 thumb: /assets/img/lookout/thumb.jpg
 thumb_alt: Project Lookout title card with the radar mark
 image: /assets/img/lookout/landing.jpg
