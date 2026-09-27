@@ -13,7 +13,8 @@
       </div>
       <div class="tray__actions">
         <a class="btn btn-primary btn-sm" href="{{ fp.url | link }}">{{ home.featured.primary_label }} {% include "partials/arrow.njk" %}</a>
-        {% if fp.data.video and fp.data.video.id %}<a class="tray__video" href="https://www.youtube.com/watch?v={{ fp.data.video.id }}" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" width="12" height="12" aria-hidden="true" focusable="false"><path d="M6 4v12l10-6z" fill="currentColor"/></svg>{{ home.featured.secondary_label }}</a>{% endif %}
+        {% set goto = fp.data.app_url or fp.url %}
+        <a class="btn btn-ghost btn-sm tray__go" href="{{ goto | link }}"{% if goto | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ home.featured.secondary_label }} {% if goto | isExternal %}<svg class="tray__go-icon" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><path d="M7 13 13 7M8 7h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden"> (opens {{ goto | replace("https://", "") | replace("http://", "") }} in a new tab)</span>{% else %}{% include "partials/arrow.njk" %}{% endif %}</a>
       </div>
     </div>
   </div>
