@@ -13,5 +13,15 @@
   "funding_contact": "express@commcorp.org",
   "linkedin": "https://www.linkedin.com/in/revchrishope/",
   "response_promise": "A member of the lab replies personally within one business day.",
-  "form_action": ""
+  "form_action": "",
+  "lookout_sources": "100+",
+  "banner": {
+    "enabled": true,
+    "text": "Lookout launches October 6 with BECMA. Free for members.",
+    "link_label": "Open Lookout",
+    "url": "https://projectlookout.app"
+  },
+  "analytics": {
+    "plausible_domain": ""
+  }
 }

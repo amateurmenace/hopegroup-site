@@ -21,7 +21,6 @@
       <nav aria-label="Mobile">
         <ul class="drawer__list">
           {% for item in navigation.primary %}<li><a href="{{ item.url | link }}">{{ item.label }}</a></li>{% endfor %}
-          <li><a href="{{ '/services/' | link }}">Training & technical assistance</a></li>
           <li><a href="{{ '/news/' | link }}">News</a></li>
           <li><a href="{{ '/press/' | link }}">Press</a></li>
           <li><a href="{{ '/contact/' | link }}">Contact</a></li>

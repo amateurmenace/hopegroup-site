@@ -7,13 +7,11 @@
     <div class="proof__stats">
       {% for s in recognition.stats %}
       <div class="proof__stat">
-        <span class="proof__n"><span{% if not s.plain %} data-count="{{ s.value }}"{% endif %}>{{ s.value }}</span>{% if s.suffix %}<em>{{ s.suffix }}</em>{% endif %}</span>
+        <span class="proof__n">{{ s.value }}{% if s.suffix %}<em>{{ s.suffix }}</em>{% endif %}</span>
         <span class="proof__l">{{ s.label }}</span>
       </div>
       {% endfor %}
     </div>
-    <ul class="proof__creds">
-      {% for b in recognition.badges %}<li><span class="proof__org">{{ b.org }}</span><span class="proof__cred">{{ b.title }}</span></li>{% endfor %}
-    </ul>
+    <p class="proof__row"><span class="visually-hidden">Certified and recognized by: </span>{% for b in recognition.badges %}<span class="proof__org" title="{{ b.title }}">{{ b.org }}</span>{% endfor %}</p>
   </div>
 </section>

@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+permalink: "/waitlist{{ ext }}"
+title: Join the Lookout waitlist
+description: "Project Lookout launches October 6 with BECMA, free for its members. Not a member? Join the waitlist and we will tell you when Lookout opens to your business or network."
+---
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Project Lookout · Launching October 6</p>
+    <h1>Join the Lookout waitlist.</h1>
+    <p class="lede">Lookout launches October 6 with BECMA, free for its members. Not a member? Leave your details and we will tell you when Lookout opens to your business or network.</p>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap contact">
+    <form class="form" name="waitlist" method="POST" action="{{ site.form_action }}" data-mailto="{{ site.email }}" data-subject="Lookout waitlist" data-thanks="{{ '/thanks/' | link }}">
+      <input type="hidden" name="_subject" value="Lookout waitlist">
+      <input type="hidden" name="source" data-source-field>
+      <div class="field"><label for="w-name">Your name</label><input id="w-name" name="name" required autocomplete="name"></div>
+      <div class="field"><label for="w-email">Email</label><input id="w-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="w-org">Business or organization</label><input id="w-org" name="organization" autocomplete="organization"></div>
+      <div class="field"><label for="w-type">Which fits you best?</label>
+        <select id="w-type" name="type">
+          <option>Small business</option>
+          <option>Nonprofit</option>
+          <option>Chamber, network, or association</option>
+          <option>Funder or financial institution</option>
+          <option>Public agency</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Join the waitlist {% include "partials/arrow.njk" %}</button>
+      <p class="form__note">One email when Lookout opens to you. We never sell or share your details.{% if not site.form_action %} Sending opens a draft in your email app addressed to {{ site.email }}.{% endif %}</p>
+    </form>
+    <aside class="contact__side">
+      <div class="callout">
+        <p class="eyebrow">BECMA member?</p>
+        <p>Lookout is free for you at launch. Sign in on October 6 at <a href="https://projectlookout.app" target="_blank" rel="noopener">projectlookout.app</a>.</p>
+      </div>
+      <div class="callout">
+        <p class="eyebrow">What Lookout does</p>
+        <p>It sweeps {sources} grant, contract, and bid sources every night, checks every link, and ranks what fits your business, with every match explained.</p>
+        <p><a class="link-arrow" href="{{ '/work/project-lookout/' | link }}">Read the case study</a></p>
+      </div>
+    </aside>
+  </div>
+</section>

@@ -9,8 +9,13 @@
       </blockquote>
     </div>
     <div class="vision__body prose prose--lg">
+      {% if compact %}
+      <p>{{ vision.home_summary }}</p>
+      <p><a class="link-arrow" href="{{ '/philosophy/' | link }}#north-star">Read more</a></p>
+      {% else %}
       {% for p in vision.paragraphs %}<p>{{ p }}</p>{% endfor %}
-      {% if compact %}<p><a class="link-arrow" href="{{ '/philosophy/' | link }}">Read our philosophy and values</a></p>{% else %}<p class="vision__closing">{{ vision.closing }}</p>{% endif %}
+      <p class="vision__closing">{{ vision.closing }}</p>
+      {% endif %}
     </div>
   </div>
 </section>

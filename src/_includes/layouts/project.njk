@@ -44,7 +44,7 @@ layout: layouts/base.njk
   </div>
   {% if stats %}
   <section class="section section--tight"><div class="wrap"><div class="stats stats--flush">
-    {% for s in stats %}<div class="stat"><span class="stat__n"><span data-count="{{ s.value }}">{{ s.value }}</span>{{ s.suffix }}</span><span class="stat__l">{{ s.label }}</span></div>{% endfor %}
+    {% for s in stats %}<div class="stat"><span class="stat__n">{{ s.value }}{{ s.suffix }}</span><span class="stat__l">{{ s.label }}</span></div>{% endfor %}
   </div></div></section>
   {% endif %}
   {% if screens %}

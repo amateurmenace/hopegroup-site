@@ -5,10 +5,10 @@ name: Project Lookout
 kind: Tool
 sector: Procurement intelligence platform
 title: "Every opportunity your organization deserves, found and ranked for you"
-summary: A patent pending procurement-intelligence platform that sweeps 85+ grant, contract, and bid sources every night, verifies every link, and scores each opportunity against a member's real business profile with a formula it can explain. Free for the members of the networks it serves.
+summary: A patent pending procurement-intelligence platform that sweeps {sources} grant, contract, and bid sources every night, verifies every link, and scores each opportunity against a member's real business profile with a formula it can explain. Free for the members of the networks it serves.
 order: 1
 featured: true
-status: Patent pending · Live beta · Free for BECMA members
+status: Patent pending · Launching October 6 · Free for BECMA members
 glyph: lookout
 audience: Black- and Brown-owned small businesses and nonprofits, and the member networks that serve them. BECMA is the first network on the platform.
 app_url: https://projectlookout.app
@@ -26,14 +26,14 @@ image: /assets/img/lookout/landing.jpg
 image_alt: The Project Lookout landing page. Find your funding. Find your footing. Find your future.
 outcome: The business development team a small organization never had. One ranked feed, a morning digest, and a pipeline from first sighting to won contract, for what used to cost about $12,000 a year per seat.
 facts:
-  - { label: "Product", value: "projectlookout.app · live beta" }
+  - { label: "Product", value: "projectlookout.app · launching October 6 with BECMA" }
   - { label: "Built with", value: "The Black Economic Council of Massachusetts, free for its members" }
   - { label: "Team", value: "Designed and developed by Stephen Walter · produced by Rev. Christopher Hope · quality tested by Yunzi Wan" }
   - { label: "Inspired by", value: "A collaboration with Nicole Wiggins of Jewn Enterprises" }
   - { label: "Stack", value: "Python · FastAPI · Postgres · React · Gemini · Google Cloud" }
   - { label: "Languages", value: "English and Spanish, full parity" }
 stats:
-  - { value: 85, suffix: "+", label: "Targeted sources swept nightly, plus the open web" }
+  - { value: "{sources}", suffix: "", label: "Sources swept nightly, plus the open web" }
   - { value: 6, suffix: "", label: "Automated jobs, nightly and weekly" }
   - { value: 2, suffix: " min", label: "For a live deep search, roughly" }
   - { value: 1400, suffix: "+", label: "Automated tests guarding every release" }
@@ -51,7 +51,7 @@ screens:
   - { image: /assets/img/lookout/impact-report.jpg, caption: "Network admins get reporting that is a to-do list, not just a dashboard: how the network is doing and where to step in." }
   - { image: /assets/img/lookout/cost.jpg, caption: "The tools it replaces cost about $12,000 a year per seat, each locked to one lane. Lookout covers every lane, and members pay nothing." }
 how_it_works:
-  - { title: "Sources", text: "85+ Massachusetts, federal, and supplier-diversity portals, plus the open web." }
+  - { title: "Sources", text: "{sources} Massachusetts, federal, and supplier-diversity portals, plus the open web." }
   - { title: "Feeds and scrapes", text: "Nightly direct pipes from SAM.gov, Grants.gov, and COMMBUYS, at no cost." }
   - { title: "Grounded AI", text: "A search-grounded language model hunts for what the feeds miss." }
   - { title: "Verification", text: "Every URL is HTTP-checked. Verified, or honestly labeled." }
@@ -60,7 +60,7 @@ how_it_works:
   - { title: "Your feed", text: "Ranked matches, a digest, and alerts, with the receipts attached." }
 capabilities:
   - title: Finds every opportunity
-    text: A deep, grounded AI sweep across 85+ procurement, grant, and job-listing sources every day, so your team does not have to run thousands of searches across portals with a design straight out of 1999.
+    text: A deep, grounded AI sweep across {sources} procurement, grant, and job-listing sources every day, so your team does not have to run thousands of searches across portals with a design straight out of 1999.
   - title: Matches each one to you
     text: Scores every opportunity against your real business profile with a transparent five-factor formula, and shows why it fits and what is missing.
   - title: Verifies before you see it
@@ -107,9 +107,9 @@ links:
   - { label: "Read the full case study on weirdmachine.org", url: "https://weirdmachine.org/work/project-lookout" }
 cta_label: Schedule a platform demo
 ---
-Big companies win public funding because they can afford whole business-development teams to find and chase it. Every week, millions of dollars in opportunities go out across Massachusetts: RFPs, contracts, grants, preferred-vendor lists, gigs. To find them by hand you would have to run thousands of searches, many times a day, across almost a hundred portals, each with its own login, before breakfast, every day.
+Big companies win public funding because they can afford whole business-development teams to find and chase it. Every week, millions of dollars in opportunities go out across Massachusetts: RFPs, contracts, grants, preferred-vendor lists, gigs. To find them by hand you would have to run thousands of searches, many times a day, across {sources} portals, each with its own login, before breakfast, every day.
 
-Project Lookout gives that same firepower to the underserved and underestimated Black- and Brown-owned small businesses and nonprofits who cannot afford it. It sweeps 85+ procurement, grant, and job-listing sources every night, verifies every link, reads each posting into clean facts, and scores each opportunity against a member's real business profile with a transparent, explainable formula. The result is a personal, ranked feed where every match shows why it fits and what is missing, plus a daily email digest, plain-language search, AI tools that read complex RFPs, and a pipeline that tracks a lead from first sighting to won contract.
+Project Lookout gives that same firepower to the underserved and underestimated Black- and Brown-owned small businesses and nonprofits who cannot afford it. It sweeps {sources} procurement, grant, and job-listing sources every night, verifies every link, reads each posting into clean facts, and scores each opportunity against a member's real business profile with a transparent, explainable formula. The result is a personal, ranked feed where every match shows why it fits and what is missing, plus a daily email digest, plain-language search, AI tools that read complex RFPs, and a pipeline that tracks a lead from first sighting to won contract.
 
 It is free for the members of the networks it serves. The tools it replaces cost around $12,000 a year per seat, and each is locked to a single lane: one for nonprofit grants, another for government procurement, another for construction bids. Lookout is one place, every lane, matched to you.
 

@@ -6,17 +6,20 @@
     {
       "value": 50,
       "suffix": "+",
-      "label": "Organizations served across Greater Boston, and growing"
+      "label": "Organizations served across Greater Boston, and growing",
+      "plain": true
     },
     {
       "value": 100,
       "suffix": "%",
-      "label": "Engagement and recommendation rate across BECMA AI Series cohorts"
+      "label": "Engagement and recommendation rate across BECMA AI Series cohorts",
+      "plain": true
     },
     {
-      "value": 85,
-      "suffix": "+",
-      "label": "Grant, contract, and bid sources Project Lookout sweeps every night"
+      "value": "{sources}",
+      "suffix": "",
+      "label": "Grant, contract, and bid sources Project Lookout sweeps every night",
+      "plain": true
     },
     {
       "value": 2021,
@@ -42,7 +45,7 @@
       "detail": "Eligible Massachusetts organizations may use state workforce funds to offset the cost of our training."
     },
     {
-      "org": "United States Senate",
+      "org": "U.S. Senate",
       "title": "Congressional Commendation",
       "detail": "Recognized by U.S. Senator Ed Markey for outstanding contributions to technology and community advancement."
     },

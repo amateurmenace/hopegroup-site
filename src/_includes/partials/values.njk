@@ -3,7 +3,7 @@
     <div class="sec-head">
       <p class="eyebrow">Our values</p>
       <h2>{{ values.headline }}</h2>
-      <p class="lede">{{ values.intro }}</p>
+      <p class="lede">{% if compact and home.values_line %}{{ home.values_line }}{% else %}{{ values.intro }}{% endif %}</p>
       {% if not compact %}<p class="aside">{{ values.aside }}</p>{% endif %}
     </div>
     {% if compact %}

@@ -9,7 +9,7 @@
       {% for q in testimonials.items %}{% if q.featured or allQuotes %}{% include "partials/quote.njk" %}{% endif %}{% endfor %}
     </div>
     {% else %}
-    <div class="slider slider--quotes" data-slider data-autoplay="7000" aria-roledescription="carousel" aria-label="What partners say about The Hope Group">
+    <div class="slider slider--quotes slider--single" data-slider data-autoplay="8000" aria-roledescription="carousel" aria-label="What partners say about The Hope Group">
       <ul class="slider__track" data-slider-track>
         {% for q in testimonials.items %}{% if q.featured or allQuotes %}<li class="slider__slide">{% include "partials/quote.njk" %}</li>{% endif %}{% endfor %}
       </ul>

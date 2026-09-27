@@ -107,7 +107,9 @@ collections:
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Order", name: "order", widget: "number", default: 99, value_type: "int" }
       - { label: "Show on home page", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Short display name (tools)", name: "name", widget: "string", required: false, hint: "e.g. Project Lookout. When set, it becomes the page headline and the title above becomes the subtitle." }
       - { label: "Tile thumbnail (optional, 16:10)", name: "thumb", widget: "image", required: false, hint: "Shown on project tiles. Falls back to the image below." }
+      - { label: "Tile thumbnail alt text", name: "thumb_alt", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Image alt text", name: "image_alt", widget: "string", required: false }
       - { label: "Services", name: "services", widget: "list", required: false }
@@ -155,6 +157,44 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Text", name: "text", widget: "text" }
       - { label: "Call to action label (tools only)", name: "cta_label", widget: "string", required: false }
+      - label: "At a glance (tools)"
+        name: "facts"
+        widget: "list"
+        required: false
+        fields: [{ label: "Label", name: "label", widget: "string" }, { label: "Value", name: "value", widget: "string" }]
+      - label: "Stats (tools)"
+        name: "stats"
+        widget: "list"
+        required: false
+        hint: "Write {sources} to use the one Lookout source count from Site settings."
+        fields: [{ label: "Value", name: "value", widget: "string" }, { label: "Suffix", name: "suffix", widget: "string", required: false }, { label: "Label", name: "label", widget: "string" }]
+      - label: "Screens (tools)"
+        name: "screens"
+        widget: "list"
+        required: false
+        fields: [{ label: "Image", name: "image", widget: "image" }, { label: "Caption", name: "caption", widget: "text" }]
+      - { label: "How it works heading (tools)", name: "how_it_works_title", widget: "string", required: false }
+      - label: "How it works steps (tools)"
+        name: "how_it_works"
+        widget: "list"
+        required: false
+        fields: [{ label: "Title", name: "title", widget: "string" }, { label: "Text", name: "text", widget: "text" }]
+      - { label: "Capabilities heading (tools)", name: "capabilities_title", widget: "string", required: false }
+      - label: "Design principles (tools)"
+        name: "principles"
+        widget: "list"
+        required: false
+        fields: [{ label: "Title", name: "title", widget: "string" }, { label: "Text", name: "text", widget: "text" }]
+      - label: "Hard problems (tools)"
+        name: "challenges"
+        widget: "list"
+        required: false
+        fields: [{ label: "Kicker", name: "kicker", widget: "string" }, { label: "Title", name: "title", widget: "string" }, { label: "Text", name: "text", widget: "text" }]
+      - label: "Elsewhere links (tools)"
+        name: "links"
+        widget: "list"
+        required: false
+        fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string" }]
       - { label: "Draft (hidden from the site)", name: "draft", widget: "boolean", default: false, required: false }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
@@ -206,6 +246,20 @@ collections:
           - { label: "Funding contact email", name: "funding_contact", widget: "string" }
           - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
           - { label: "Response promise (contact page)", name: "response_promise", widget: "string" }
+          - { label: "Lookout source count", name: "lookout_sources", widget: "string", hint: "Used everywhere the site writes {sources}, e.g. 100+." }
+          - label: "Top banner"
+            name: "banner"
+            widget: "object"
+            fields:
+              - { label: "Show the banner", name: "enabled", widget: "boolean", default: true }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Link label", name: "link_label", widget: "string", required: false }
+              - { label: "Link URL", name: "url", widget: "string", required: false }
+          - label: "Analytics"
+            name: "analytics"
+            widget: "object"
+            fields:
+              - { label: "Plausible site domain (blank = no analytics)", name: "plausible_domain", widget: "string", required: false, hint: "e.g. hopegroup.ai, after creating the site in a Plausible account. Cookieless; the footer updates itself." }
       - name: home
         label: "Home page"
         file: "src/_data/home.json"
@@ -216,7 +270,6 @@ collections:
             fields:
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Lede", name: "lede", widget: "text" }
-              - { label: "Figure caption", name: "figure_caption", widget: "string" }
               - label: "Primary button"
                 name: "primary_cta"
                 widget: "object"
@@ -225,6 +278,16 @@ collections:
                 name: "secondary_cta"
                 widget: "object"
                 fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string" }]
+          - label: "Featured project (the tray under the hero)"
+            name: "featured"
+            widget: "object"
+            fields:
+              - { label: "Project", name: "project", widget: "relation", collection: "work", value_field: "{{slug}}", search_fields: ["client", "title", "short_client"], display_fields: ["short_client", "client"], hint: "Project Lookout gets the little radar; other projects show their glyph or thumbnail. The status line comes from the project itself." }
+              - { label: "Label", name: "eyebrow", widget: "string" }
+              - { label: "One line about it", name: "line", widget: "string" }
+              - { label: "Case study button label", name: "primary_label", widget: "string" }
+              - { label: "Demo video link label", name: "secondary_label", widget: "string" }
+          - { label: "Values: one-line intro on the home page", name: "values_line", widget: "string", required: false }
           - label: "Work with us band"
             name: "start"
             widget: "object"
@@ -294,6 +357,7 @@ collections:
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
           - { label: "Headline", name: "headline", widget: "string" }
           - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "p", widget: "text" } }
+          - { label: "Short version for the home page (2–3 sentences)", name: "home_summary", widget: "text" }
           - { label: "Pull quote", name: "pullquote", widget: "text" }
           - { label: "Pull quote attribution", name: "pullquote_by", widget: "string" }
           - { label: "Closing line", name: "closing", widget: "text" }
@@ -363,10 +427,9 @@ collections:
             name: "stats"
             widget: "list"
             fields:
-              - { label: "Value (number)", name: "value", widget: "number", value_type: "int" }
+              - { label: "Value", name: "value", widget: "string", hint: "Write {sources} to use the one Lookout source count." }
               - { label: "Suffix", name: "suffix", widget: "string", required: false }
               - { label: "Label", name: "label", widget: "string" }
-              - { label: "Show as plain number (no count-up)", name: "plain", widget: "boolean", required: false, default: false }
           - label: "Badges"
             name: "badges"
             widget: "list"

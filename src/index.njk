@@ -12,11 +12,10 @@ description: "The Hope Group is a Boston ethical AI lab building privacy first s
       <h1>{{ home.hero.headline }}</h1>
       <p class="hero3__lede">{{ home.hero.lede }}</p>
       <div class="hero__actions">
-        <a class="btn btn-primary" href="{{ home.hero.primary_cta.url | link }}">{{ home.hero.primary_cta.label }} {% include "partials/arrow.njk" %}</a>
-        <a class="btn btn-ghost" href="{{ (site.booking_url or home.hero.secondary_cta.url) | link }}">{{ home.hero.secondary_cta.label }}</a>
+        <a class="btn btn-primary" href="{{ home.hero.primary_cta.url | link }}"{% if home.hero.primary_cta.url | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ home.hero.primary_cta.label }} {% include "partials/arrow.njk" %}</a>
+        <a class="btn btn-ghost" href="{{ home.hero.secondary_cta.url | link }}"{% if home.hero.secondary_cta.url | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ home.hero.secondary_cta.label }}</a>
       </div>
     </div>
-    <p class="hero3__caption">{{ home.hero.figure_caption }}</p>
   </div>
 </section>
 {% include "partials/featured.njk" %}

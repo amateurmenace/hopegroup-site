@@ -21,7 +21,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Public+Sans:wght@400;500;600;700&display=swap">
-  {% if page.url == '/' %}<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@800&text=lookut&display=swap">{% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | link }}">
   <script>document.documentElement.classList.replace('no-js','js');</script>
   {% if page.url == '/' %}
@@ -29,9 +28,25 @@
   {"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}","email":"{{ site.email }}","description":"{{ site.description }}","foundingDate":"{{ site.founded }}","address":{"@type":"PostalAddress","streetAddress":"89 South St","addressLocality":"Boston","addressRegion":"MA","addressCountry":"US"},"logo":"{{ site.url }}/assets/brand/mark.svg"}
   </script>
   {% endif %}
+  {% if site.analytics and site.analytics.plausible_domain %}
+  <script>
+    // Link tags: ?src=becma works like Plausible's native ?ref=becma.
+    (function () { try { var q = new URLSearchParams(location.search); if (q.has("src") && !q.has("ref") && !q.has("utm_source")) { q.set("ref", q.get("src")); history.replaceState(null, "", location.pathname + "?" + q.toString() + location.hash); } } catch (e) {} })();
+  </script>
+  <script defer data-domain="{{ site.analytics.plausible_domain }}" src="https://plausible.io/js/script.js"></script>
+  {% endif %}
 </head>
 <body class="{{ bodyClass }}" id="page-top">
   <a class="skip" href="#main">Skip to content</a>
+  {% if site.banner and site.banner.enabled %}
+  <div class="banner" role="region" aria-label="Announcement">
+    <div class="wrap banner__inner">
+      <span class="banner__pulse" aria-hidden="true"></span>
+      <p class="banner__text">{{ site.banner.text }}</p>
+      {% if site.banner.url %}<a class="banner__link" href="{{ site.banner.url | link }}"{% if site.banner.url | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ site.banner.link_label }} {% include "partials/arrow.njk" %}</a>{% endif %}
+    </div>
+  </div>
+  {% endif %}
   {% include "partials/header.njk" %}
   <main id="main">
     {{ content | safe }}

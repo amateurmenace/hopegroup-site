@@ -1,45 +1,27 @@
 {
   "hero": {
-    "headline": "We build AI the way it should be built.",
-    "lede": "The Hope Group is an ethical AI lab. We design and build software that protects privacy, audits for bias, and keeps people in control. Then we help organizations adopt AI with the same care. Our work is proof that responsible technology is not a slower path. It is the better one.",
-    "figure_caption": "Boston's neighborhoods. Move across them: when one lights up, its neighbors do too.",
+    "headline": "We set the standard for AI that serves people.",
+    "lede": "The Hope Standard defines how AI should protect privacy, check for bias, and keep people in control. We build products that prove it works.",
     "primary_cta": {
-      "label": "See our projects",
-      "url": "/work/"
+      "label": "Open Lookout",
+      "url": "https://projectlookout.app"
     },
     "secondary_cta": {
-      "label": "Book a free AI strategy call",
-      "url": "/contact/"
+      "label": "Join the waitlist",
+      "url": "/waitlist/"
     }
   },
   "featured": {
     "project": "project-lookout",
     "eyebrow": "Featured project",
-    "tagline": "Find your funding. Find your footing.",
-    "tagline_em": "Find your future.",
-    "body": "Every grant, contract, and bid across Massachusetts and the federal government, found overnight, checked, and ranked for your business, with every match explained. Tools like it cost about $12,000 a seat. Lookout is free for BECMA members.",
-    "stats": [
-      {
-        "value": "85+",
-        "label": "Sources swept nightly"
-      },
-      {
-        "value": "~2 min",
-        "label": "For a live deep search"
-      },
-      {
-        "value": "$0",
-        "label": "For BECMA members"
-      }
-    ],
-    "primary_label": "Open projectlookout.app",
-    "secondary_label": "Read the case study",
-    "video_label": "Watch the demo"
+    "line": "Every grant, contract, and bid your business deserves, found overnight and ranked for you.",
+    "primary_label": "Read the case study",
+    "secondary_label": "Watch the demo"
   },
   "start": {
     "eyebrow": "Work with us",
     "headline": "Ready to adopt AI? We will walk with you.",
-    "intro": "We assess your needs, recommend the right tools, train your team in plain language, and stay accountable for results. Tell us what you are up against and we will say, honestly, whether we can help.",
+    "intro": "Training, technical assistance, and tools, built with your team.",
     "paths": [
       {
         "icon": "training",
@@ -72,7 +54,7 @@
   "notes": {
     "eyebrow": "Lab notes",
     "headline": "What we are learning as we build.",
-    "intro": "Essays and explainers in plain language. If we cannot explain it simply, we should not be shipping it."
+    "intro": "Plain-language notes from the bench."
   },
   "services": {
     "eyebrow": "Technical assistance and training",
@@ -90,5 +72,6 @@
       "label": "See our projects",
       "url": "/work/"
     }
-  }
+  },
+  "values_line": "Decisions we make in code, in contracts, and in the classroom."
 }

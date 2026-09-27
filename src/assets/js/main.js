@@ -12,6 +12,7 @@
     const setOpen = (open) => {
       toggle.setAttribute("aria-expanded", String(open));
       toggle.querySelector(".nav-toggle__label").textContent = open ? "Close" : "Menu";
+      if (open) { const hdr = $(".site-header"); drawer.style.top = `${Math.max(0, hdr ? hdr.getBoundingClientRect().bottom : 68)}px`; }
       drawer.hidden = !open;
       document.body.classList.toggle("drawer-open", open);
       if (open) { const first = drawer.querySelector("a"); first && first.focus(); }
@@ -250,8 +251,15 @@
       const target = loops ? (i > m.max ? 0 : i < 0 ? m.max : i) : Math.min(m.max, Math.max(0, i));
       track.scrollTo({ left: target * m.step, behavior: reduceMotion ? "auto" : "smooth" });
     };
+    const meter = $("[data-slider-meter]", slider);
     const update = () => {
       const m = metrics(), i = current();
+      if (meter) {
+        const span = track.scrollWidth - track.clientWidth;
+        const share = Math.min(1, m.visible / n);
+        meter.style.width = `${share * 100}%`;
+        meter.style.left = `${(span > 0 ? track.scrollLeft / span : 0) * (1 - share) * 100}%`;
+      }
       if (count) count.textContent = m.visible > 1 ? `${i + 1}–${Math.min(i + m.visible, n)} of ${n}` : `${i + 1} of ${n}`;
       if (!loops) {
         if (prev) prev.disabled = i <= 0;
@@ -370,19 +378,34 @@
     history.pushState(null, "", url.hash);
   });
 
-  /* ---------- contact form: post to the configured endpoint, or open an email draft ---------- */
-  const form = $("form.form[data-mailto]");
-  if (form) {
+  /* ---------- where visitors came from: ?src=, ?ref=, ?source= or ?utm_source= (first-party, this tab only) ---------- */
+  let visitSource = "";
+  try {
+    const q = new URLSearchParams(location.search);
+    visitSource = (q.get("src") || q.get("ref") || q.get("source") || q.get("utm_source") || "").trim().slice(0, 60);
+    if (visitSource) sessionStorage.setItem("hg-source", visitSource);
+    else visitSource = sessionStorage.getItem("hg-source") || "";
+  } catch (err) { /* storage unavailable */ }
+  $$("[data-source-field]").forEach((input) => { input.value = visitSource; });
+
+  /* ---------- forms: post to the configured endpoint, or open a filled-in email draft ---------- */
+  $$("form.form[data-mailto]").forEach((form) => {
     form.addEventListener("submit", (e) => {
       if (form.getAttribute("action")) return;
       e.preventDefault();
-      const f = new FormData(form);
-      const subject = `Website inquiry from ${f.get("name") || "a visitor"}${f.get("organization") ? " (" + f.get("organization") + ")" : ""}`;
-      const body = [`Name: ${f.get("name") || ""}`, `Organization: ${f.get("organization") || ""}`, `Email: ${f.get("email") || ""}`, `Interest: ${f.get("interest") || ""}`, "", f.get("message") || ""].join("\n");
-      location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const lines = [];
+      new FormData(form).forEach((value, name) => {
+        if (name.startsWith("_") || !String(value).trim()) return;
+        const field = form.querySelector(`[name="${name}"]`);
+        const label = field && field.id ? form.querySelector(`label[for="${field.id}"]`) : null;
+        lines.push(`${label ? label.textContent.trim() : name.charAt(0).toUpperCase() + name.slice(1)}: ${value}`);
+      });
+      const who = form.querySelector('[name="name"]');
+      const subject = `${form.dataset.subject || "Website inquiry"}${who && who.value ? " from " + who.value : ""}`;
+      location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
       setTimeout(() => { location.href = form.dataset.thanks; }, 800);
     });
-  }
+  });
 
   /* ---------- copy buttons ---------- */
   $$("[data-copy]").forEach((btn) => {

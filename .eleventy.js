@@ -58,6 +58,15 @@ module.exports = function (eleventyConfig) {
     return a === b || a.startsWith(b);
   });
 
+  // One Lookout source count for the whole site: write {sources} anywhere (data, front matter, markdown)
+  // and it is filled from site.json at build time, so the number can never drift between pages.
+  const siteData = () => JSON.parse(require("fs").readFileSync(path.join(__dirname, "src/_data/site.json"), "utf8"));
+  eleventyConfig.addTransform("sources", function (content, outputPath) {
+    if (!outputPath || !/\.(html|xml)$/.test(outputPath)) return content;
+    return content.includes("{sources}") ? content.replace(/\{sources\}/g, siteData().lookout_sources || "") : content;
+  });
+  eleventyConfig.addFilter("isExternal", (url) => /^https?:\/\//.test(String(url || "")));
+
   // Dates
   const toDT = (d) => (d instanceof Date ? DateTime.fromJSDate(d, { zone: "utc" }) : DateTime.fromISO(String(d), { zone: "utc" }));
   eleventyConfig.addFilter("readableDate", (d, fmt = "LLLL d, yyyy") => toDT(d).toFormat(fmt));

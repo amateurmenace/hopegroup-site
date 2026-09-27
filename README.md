@@ -82,6 +82,29 @@ Decap CMS at `/admin/` uses the GitHub backend, so editors log in with GitHub ac
 
 `netlify.toml` is kept only in case you ever move hosting; it does nothing on GitHub Pages.
 
+## Launch tracking: where visitors come from
+
+**Link tags.** Add `?ref=` to every link you share, one name per channel:
+
+```
+https://hopegroup.ai/?ref=becma
+https://hopegroup.ai/?ref=linkedin
+https://hopegroup.ai/waitlist/?ref=newsletter
+```
+
+`?src=`, `?source=`, and `?utm_source=` work too. Two things read the tag:
+
+1. **The forms.** The waitlist and contact forms record the tag in a hidden "Source" field, so every sign-up says which link it came from. This works today with no account.
+2. **Visit counts (optional).** Create a site in [Plausible](https://plausible.io) (cookieless, no consent banner needed), then put the domain, e.g. `hopegroup.ai`, in **Site settings → Analytics → Plausible site domain**. Plausible lists `?ref=` tags under *Sources*; the site converts `?src=` to `?ref=` so either works. The footer's "No trackers, no cookies" line changes itself to say visits are counted privately.
+
+## Waitlist and contact form delivery
+
+GitHub Pages cannot receive form posts, so by default both forms open a filled-in email draft to `hello@hopegroup.ai`. **Before launch, set up a form endpoint** so sign-ups never depend on someone's email app: create a free [Formspree](https://formspree.io) form, then paste its URL into **Site settings → Contact form endpoint**. Both forms switch to it automatically, and the Source field comes along.
+
+## One Lookout source count
+
+Write `{sources}` anywhere in content (front matter, markdown, data files) and the build fills it from **Site settings → Lookout source count** (`lookout_sources` in `src/_data/site.json`, currently `100+`, matching the app's own copy). Change it once and every page follows.
+
 ## Editing content (for the team)
 
 1. Go to `hopegroup.ai/admin/` and log in.
@@ -106,6 +129,7 @@ hopecoded.com, and weirdmachine.org. Please check these before the DNS flip:
 - **Founded 2021** (the email) vs "Since 2020" (old site). The email wins here; change `founded` and `eyebrow` in `src/_data/site.json` if needed.
 - **Dates on seeded news/press items** are approximate where the source only gave a month ("May 2026"). The `date_display` field controls what shows.
 - **Booking link.** `booking_url` in `src/_data/site.json` is blank, so CTAs go to the contact form. Paste a Calendly/HubSpot link to send them straight to the calendar.
+- **Launch banner.** The top banner (Site settings → Top banner) reads "Lookout launches October 6 with BECMA. Free for members." Update or switch it off after launch day.
 - **Open Graph image.** `src/assets/img/og.jpg` is a screenshot of the hero; replace with a designed 1200×630 image whenever.
 
 ## Why not Squarespace code blocks?
