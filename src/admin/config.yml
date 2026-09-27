@@ -23,7 +23,7 @@ public_folder: "/assets/img/uploads"
 
 site_url: https://hopegroup.ai
 display_url: https://hopegroup.ai
-logo_url: https://amateurmenace.github.io/hopegroup-site/assets/brand/wordmark.svg
+logo_url: https://hopegroup.ai/assets/brand/wordmark.svg
 
 slug:
   encoding: "ascii"
