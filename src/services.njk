@@ -1,21 +1,37 @@
 ---
 layout: layouts/base.njk
 permalink: "/services{{ ext }}"
-title: Training & technical assistance
-description: "Hands-on AI training and technical assistance for small businesses, nonprofits, and public agencies, co-designed with your team. Approved Commonwealth Corporation provider; eligible Massachusetts organizations can use state workforce funds."
+eleventyComputed:
+  title: "{{ services.title }}"
+  description: "{{ services.description }}"
 ---
-<header class="page-head">
+<header class="page-head page-head--ways">
   <div class="wrap">
-    <p class="eyebrow">{{ home.services.eyebrow }}</p>
-    <h1>{{ home.services.headline }}</h1>
-    <p class="lede">{{ home.services.body }}</p>
-    <div class="hero__actions">
-      <a class="btn btn-primary" href="{{ (site.booking_url or '/contact/') | link }}">{{ site.booking_label }} {% include "partials/arrow.njk" %}</a>
-      <a class="btn btn-ghost" href="#funding">Ask about funding</a>
-    </div>
+    <p class="eyebrow">{{ services.eyebrow }}</p>
+    <h1>{{ services.headline }}</h1>
+    <p class="lede">{{ services.intro }}</p>
+    <nav class="ways" aria-label="Three ways to work with us">
+      {% for s in services.sections %}
+      <a class="start__card ways__card" href="#{{ s.id }}">
+        <span class="start__icon">{% set icon = s.icon %}{% include "partials/start-icon.njk" %}</span>
+        <span class="ways__text">
+          <span class="eyebrow"><span class="ways__n">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span> {{ s.eyebrow }}</span>
+          <span class="start__t">{{ s.card_title }}</span>
+          {% if s.card_text %}<span class="ways__sum">{{ s.card_text }}</span>{% endif %}
+          <span class="link-arrow link-arrow--down">{{ s.card_label or ("Go to " + s.eyebrow) }}</span>
+        </span>
+      </a>
+      {% endfor %}
+    </nav>
   </div>
 </header>
-<section class="section">
+
+{% for s in services.sections %}
+{% set n = loop.index %}{% set alt = loop.index is even %}
+{% include "partials/service-section.njk" %}
+{% endfor %}
+
+<section class="section section--shoal" id="where-we-start">
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">{{ faq.eyebrow }}</p><h2>{{ faq.headline }}</h2><p class="lede">{{ faq.intro }}</p></div>
     <div class="hear">
@@ -26,72 +42,23 @@ description: "Hands-on AI training and technical assistance for small businesses
       </div>
       {% endfor %}
     </div>
-  </div>
-</section>
-<section class="section section--paper2">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">Three ways in</p><h2>Right-sized. Never generic. Always co-designed.</h2></div>
-    <div class="cap-grid cap-grid--3">
-      <div class="cap" id="training">
-        <h3>AI training</h3>
-        <p>Role-specific, hands-on cohorts that leave your staff actually using AI, responsibly. Single-session workshops, multi-session series, train-the-trainer programs, and micro-credentials. Virtual, in person, or hybrid.</p>
-        <ul class="plain-list">
-          <li>AI for lead generation, marketing, and content</li>
-          <li>AI for grants, fundraising, and procurement</li>
-          <li>AI for operations and organizational memory</li>
-          <li>AI literacy and workforce readiness</li>
-          <li>Compliance and leadership for regulated environments</li>
-        </ul>
-      </div>
-      <div class="cap" id="assistance">
-        <h3>Technical assistance</h3>
-        <p>An honest readiness assessment, a phased roadmap built with your team around your budget and capacity, and hands-on implementation. We configure, integrate, and stay through adoption.</p>
-        <ul class="plain-list">
-          <li>AI readiness assessment and 90-day roadmap</li>
-          <li>Tool selection, configuration, and integration</li>
-          <li>Workflow automation with a person in the loop</li>
-          <li>Board-ready AI policy and governance</li>
-          <li>Vendor evaluation and procurement advice</li>
-        </ul>
-      </div>
-      <div class="cap" id="tools">
-        <h3>Our tools, in your organization</h3>
-        <p>License Project Lookout for your team, your members, or your grantees, or run your own beta on Driftwood, which is open source. Both come with the same care as everything else we do.</p>
-        <ul class="plain-list">
-          <li>Direct licenses for small businesses and nonprofits</li>
-          <li>Institutional distribution for chambers, foundations, and networks</li>
-          <li>Build-out partnerships for a whole community</li>
-        </ul>
-        <p><a class="link-arrow" href="{{ '/work/' | link }}">See the tools</a></p>
-      </div>
+    {% if services.who and services.who.length %}
+    <div class="who who--after">
+      <p class="eyebrow">{{ services.who_title }}</p>
+      <div class="chips">{% for w in services.who %}<span class="chip">{{ w }}</span>{% endfor %}</div>
     </div>
+    {% endif %}
   </div>
 </section>
+
 <section class="section" id="funding">
   <div class="wrap two-col">
     <div class="sec-head"><p class="eyebrow">Funding available</p><h2>Massachusetts may help pay for it.</h2></div>
     <div class="prose">
       <p>{{ site.funding_note }}</p>
       <p>To apply, contact Commonwealth Corporation directly at <a href="mailto:{{ site.funding_contact }}">{{ site.funding_contact }}</a> or through their portal, and mention Equity Intelligence LLC as your training provider. We are happy to walk you through it.</p>
+      <p><a href="#training">Back to training</a></p>
     </div>
   </div>
 </section>
-<section class="section section--shoal">
-  <div class="wrap">
-    <div class="sec-head"><p class="eyebrow">How an engagement runs</p><h2>Three steps to clarity. No sales funnel.</h2><p class="lede">We co-design with communities. We never design for them. Every step below happens with your people in the room.</p></div>
-    <ol class="steps">
-      <li class="step"><span class="step__n">1</span><h3>Discovery call</h3><p>A 30-minute honest conversation. We listen to your challenges and map your goals, without the pitch.</p></li>
-      <li class="step"><span class="step__n">2</span><h3>Roadmap, co-designed</h3><p>A phased, mission-aligned plan built with your team, one that respects your actual budget and capacity.</p></li>
-      <li class="step"><span class="step__n">3</span><h3>Support</h3><p>We stay by your side through implementation and remain reachable months after the project is live.</p></li>
-    </ol>
-    <div class="who">
-      <p class="eyebrow">Built for the organizations on the ground doing the work</p>
-      <div class="chips">
-        <span class="chip">Small businesses</span><span class="chip">Nonprofits</span><span class="chip">Municipalities and public agencies</span><span class="chip">Chambers of commerce</span><span class="chip">Foundations and intermediaries</span><span class="chip">Workforce and apprenticeship programs</span><span class="chip">Schools, colleges, and universities</span><span class="chip">Healthcare and medical education</span>
-      </div>
-    </div>
-  </div>
-</section>
-{% set allQuotes = false %}
-{% include "partials/quotes.njk" %}
 {% include "partials/cta.njk" %}

@@ -42,12 +42,15 @@ module.exports = function (eleventyConfig) {
     let hash = "";
     const hi = target.indexOf("#");
     if (hi >= 0) { hash = target.slice(hi); target = target.slice(0, hi); }
+    let query = "";
+    const qi = target.indexOf("?");
+    if (qi >= 0) { query = target.slice(qi); target = target.slice(0, qi); }
     if (target === "/") target = "/index.html";
     else if (target.endsWith("/")) target = target.slice(0, -1) + ".html";
     const current = (this.page && this.page.url) || "/";
     const curFile = current === "/" ? "/index.html" : current.endsWith("/") ? current + "index.html" : current;
     const rel = path.posix.relative(path.posix.dirname(curFile), target);
-    return (rel || "index.html") + hash;
+    return (rel || "index.html") + query + hash;
   });
 
   // Active-nav helper (works for both clean URLs and PREVIEW .html URLs)

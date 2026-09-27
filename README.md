@@ -22,11 +22,13 @@ npm run build      # writes the site to _site/
 | --- | --- |
 | Hero, “work with us” band, section intros, closing CTA | `src/_data/home.json` |
 | Five things we hold to, and the spinning-wheel note | `src/_data/beliefs.json` |
+| Work with us page: the three service sections (Training, Technical assistance, Tools), their cards, lists, steps, people, quotes, and examples. Keep the anchors `training`, `assistance`, `tools`: the home cards link to them. `/contact/?interest=training` (or `assistance`, `lookout`, `driftwood`, `press`, `other`) preselects the form topic | `src/_data/services.json` |
+| “What we hear” rows on the Work with us page | `src/_data/faq.json` |
 | Site name, email, address, booking link, funding note | `src/_data/site.json` |
 | Vision / Digital Beloved Community copy | `src/_data/vision.json` |
 | The six values and their "in practice" lines | `src/_data/values.json` |
 | The Hope Standard (5 pillars, how we check them) | `src/_data/standard.json` |
-| Tech stack layers (local AI etc., shown on the Philosophy page) | `src/_data/stack.json` |
+| Tech stack layers (local AI etc., shown on The Hope Standard page) | `src/_data/stack.json` |
 | Stats, certifications, marquee | `src/_data/recognition.json` |
 | Partner quotes | `src/_data/testimonials.json` |
 | Menus and footer columns | `src/_data/navigation.json` |

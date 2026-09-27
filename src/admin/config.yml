@@ -315,10 +315,6 @@ collections:
             name: "notes"
             widget: "object"
             fields: [{ label: "Eyebrow", name: "eyebrow", widget: "string" }, { label: "Headline", name: "headline", widget: "string" }, { label: "Intro", name: "intro", widget: "text" }]
-          - label: "Services page header"
-            name: "services"
-            widget: "object"
-            fields: [{ label: "Eyebrow", name: "eyebrow", widget: "string" }, { label: "Headline", name: "headline", widget: "string" }, { label: "Body", name: "body", widget: "text" }, { label: "Button label", name: "cta_label", widget: "string" }]
           - label: "Closing call to action"
             name: "closing"
             widget: "object"
@@ -455,8 +451,84 @@ collections:
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Organization / note", name: "org", widget: "string", required: false }
               - { label: "Show on home page", name: "featured", widget: "boolean", default: true }
+      - name: services
+        label: "Work with us page"
+        file: "src/_data/services.json"
+        fields:
+          - { label: "Page title (browser tab)", name: "title", widget: "string" }
+          - { label: "Search description (about 155 characters)", name: "description", widget: "text" }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Service sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.eyebrow}}"
+            hint: "Each section gets a card at the top of the page and its own band below. The home page cards link to the anchors training, assistance, and tools, so keep those three."
+            fields:
+              - { label: "Anchor (the #link, no spaces)", name: "id", widget: "string", pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers, and dashes only"] }
+              - { label: "Icon", name: "icon", widget: "select", options: ["training", "assistance", "tools"] }
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Card title (top of page)", name: "card_title", widget: "string" }
+              - { label: "Card text (top of page)", name: "card_text", widget: "text", required: false }
+              - { label: "Card link label", name: "card_label", widget: "string", required: false }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text", required: false }
+              - { label: "Body", name: "body", widget: "markdown", required: false, hint: "A few short paragraphs. Links to other sections work, e.g. [technical assistance](#assistance)." }
+              - label: "Lists"
+                name: "lists"
+                widget: "list"
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Items", name: "items", widget: "list" }
+              - { label: "Steps title", name: "steps_title", widget: "string", required: false }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+              - label: "Products (tools section)"
+                name: "products"
+                widget: "list"
+                required: false
+                summary: "{{fields.project}}"
+                fields:
+                  - { label: "Project", name: "project", widget: "relation", collection: "work", value_field: "{{slug}}", search_fields: ["client", "title", "name"], display_fields: ["name", "client"] }
+                  - { label: "Button label", name: "button", widget: "string", required: false, hint: "Opens the project's app, e.g. “Open Lookout”." }
+                  - { label: "Short description (optional)", name: "blurb", widget: "text", required: false, hint: "Falls back to the project's summary." }
+              - { label: "Licensing title", name: "models_title", widget: "string", required: false }
+              - { label: "Show licensing options from", name: "models_from", widget: "relation", collection: "work", value_field: "{{slug}}", search_fields: ["client", "title", "name"], display_fields: ["name", "client"], required: false, hint: "Uses that project's Licensing options." }
+              - { label: "People title", name: "people_title", widget: "string", required: false }
+              - { label: "People", name: "people", widget: "relation", collection: "team", value_field: "{{slug}}", search_fields: ["name", "role"], display_fields: ["name"], multiple: true, required: false }
+              - { label: "Quote from (name exactly as in Testimonials)", name: "quote", widget: "string", required: false }
+              - { label: "Examples title", name: "examples_title", widget: "string", required: false }
+              - { label: "Example projects", name: "examples", widget: "relation", collection: "work", value_field: "{{slug}}", search_fields: ["client", "title", "short_client"], display_fields: ["short_client", "client"], multiple: true, required: false }
+              - label: "Note under the button"
+                name: "note"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string", required: false }
+                  - { label: "Link label", name: "link_label", widget: "string", required: false }
+                  - { label: "Link URL", name: "url", widget: "string", required: false }
+              - label: "Main button"
+                name: "cta"
+                widget: "object"
+                fields: [{ label: "Label", name: "label", widget: "string" }, { label: "URL", name: "url", widget: "string", hint: "e.g. /contact/?interest=training preselects the form's topic (training, assistance, lookout, driftwood, press, other)." }]
+              - label: "Second link (optional)"
+                name: "cta_secondary"
+                widget: "object"
+                required: false
+                fields: [{ label: "Label", name: "label", widget: "string", required: false }, { label: "URL", name: "url", widget: "string", required: false }]
+          - { label: "Who we work with: title", name: "who_title", widget: "string" }
+          - { label: "Who we work with", name: "who", widget: "list" }
       - name: faq
-        label: "What we hear (services page)"
+        label: "What we hear (Work with us page)"
         file: "src/_data/faq.json"
         fields:
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }

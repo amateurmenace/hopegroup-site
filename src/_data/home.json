@@ -3,12 +3,12 @@
     "headline": "We set the standard for AI that serves people.",
     "lede": "The Hope Standard defines how AI should protect privacy, check for bias, and keep people in control. We build products that prove it works.",
     "primary_cta": {
-      "label": "Open Lookout",
-      "url": "https://projectlookout.app"
+      "label": "Read the Hope Standard",
+      "url": "/philosophy/"
     },
     "secondary_cta": {
-      "label": "Join the waitlist",
-      "url": "/waitlist/"
+      "label": "Get in Touch",
+      "url": "/contact/"
     },
     "map_subtitle": "Locally grounded, globally connected."
   },
@@ -43,7 +43,7 @@
         "icon": "tools",
         "eyebrow": "Use our tools",
         "title": "License Project Lookout, or run your beta on Driftwood",
-        "url": "/work/?kind=Tool",
+        "url": "/services/#tools",
         "label": "See the tools"
       }
     ]
@@ -57,12 +57,6 @@
     "eyebrow": "Lab notes",
     "headline": "What we are learning as we build.",
     "intro": "Plain-language notes from the bench."
-  },
-  "services": {
-    "eyebrow": "Technical assistance and training",
-    "headline": "Ready to adopt AI? We will walk with you.",
-    "body": "Beyond our own tools, we provide technical assistance and hands-on training for small businesses, nonprofits, and public agencies. We assess your needs, recommend the right tools, train your team in plain language, and stay accountable for results.",
-    "cta_label": "See how we work with organizations"
   },
   "closing": {
     "headline": "Technology should serve people. Let us show you how.",

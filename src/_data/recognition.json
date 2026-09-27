@@ -6,26 +6,22 @@
     {
       "value": 50,
       "suffix": "+",
-      "label": "Organizations served across Greater Boston, and growing",
-      "plain": true
+      "label": "Organizations served across Greater Boston, and growing"
     },
     {
       "value": 100,
       "suffix": "%",
-      "label": "Engagement and recommendation rate across BECMA AI Series cohorts",
-      "plain": true
+      "label": "Engagement and recommendation rate across BECMA AI Series cohorts"
     },
     {
       "value": "{sources}",
       "suffix": "",
-      "label": "Grant, contract, and bid sources Project Lookout sweeps every night",
-      "plain": true
+      "label": "Grant, contract, and bid sources Project Lookout sweeps every night"
     },
     {
       "value": 2021,
       "suffix": "",
-      "label": "Founded in Boston, on Dr. King's idea of the Beloved Community",
-      "plain": true
+      "label": "Founded in Boston, on Dr. King's idea of the Beloved Community"
     }
   ],
   "badges": [

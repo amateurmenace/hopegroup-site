@@ -1,0 +1,213 @@
+{
+  "title": "Work with us",
+  "description": "AI training, technical assistance, and tools from The Hope Group, co-designed with your team. Approved Commonwealth Corporation provider: eligible Massachusetts organizations can use state workforce training funds.",
+  "eyebrow": "Work with us",
+  "headline": "Ready to adopt AI? We will walk with you.",
+  "intro": "Three ways in: training for your team, technical assistance from the first assessment through adoption, and the tools we build to the Hope Standard. Whichever you choose, we co-design with communities. We never design for them.",
+  "sections": [
+    {
+      "id": "training",
+      "icon": "training",
+      "eyebrow": "Training",
+      "card_title": "Hands-on AI training built around your real work",
+      "card_text": "Workshops, cohorts, and train-the-trainer programs, designed with your team and taught in plain language.",
+      "card_label": "How training works",
+      "headline": "AI training built around your team, not the other way around.",
+      "lede": "Hands-on training designed around your industry, your people's comfort with the technology, and the tools and workflows that will make the biggest difference on Monday morning.",
+      "body": "We do not deliver off-the-shelf programming. We listen first and design second, so every session fits your field, your goals, and the tools your people already use.\n\nWe are the preferred AI trainer for the Black Economic Council of Massachusetts, where the BECMA AI Series reached a 100 percent engagement and recommendation rate across cohorts. As an approved Commonwealth Corporation provider, we can also help eligible Massachusetts organizations offset the cost with state workforce training funds.\n\nRev. Christopher Hope teaches from lived experience as the founder of a Black-owned business, an ordained minister, an Aspen Institute Fellow, and a lecturer at Boston University. That combination changes how the content lands.",
+      "lists": [
+        {
+          "title": "Formats",
+          "items": [
+            "Single-session workshops designed for your organization",
+            "Multi-session cohort series for a member or employee community",
+            "Train-the-trainer programs that build lasting capacity in-house",
+            "Custom curriculum for chambers, foundations, companies, and workforce programs",
+            "Micro-credentials for workers who want documented AI skills",
+            "Virtual, in person, or hybrid. We come to you."
+          ]
+        },
+        {
+          "title": "Topics we build around",
+          "items": [
+            "Lead generation and bid discovery",
+            "Marketing and content creation",
+            "CRM and organizational memory",
+            "Grant and fundraising discovery",
+            "Procurement and RFP response",
+            "Operations and everyday automation",
+            "AI literacy and workforce readiness",
+            "Compliance and leadership in regulated fields"
+          ]
+        }
+      ],
+      "steps_title": "How a training comes together",
+      "steps": [
+        {
+          "title": "Listen",
+          "text": "We talk with the people who will be in the room about their work, what worries them, and what they have already tried."
+        },
+        {
+          "title": "Design",
+          "text": "We build the curriculum around your real documents, tools, and workflows, in plain language."
+        },
+        {
+          "title": "Practice",
+          "text": "Hands-on sessions where everyone works on their own tasks, with a teammate on hand for tech support so no one falls behind."
+        },
+        {
+          "title": "Follow through",
+          "text": "We check back on what stuck. Train-the-trainer options keep the skills growing after we leave."
+        }
+      ],
+      "people_title": "Who teaches",
+      "people": [
+        "christopher-hope",
+        "kaytlyn-hope",
+        "addison-landon"
+      ],
+      "quote": "Jennifer Ngure",
+      "examples_title": "Recent programs",
+      "examples": [
+        "becma",
+        "medical-education",
+        "civic-ai-access-lab",
+        "boston-university"
+      ],
+      "note": {
+        "text": "Eligible Massachusetts organizations can use state workforce training funds to offset the cost.",
+        "link_label": "How funding works",
+        "url": "#funding"
+      },
+      "cta": {
+        "label": "Plan a training",
+        "url": "/contact/?interest=training"
+      }
+    },
+    {
+      "id": "assistance",
+      "icon": "assistance",
+      "eyebrow": "Technical assistance",
+      "card_title": "An honest assessment, a roadmap, and help through adoption",
+      "card_text": "Readiness assessments, tool setup and integration, automation with a person in the loop, and board-ready AI policy.",
+      "card_label": "How assistance works",
+      "headline": "From strategy to implementation, and through adoption.",
+      "lede": "Most organizations know they need AI. Very few know where to start, or whom to trust to help them get there. We assess, prioritize, and implement with your team, and we stay until the new way of working sticks.",
+      "body": "We are a certified technical assistance vendor for the City of Boston's small business community and for BECMA. We do not stop at recommending tools. We configure them, connect them to the systems you already run, and stay with your team through every stage of adoption.\n\nEngagements begin where you are. If you have never used an AI tool, we start with a readiness assessment. If you have tools that are not delivering, we find out why. If you are an institution rolling AI out at scale, we design the architecture and the support model around it.\n\nBecause we build and ship our own software, our advice comes from the bench, not from a slide deck.",
+      "lists": [
+        {
+          "title": "What is included",
+          "items": [
+            "AI readiness assessment and a prioritized 90-day roadmap",
+            "Tool selection, configuration, and implementation",
+            "CRM integration and workflow automation, with a person in the loop",
+            "Custom AI agents for procurement, fundraising, and lead generation",
+            "Board-ready AI policy and governance, built on the Hope Standard",
+            "Vendor evaluation and AI procurement advice",
+            "Funding strategy and grant writing for AI adoption",
+            "Ongoing support for live deployments"
+          ]
+        }
+      ],
+      "steps_title": "How an engagement runs",
+      "steps": [
+        {
+          "title": "Discovery",
+          "text": "A free, 30-minute conversation, then interviews with the people who do the work every day."
+        },
+        {
+          "title": "Map",
+          "text": "We trace where the week actually goes and find the bottlenecks worth fixing first."
+        },
+        {
+          "title": "Roadmap",
+          "text": "A phased plan with measurable outcomes, built around your real budget and capacity, usually within two to four weeks."
+        },
+        {
+          "title": "Build",
+          "text": "Configuration and integration sprints inside the systems you already use."
+        },
+        {
+          "title": "Enable",
+          "text": "Training and change management so the new tools become the normal way of working."
+        },
+        {
+          "title": "Review",
+          "text": "Quarterly check-ins to measure, adjust, and stay reachable long after launch."
+        }
+      ],
+      "people_title": "Who you work with",
+      "people": [
+        "christopher-hope",
+        "stephen-walter",
+        "kaytlyn-hope"
+      ],
+      "quote": "Nicole Wiggins",
+      "examples_title": "Recent engagements",
+      "examples": [
+        "city-of-boston",
+        "jewn-bug",
+        "unicorn-po-dispenser"
+      ],
+      "cta": {
+        "label": "Request an assessment",
+        "url": "/contact/?interest=assistance"
+      }
+    },
+    {
+      "id": "tools",
+      "icon": "tools",
+      "eyebrow": "Tools",
+      "card_title": "License Project Lookout, or run your beta on Driftwood",
+      "card_text": "Software built to the Hope Standard, ready for your team, your members, or your grantees.",
+      "card_label": "See the tools",
+      "headline": "Our tools, in your organization.",
+      "lede": "Software we build to the Hope Standard and prove in the field, ready for your team, your members, or your grantees.",
+      "body": "Every tool we release is tested against the Hope Standard before it reaches a single user. In Lookout, every match shows why it scored the way it did, a bias suite runs before every release, and member profiles are never used to train models. In Driftwood, nothing synthetic is ever shown as live, and a person sights every report. In both, people make the decisions.\n\nNeed a tool that does not exist yet? We also build custom tools with the people who will use them, like JEWN BUG for a Boston painting company and the Unicorn PO Dispenser for a women-owned distributor. That work starts with [technical assistance](#assistance).",
+      "products": [
+        {
+          "project": "project-lookout",
+          "button": "Open Lookout",
+          "blurb": "Every grant, contract, and bid your business deserves, found overnight, verified, and ranked with a score it can explain."
+        },
+        {
+          "project": "driftwood",
+          "button": "Try the live demo",
+          "blurb": "An open source platform for running a beta without losing the plot. It runs the live Project Lookout beta today."
+        }
+      ],
+      "models_title": "Ways to bring Lookout in",
+      "models_from": "project-lookout",
+      "people_title": "Who builds them",
+      "people": [
+        "stephen-walter",
+        "yunzi-wan"
+      ],
+      "quote": "Ellen Cynar",
+      "note": {
+        "text": "Lookout launches October 6 with BECMA, free for BECMA members.",
+        "link_label": "Join the waitlist",
+        "url": "/waitlist/"
+      },
+      "cta": {
+        "label": "Talk to us about licensing",
+        "url": "/contact/?interest=lookout"
+      },
+      "cta_secondary": {
+        "label": "See all tools",
+        "url": "/work/?kind=Tool"
+      }
+    }
+  ],
+  "who_title": "Built for the organizations on the ground doing the work",
+  "who": [
+    "Small businesses",
+    "Nonprofits",
+    "Municipalities and public agencies",
+    "Chambers of commerce",
+    "Foundations and intermediaries",
+    "Workforce and apprenticeship programs",
+    "Schools, colleges, and universities",
+    "Healthcare and medical education"
+  ]
+}

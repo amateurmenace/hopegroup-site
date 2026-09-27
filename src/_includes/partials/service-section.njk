@@ -1,0 +1,112 @@
+{#- One service line on the Work with us page. Expects `s` (an item of services.sections), `n` (its number) and `alt` (tinted band). -#}
+<section class="svc section{% if alt %} section--paper2{% endif %}" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="wrap svc__grid">
+    <header class="svc__head">
+      <div class="svc__mark">
+        <span class="svc__num">{{ "0" + n if n < 10 else n }}</span>
+        <span class="svc__icon">{% set icon = s.icon %}{% include "partials/start-icon.njk" %}</span>
+      </div>
+      <p class="eyebrow">{{ s.eyebrow }}</p>
+      <h2 id="{{ s.id }}-title">{{ s.headline }}</h2>
+      {% if s.lede %}<p class="lede">{{ s.lede }}</p>{% endif %}
+      {% if (s.cta and s.cta.label) or (s.cta_secondary and s.cta_secondary.label) %}
+      <div class="svc__actions">
+        {% if s.cta and s.cta.label %}<a class="btn btn-primary" href="{{ s.cta.url | link }}"{% if s.cta.url | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ s.cta.label }} {% include "partials/arrow.njk" %}</a>{% endif %}
+        {% if s.cta_secondary and s.cta_secondary.label %}<a class="link-arrow" href="{{ s.cta_secondary.url | link }}"{% if s.cta_secondary.url | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ s.cta_secondary.label }}</a>{% endif %}
+      </div>
+      {% endif %}
+      {% if s.note and s.note.text %}<p class="svc__note">{{ s.note.text }}{% if s.note.url and s.note.link_label %} <a href="{{ s.note.url | link }}">{{ s.note.link_label }}</a>{% endif %}</p>{% endif %}
+    </header>
+
+    <div class="svc__body">
+      {% if s.products and s.products.length %}
+      <div class="svc__products">
+        {% for pr in s.products %}{% set p = collections.work | bySlug(pr.project) %}{% if p %}
+        <article class="svc-product">
+          <a class="svc-product__media" href="{{ p.url | link }}" tabindex="-1" aria-hidden="true">{% if p.data.thumb %}<img src="{{ p.data.thumb | link }}" alt="" loading="lazy">{% elif p.data.image %}<img src="{{ p.data.image | link }}" alt="" loading="lazy">{% endif %}</a>
+          <div class="svc-product__body">
+            <h3 class="svc-product__name"><a href="{{ p.url | link }}">{{ p.data.name or p.data.title }}</a></h3>
+            {% if p.data.status %}<p class="svc-product__status">{{ p.data.status }}</p>{% endif %}
+            <p class="svc-product__summary">{{ pr.blurb or p.data.summary }}</p>
+            <div class="svc-product__actions">
+              {% if p.data.app_url %}<a class="btn btn-ghost btn-sm" href="{{ p.data.app_url }}" target="_blank" rel="noopener">{{ pr.button or ("Open " + (p.data.name or "the app")) }} <span class="visually-hidden">(opens in a new tab)</span></a>{% endif %}
+              <a class="link-arrow" href="{{ p.url | link }}">Read the case study</a>
+            </div>
+          </div>
+        </article>
+        {% endif %}{% endfor %}
+      </div>
+      {% endif %}
+
+      {% if s.body %}<div class="prose svc__prose">{{ s.body | md | safe }}</div>{% endif %}
+
+      {% if s.models_from %}{% set mp = collections.work | bySlug(s.models_from) %}{% if mp and mp.data.licensing %}
+      <div class="svc__block">
+        <h3 class="svc__h">{{ s.models_title or "Licensing" }}</h3>
+        <div class="svc-models">
+          {% for m in mp.data.licensing %}
+          <div class="svc-model"><h4>{{ m.title }}</h4><p>{{ m.text }}</p></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}{% endif %}
+
+      {% if s.lists and s.lists.length %}
+      <div class="svc__lists{% if s.lists.length == 1 %} svc__lists--one{% endif %}">
+        {% for l in s.lists %}
+        <div class="svc__list">
+          <h3 class="svc__h">{{ l.title }}</h3>
+          <ul class="plain-list">{% for it in l.items %}<li>{{ it }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if s.steps and s.steps.length %}
+      <div class="svc__block">
+        <h3 class="svc__h">{{ s.steps_title or "How it works" }}</h3>
+        <ol class="svc-steps">
+          {% for st in s.steps %}
+          <li class="svc-step"><span class="svc-step__n" aria-hidden="true">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span><div><h4>{{ st.title }}</h4><p>{{ st.text }}</p></div></li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endif %}
+
+      {% if s.people and s.people.length %}
+      <div class="svc__block">
+        <h3 class="svc__h">{{ s.people_title or "Who you work with" }}</h3>
+        <ul class="svc-people">
+          {% for slug in s.people %}{% set person = collections.team | bySlug(slug) %}{% if person %}
+          <li><a class="svc-person" href="{{ person.url | link }}">
+            {% if person.data.photo %}<img src="{{ person.data.photo | link }}" alt="" width="58" height="58" loading="lazy">{% else %}<span class="svc-person__initials" aria-hidden="true">{{ person.data.name | initials }}</span>{% endif %}
+            <span><b>{{ person.data.name }}</b><span class="svc-person__role">{{ person.data.role }}</span></span>
+          </a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if s.quote %}{% set q = testimonials.items | find("name", s.quote) %}{% if q %}
+      <div class="svc__quote">{% include "partials/quote.njk" %}</div>
+      {% endif %}{% endif %}
+
+      {% if s.examples and s.examples.length %}
+      <div class="svc__block">
+        <h3 class="svc__h">{{ s.examples_title or "Recent work" }}</h3>
+        <ul class="svc-examples">
+          {% for slug in s.examples %}{% set ex = collections.work | bySlug(slug) %}{% if ex %}
+          <li><a class="svc-example" href="{{ ex.url | link }}">
+            <span class="svc-example__media">{% if ex.data.thumb %}<img src="{{ ex.data.thumb | link }}" alt="" loading="lazy">{% elif ex.data.image %}<img src="{{ ex.data.image | link }}" alt="" loading="lazy">{% else %}<span class="svc-example__client">{{ ex.data.short_client or ex.data.client }}</span>{% endif %}</span>
+            <span class="svc-example__text">
+              <span class="svc-example__kind">{{ ex.data.kind }}{% if ex.data.kind %} · {% endif %}{{ ex.data.short_client or ex.data.client }}</span>
+              <span class="svc-example__t">{{ ex.data.title }}</span>
+            </span>
+          </a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

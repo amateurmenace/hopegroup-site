@@ -360,11 +360,31 @@
     } catch (err) { /* no query support here */ }
   }
 
-  /* ---------- pages open at the top; in-page anchors scroll smoothly ---------- */
+  /* ---------- keep --header-h in step with the sticky header (anchor offsets, sticky columns) ---------- */
+  const siteHeader = $(".site-header");
+  const syncHeader = () => {
+    if (siteHeader) document.documentElement.style.setProperty("--header-h", `${Math.round(siteHeader.getBoundingClientRect().height)}px`);
+  };
+  syncHeader();
+  window.addEventListener("resize", syncHeader);
+
+  /* ---------- pages open at the top, or exactly at their #section; in-page anchors scroll smoothly ---------- */
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  const hashTarget = () => {
+    if (!location.hash || location.hash.length < 2) return null;
+    try { return document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (err) { return null; }
+  };
+  let visitorMoved = false;
+  ["wheel", "touchmove", "keydown", "mousedown"].forEach((type) => window.addEventListener(type, () => { visitorMoved = true; }, { passive: true, once: true }));
   const openAtTop = () => {
-    if (location.hash && document.querySelector(location.hash)) {
-      document.querySelector(location.hash).scrollIntoView({ block: "start", behavior: "instant" });
+    const target = hashTarget();
+    if (target) {
+      const land = () => { if (visitorMoved) return; syncHeader(); target.scrollIntoView({ block: "start", behavior: "auto" }); };
+      land();
+      // web fonts and late images reflow the page after the first jump, which used to strand visitors mid-page;
+      // land again once they settle, unless the visitor has already started scrolling
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(land);
+      if (document.readyState !== "complete") window.addEventListener("load", land, { once: true });
       return;
     }
     window.scrollTo(0, 0);
@@ -379,12 +399,23 @@
     if (!a) return;
     const url = new URL(a.getAttribute("href"), location.href);
     if (url.pathname !== location.pathname || url.origin !== location.origin || !url.hash) return;
-    const target = document.querySelector(url.hash);
+    let target = null;
+    try { target = document.getElementById(decodeURIComponent(url.hash.slice(1))); } catch (err) { /* malformed hash */ }
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ block: "start", behavior: reduceMotion ? "instant" : "smooth" });
+    target.scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" });
     history.pushState(null, "", url.hash);
   });
+
+  /* ---------- contact form: ?interest=training preselects what the visitor came for ---------- */
+  const interest = $('select[name="interest"]');
+  if (interest) {
+    try {
+      const want = new URLSearchParams(location.search).get("interest");
+      const opt = want && Array.from(interest.options).find((o) => o.dataset.key === want);
+      if (opt) interest.value = opt.value;
+    } catch (err) { /* no query support here */ }
+  }
 
   /* ---------- where visitors came from: ?src=, ?ref=, ?source= or ?utm_source= (first-party, this tab only) ---------- */
   let visitSource = "";

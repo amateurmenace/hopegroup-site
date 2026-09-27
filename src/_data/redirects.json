@@ -13,11 +13,11 @@
   },
   {
     "from": "ai-training",
-    "to": "/services/"
+    "to": "/services/#training"
   },
   {
     "from": "ai-training-1",
-    "to": "/services/"
+    "to": "/services/#assistance"
   },
   {
     "from": "how-we-build",

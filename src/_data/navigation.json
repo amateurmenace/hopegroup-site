@@ -44,7 +44,7 @@
       "title": "The lab",
       "links": [
         {
-          "label": "Philosophy & values",
+          "label": "The Hope Standard",
           "url": "/philosophy/"
         },
         {
@@ -73,7 +73,7 @@
           "url": "/work/driftwood/"
         },
         {
-          "label": "Training & technical assistance",
+          "label": "Training, assistance & tools",
           "url": "/services/"
         }
       ]
