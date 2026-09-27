@@ -65,10 +65,26 @@ The repo is `github.com/amateurmenace/hopegroup-site`. Every push to `main` runs
 
 ### Pointing hopegroup.ai at it
 
-1. Add a file named `CNAME` at the repo root containing exactly `hopegroup.ai` and push. The workflow then builds with the site at `/` instead of `/hopegroup-site/`.
-2. In the repo: **Settings → Pages → Custom domain** → `hopegroup.ai`, and tick *Enforce HTTPS* once the certificate is issued.
-3. At the DNS host (currently Squarespace): four `A` records for the apex pointing to GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and a `CNAME` for `www` → `amateurmenace.github.io`. The Squarespace site keeps serving until DNS flips.
-4. Old Squarespace URLs (`/about`, `/portfolio`, `/ai-agents`, `/products/*`, …) are covered by small redirect pages generated from `src/_data/redirects.json`.
+hopegroup.ai is registered with Squarespace Domains, and its DNS lives there too (name servers `nse1`–`nse4.squarespacedns.com`). Email runs through Google Workspace, so **never touch the MX, TXT, or `google._domainkey` records**; only the website records change. Records there live for 4 hours, so the switch reaches everyone gradually over an afternoon.
+
+Order matters. Doing the GitHub side first would send the github.io preview to a domain that still shows the old site; doing only the DNS side leaves visitors on a GitHub "site not found" page. So:
+
+1. **Squarespace → Domains → hopegroup.ai → DNS.** Delete the *Squarespace Defaults* preset (its four `A` records for `@` and the `www` → `ext-sq.squarespace.com` CNAME). Add custom records:
+   | Host | Type | Data |
+   | --- | --- | --- |
+   | `@` | A | `185.199.108.153` |
+   | `@` | A | `185.199.109.153` |
+   | `@` | A | `185.199.110.153` |
+   | `@` | A | `185.199.111.153` |
+   | `www` | CNAME | `amateurmenace.github.io` |
+
+   Optional, for IPv6 visitors: four `AAAA` records for `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
+2. **Right after** (within minutes): set the custom domain in the repo (**Settings → Pages → Custom domain** → `hopegroup.ai`, or `gh api -X PUT repos/amateurmenace/hopegroup-site/pages -f cname=hopegroup.ai`), then commit a `CNAME` file containing exactly `hopegroup.ai`. The workflow sees that file and builds the site at `/` instead of `/hopegroup-site/`. Also point `logo_url` in `src/admin/config.yml` at `https://hopegroup.ai/`.
+3. **When GitHub has issued the certificate** (usually within an hour; `gh api repos/amateurmenace/hopegroup-site/pages --jq .https_certificate.state` says `approved`), tick *Enforce HTTPS*. Until then some visitors may see a certificate warning, because the old site told browsers to insist on HTTPS. Switching in the evening keeps that quiet.
+4. Old Squarespace URLs (`/home`, `/about`, `/portfolio`, `/ai-agents`, `/ai-training`, `/ai-training-1`, `/products/*`, …) are covered by small redirect pages generated from `src/_data/redirects.json`. `/contact`, `/services`, and `/team` exist on the new site under the same paths.
+5. Optional but recommended: verify the domain for the GitHub account (**GitHub → Settings → Pages → Add a domain**, then add the TXT record it shows in Squarespace). That stops anyone else from ever claiming hopegroup.ai on GitHub Pages.
+
+Keep the Squarespace website plan until the new site has run cleanly for a few days, and keep the domain registration at Squarespace either way.
 
 ### Contact form
 
@@ -78,8 +94,8 @@ GitHub Pages cannot receive form posts. By default the form opens an email draft
 
 Decap CMS at `/admin/` uses the GitHub backend, so editors log in with GitHub accounts that have write access to the repo. GitHub OAuth needs a small relay; the easiest free one is Netlify's:
 
-1. In GitHub: **Settings → Developer settings → OAuth Apps → New OAuth App.** Homepage `https://amateurmenace.github.io/hopegroup-site/`, callback URL `https://api.netlify.com/auth/done`.
-2. In Netlify (any site on the account works, even an empty one): **Site configuration → Access & security → OAuth → Install provider → GitHub**, paste the Client ID and secret.
+1. In GitHub: **Settings → Developer settings → OAuth Apps → New OAuth App.** Homepage `https://hopegroup.ai/`, callback URL `https://api.netlify.com/auth/done`.
+2. In Netlify (any site on the account works, even an empty one): **Site configuration → Access & security → OAuth → Install provider → GitHub**, paste the Client ID and secret. Then add `site_domain: <that-site>.netlify.app` under `backend:` in `src/admin/config.yml`, so the relay knows which Netlify site holds the keys (otherwise it looks for a Netlify site called hopegroup.ai).
 3. Invite each editor to the GitHub repo as a collaborator. They log in at `/admin/` with GitHub.
 
 `netlify.toml` is kept only in case you ever move hosting; it does nothing on GitHub Pages.

@@ -1,5 +1,9 @@
 [
   {
+    "from": "home",
+    "to": "/"
+  },
+  {
     "from": "about",
     "to": "/philosophy/"
   },
