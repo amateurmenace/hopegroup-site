@@ -12,6 +12,30 @@
       "url": "/contact/"
     }
   },
+  "featured": {
+    "project": "project-lookout",
+    "eyebrow": "Featured project",
+    "tagline": "Find your funding. Find your footing.",
+    "tagline_em": "Find your future.",
+    "body": "Every grant, contract, and bid across Massachusetts and the federal government, found overnight, checked, and ranked for your business, with every match explained. Tools like it cost about $12,000 a seat. Lookout is free for BECMA members.",
+    "stats": [
+      {
+        "value": "85+",
+        "label": "Sources swept nightly"
+      },
+      {
+        "value": "~2 min",
+        "label": "For a live deep search"
+      },
+      {
+        "value": "$0",
+        "label": "For BECMA members"
+      }
+    ],
+    "primary_label": "Open projectlookout.app",
+    "secondary_label": "Read the case study",
+    "video_label": "Watch the demo"
+  },
   "start": {
     "eyebrow": "Work with us",
     "headline": "Ready to adopt AI? We will walk with you.",

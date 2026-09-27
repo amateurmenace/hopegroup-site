@@ -1,0 +1,44 @@
+{% set fp = collections.work | bySlug(home.featured.project) %}
+{% if fp %}
+<section class="featured" id="featured" aria-labelledby="featured-title">
+  <div class="wrap">
+    <div class="fp{% if fp.data.glyph == 'lookout' %} fp--lookout{% endif %}">
+      <div class="fp__text">
+        <p class="fp__eyebrow"><b>{{ home.featured.eyebrow }}</b><span>{{ fp.data.status }}</span></p>
+        <h2 class="fp__name" id="featured-title">
+          <a href="{{ fp.url | link }}">{% if fp.data.glyph == 'lookout' %}<span class="fp__mark" aria-label="{{ fp.data.name }}">look<span>out</span></span>{% else %}{{ fp.data.name or fp.data.short_client }}{% endif %}</a>
+        </h2>
+        <p class="fp__tagline">{{ home.featured.tagline }}{% if home.featured.tagline_em %} <em>{{ home.featured.tagline_em }}</em>{% endif %}</p>
+        <p class="fp__body">{{ home.featured.body }}</p>
+        {% if home.featured.stats %}
+        <dl class="fp__stats">
+          {% for s in home.featured.stats %}<div class="fp__stat"><dt>{{ s.label }}</dt><dd>{{ s.value }}</dd></div>{% endfor %}
+        </dl>
+        {% endif %}
+        <div class="fp__actions">
+          {% if fp.data.app_url %}<a class="btn btn-gold" href="{{ fp.data.app_url }}" target="_blank" rel="noopener">{{ home.featured.primary_label }} {% include "partials/arrow.njk" %}</a>{% endif %}
+          <a class="btn btn-light" href="{{ fp.url | link }}">{{ home.featured.secondary_label }}</a>
+          {% if fp.data.video and fp.data.video.id %}<a class="fp__video" href="https://www.youtube.com/watch?v={{ fp.data.video.id }}" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false"><path d="M6 4v12l10-6z" fill="currentColor"/></svg>{{ home.featured.video_label }}</a>{% endif %}
+        </div>
+      </div>
+      {% if fp.data.glyph == 'lookout' %}
+      <figure class="fp__visual" role="img" aria-label="Illustration of the Lookout radar: opportunities plotted around your business by fit, with a highlighted match that scores 87 and confirms you qualify.">
+        {% include "partials/lookout-radar.njk" %}
+        <div class="fp__match" aria-hidden="true">
+          <svg class="fp__score" viewBox="0 0 52 52"><circle cx="26" cy="26" r="21" class="fp__score-track"/><circle cx="26" cy="26" r="21" class="fp__score-fill" pathLength="100" stroke-dasharray="87 100"/><text x="26" y="31">87</text></svg>
+          <div class="fp__match-body">
+            <span class="fp__match-kind">Ready to bid</span>
+            <span class="fp__match-title">Municipal Building Repainting — FY27</span>
+            <span class="fp__match-meta">City of Salem · Due Jul 24 · $180,000 est.</span>
+          </div>
+          <span class="fp__match-ok"><svg viewBox="0 0 20 20" width="14" height="14"><path d="M4 10.5 8 14.5 16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>You qualify: MBE set-aside, certification on file</span>
+        </div>
+        <figcaption class="fp__legend" aria-hidden="true"><span class="k k--green">Ready to bid</span><span class="k k--blue">Get prequalified</span><span class="k k--gold">Worth investigating</span><span class="fp__note">Closer to the center, stronger fit · from the demo feed</span></figcaption>
+      </figure>
+      {% elif fp.data.thumb or fp.data.image %}
+      <figure class="fp__visual fp__visual--image"><img src="{{ (fp.data.thumb or fp.data.image) | link }}" alt="{{ fp.data.thumb_alt or fp.data.image_alt or '' }}" loading="lazy"></figure>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

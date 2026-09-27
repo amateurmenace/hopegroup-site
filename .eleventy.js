@@ -83,6 +83,7 @@ module.exports = function (eleventyConfig) {
     (coll || []).forEach((i) => (i.data.topics || []).forEach((t) => s.add(t)));
     return [...s].sort();
   });
+  eleventyConfig.addFilter("bySlug", (arr, slug) => (arr || []).find((i) => i.fileSlug === slug));
   eleventyConfig.addFilter("allKinds", (coll) => {
     const s = new Set();
     (coll || []).forEach((i) => { if (i.data.kind) s.add(i.data.kind); });
