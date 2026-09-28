@@ -45,6 +45,7 @@
 html { -webkit-text-size-adjust: 100%; }
 /* in-page links land just below the sticky header; main.js keeps --header-h in step with the real header */
 :root { --header-h: 70px; }
+:root.has-banner { --header-h: 112px; }
 [id] { scroll-margin-top: calc(var(--header-h) + 1.25rem); }
 section[id] { scroll-margin-top: var(--header-h); }
 body {
@@ -146,8 +147,10 @@ h3 { font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.15; }
 .icon-btn:hover { border-color: var(--ink); background: #fff; }
 
 /* ---------- header ---------- */
+/* the banner and header stick together as one masthead */
+.masthead { position: sticky; top: 0; z-index: 50; }
 .site-header {
-  position: sticky; top: 0; z-index: 50;
+  position: relative; z-index: 1;
   background: color-mix(in srgb, var(--paper) 86%, transparent);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--rule);
@@ -320,7 +323,7 @@ a.start__card--note:hover { background-color: #fff; }
 
 /* ---------- vision ---------- */
 .vision { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-.vision__head { display: grid; gap: 1.2rem; position: sticky; top: 90px; }
+.vision__head { display: grid; gap: 1.2rem; position: sticky; top: calc(var(--header-h) + 1.3rem); }
 @media (max-width: 800px) { .vision { grid-template-columns: minmax(0, 1fr); } .vision__head { position: static; } }
 /* home: the short North Star text sits centered against the headline and quote */
 .vision--compact { align-items: center; }
@@ -528,7 +531,7 @@ a.start__card--note:hover { background-color: #fff; }
 .project__main { display: grid; gap: 2rem; }
 .project__cover img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .project__summary { font: 400 1.3rem/1.45 var(--font-display); }
-.project__side { display: grid; gap: 1.5rem; position: sticky; top: 90px; }
+.project__side { display: grid; gap: 1.5rem; position: sticky; top: calc(var(--header-h) + 1.3rem); }
 @media (max-width: 800px) { .project__grid { grid-template-columns: minmax(0, 1fr); } .project__side { position: static; } }
 
 /* ---------- quotes ---------- */
@@ -586,7 +589,7 @@ a.start__card--note:hover { background-color: #fff; }
 .person-card__short { font-size: .9rem; line-height: 1.5; color: var(--ink-2); }
 .person__initials { display: grid; place-items: center; width: 100%; height: 100%; font: 400 3rem var(--font-display); color: var(--ink-2); }
 .person { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-.person__side { position: sticky; top: 90px; display: grid; gap: 1.4rem; }
+.person__side { position: sticky; top: calc(var(--header-h) + 1.3rem); display: grid; gap: 1.4rem; }
 .person__photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--shoal); border: 1px solid var(--rule); }
 .person__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .person__contact { display: grid; gap: .3rem; font-size: .95rem; }
@@ -608,7 +611,7 @@ a.start__card--note:hover { background-color: #fff; }
 .people-full { display: grid; }
 .person-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 8fr); gap: clamp(1.5rem, 4vw, 4rem); padding-block: clamp(2rem, 4vw, 3.5rem); border-top: 1px solid var(--rule); align-items: start; }
 .person-row:first-child { border-top: 0; }
-.person-row__side { position: sticky; top: 90px; display: grid; gap: 1.2rem; }
+.person-row__side { position: sticky; top: calc(var(--header-h) + 1.3rem); display: grid; gap: 1.2rem; }
 .person-row__photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--shoal); border: 1px solid var(--rule); }
 .person-row__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .person-row__main { display: grid; gap: 1.1rem; }
@@ -717,7 +720,7 @@ a.start__card--note:hover { background-color: #fff; }
 
 /* ---------- lab notes: a page from the lab notebook ---------- */
 .notebook-wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-.notebook-head { display: grid; gap: 1rem; position: sticky; top: 100px; }
+.notebook-head { display: grid; gap: 1rem; position: sticky; top: calc(var(--header-h) + 2rem); }
 .notebook-head__sub { color: var(--ink-2); max-width: 36ch; }
 .notebook-head__links { display: flex; flex-wrap: wrap; gap: .7rem 1.4rem; margin-top: .4rem; }
 .link-arrow--quiet { border-bottom-color: var(--rule-strong); }
@@ -784,8 +787,8 @@ a.start__card--note:hover { background-color: #fff; }
 .banner :focus-visible { outline-color: var(--lamp); }
 @media (prefers-reduced-motion: reduce) { .banner__pulse { animation: none; } }
 @media (max-width: 640px) {
-  .banner { font-size: .82rem; }
-  .banner__inner { display: block; padding-block: .55rem; }
+  .banner { font-size: .78rem; line-height: 1.35; }
+  .banner__inner { display: block; min-height: 0; padding-block: .4rem; }
   .banner__pulse { display: inline-block; vertical-align: .08em; margin-right: .45rem; }
   .banner__text { display: inline; }
   .banner__link { margin-left: .4rem; }

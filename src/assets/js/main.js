@@ -360,13 +360,14 @@
     } catch (err) { /* no query support here */ }
   }
 
-  /* ---------- keep --header-h in step with the sticky header (anchor offsets, sticky columns) ---------- */
-  const siteHeader = $(".site-header");
+  /* ---------- keep --header-h in step with the sticky masthead: banner + header (anchor offsets, sticky columns) ---------- */
+  const siteHeader = $(".masthead") || $(".site-header");
   const syncHeader = () => {
     if (siteHeader) document.documentElement.style.setProperty("--header-h", `${Math.round(siteHeader.getBoundingClientRect().height)}px`);
   };
   syncHeader();
   window.addEventListener("resize", syncHeader);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeader);
 
   /* ---------- pages open at the top, or exactly at their #section; in-page anchors scroll smoothly ---------- */
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";

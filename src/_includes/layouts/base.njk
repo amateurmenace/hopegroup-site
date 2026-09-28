@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="{% if site.banner and site.banner.enabled %}has-banner {% endif %}no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -38,6 +38,7 @@
 </head>
 <body class="{{ bodyClass }}" id="page-top">
   <a class="skip" href="#main">Skip to content</a>
+  <div class="masthead">
   {% if site.banner and site.banner.enabled %}
   <div class="banner" role="region" aria-label="Announcement">
     <div class="wrap banner__inner">
@@ -48,6 +49,7 @@
   </div>
   {% endif %}
   {% include "partials/header.njk" %}
+  </div>
   <main id="main">
     {{ content | safe }}
   </main>
