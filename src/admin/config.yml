@@ -1,13 +1,16 @@
 # Decap CMS configuration for hopegroup.ai (GitHub Pages hosting)
 # Docs: https://decapcms.org/docs/github-backend/
 #
-# Logging in uses GitHub OAuth. The `base_url` below points at Netlify's free OAuth
-# relay, which works for any site (see README → "Editing content" for the 5-minute setup).
+# Logging in uses GitHub OAuth through Netlify's free OAuth relay. The keys live on the
+# Netlify project `hopegroup-cms` (it only forwards visitors to hopegroup.ai); `site_domain`
+# tells the relay to use that project's GitHub keys. See README → "CMS logins".
 backend:
   name: github
   repo: amateurmenace/hopegroup-site
   branch: main
   base_url: https://api.netlify.com
+  site_domain: hopegroup-cms.netlify.app
+  auth_scope: public_repo
   commit_messages:
     create: "content: add {{collection}} “{{slug}}”"
     update: "content: update {{collection}} “{{slug}}”"

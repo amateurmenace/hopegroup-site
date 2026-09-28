@@ -90,13 +90,14 @@ Keep the Squarespace website plan until the new site has run cleanly for a few d
 
 GitHub Pages cannot receive form posts. By default the form opens an email draft to `hello@hopegroup.ai` with the fields filled in. To collect submissions in a dashboard instead, create a free [Formspree](https://formspree.io) form and paste its endpoint into **Site settings → Contact form endpoint** (`form_action` in `src/_data/site.json`).
 
-### CMS logins (one-time setup, about 5 minutes)
+### CMS logins
 
-Decap CMS at `/admin/` uses the GitHub backend, so editors log in with GitHub accounts that have write access to the repo. GitHub OAuth needs a small relay; the easiest free one is Netlify's:
+Decap CMS at `/admin/` uses the GitHub backend, so editors log in with GitHub accounts that have write access to the repo. GitHub OAuth goes through Netlify's free relay. The keys live on the Netlify project **hopegroup-cms** (team Weird Machine), which does nothing else: it forwards visitors to hopegroup.ai. `src/admin/config.yml` points at it with `site_domain: hopegroup-cms.netlify.app` and asks GitHub only for `public_repo` access.
 
-1. In GitHub: **Settings → Developer settings → OAuth Apps → New OAuth App.** Homepage `https://hopegroup.ai/`, callback URL `https://api.netlify.com/auth/done`.
-2. In Netlify (any site on the account works, even an empty one): **Site configuration → Access & security → OAuth → Install provider → GitHub**, paste the Client ID and secret. Then add `site_domain: <that-site>.netlify.app` under `backend:` in `src/admin/config.yml`, so the relay knows which Netlify site holds the keys (otherwise it looks for a Netlify site called hopegroup.ai).
-3. Invite each editor to the GitHub repo as a collaborator. They log in at `/admin/` with GitHub.
+One-time setup:
+1. In GitHub: **Settings → Developer settings → OAuth Apps → New OAuth App.** Name `Hope Group CMS`, homepage `https://hopegroup.ai`, callback URL `https://api.netlify.com/auth/done`. Register it, copy the Client ID, then generate a client secret and copy it.
+2. In Netlify: open the **hopegroup-cms** project → **Project configuration → Access & security → OAuth → Install provider → GitHub**, paste the Client ID and secret.
+3. Invite each editor to the GitHub repo as a collaborator. They log in at `https://hopegroup.ai/admin/` with GitHub.
 
 `netlify.toml` is kept only in case you ever move hosting; it does nothing on GitHub Pages.
 
