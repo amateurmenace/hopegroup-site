@@ -2,6 +2,7 @@
 <html lang="en" class="{% if site.banner and site.banner.enabled %}has-banner {% endif %}no-js">
 <head>
   <meta charset="utf-8">
+  {% include "partials/https-upgrade.njk" %}
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   {% set pageTitle = title or name %}
   <title>{% if pageTitle %}{{ pageTitle }} · {{ site.name }}{% else %}{{ site.name }} · {{ site.tagline }}{% endif %}</title>
